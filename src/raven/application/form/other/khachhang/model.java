@@ -9,5 +9,5 @@ package raven.application.form.other.khachhang;
  * @author Nguyễn Vũ
  */
 public class model {
-    
+
 }

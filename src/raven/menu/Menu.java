@@ -40,6 +40,20 @@ public class Menu extends JPanel {
         {"Đổi Mật Khẩu"},
         {"Đăng Xuất"},
     };
+    
+        private final String menuItemsStaff[][] = {
+        {"~Sales(Bán Hàng)~"},
+        {"Mặt Hàng"},
+        {"Sản Phẩm"},
+        {"Bán Hàng"},
+        {"Hóa Đơn"},
+        {"Khách Hàng"},
+        {"~Statistics(Thống Kê)~"},
+        {"Đổi Mật Khẩu"},
+        {"Đăng Xuất"},
+    };
+    
+    
 
     public boolean isMenuFull() {
         return menuFull;

@@ -49,6 +49,8 @@ public class Application extends javax.swing.JFrame {
         SwingUtilities.updateComponentTreeUI(app.mainForm);
         FlatAnimatedLafChange.hideSnapshotWithAnimation();
     }
+    
+    
 
     public static void logout() {
         FlatAnimatedLafChange.showSnapshot();
