@@ -10,8 +10,8 @@ import java.awt.Dimension;
 import java.awt.Font;
 import javax.swing.SwingUtilities;
 import javax.swing.UIManager;
-import raven.application.form.LoginForm;    
-import raven.application.form.MainForm;
+import raven.application.form.login.LoginForm;
+import raven.application.form.login.MainForm;
 import raven.toast.Notifications;
 
 /**
@@ -49,8 +49,6 @@ public class Application extends javax.swing.JFrame {
         SwingUtilities.updateComponentTreeUI(app.mainForm);
         FlatAnimatedLafChange.hideSnapshotWithAnimation();
     }
-    
-    
 
     public static void logout() {
         FlatAnimatedLafChange.showSnapshot();

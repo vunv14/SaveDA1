@@ -1,4 +1,4 @@
-package raven.application.form;
+package raven.application.form.login;
 
 import com.formdev.flatlaf.FlatClientProperties;
 import com.formdev.flatlaf.extras.FlatSVGIcon;

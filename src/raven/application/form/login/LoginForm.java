@@ -1,10 +1,14 @@
-package raven.application.form;
+package raven.application.form.login;
 
 import com.formdev.flatlaf.FlatClientProperties;
 import javax.swing.JOptionPane;
 import net.miginfocom.swing.MigLayout;
 import raven.application.Application;
+import raven.entity.VaiTro;
 import raven.toast.Notifications;
+import java.util.ArrayList;
+import java.util.List;
+import raven.application.form.other.VaiTro.repository.RepositoryNhanVien;
 
 /**
  *
@@ -29,7 +33,6 @@ public class LoginForm extends javax.swing.JPanel {
         cmdLogin.putClientProperty(FlatClientProperties.STYLE, ""
                 + "borderWidth:0;"
                 + "focusWidth:0");
-        txtPass.setText("sa");
         txtUser.putClientProperty(FlatClientProperties.PLACEHOLDER_TEXT, "User Name");
         txtPass.putClientProperty(FlatClientProperties.PLACEHOLDER_TEXT, "Password");
     }
@@ -38,7 +41,7 @@ public class LoginForm extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        panelLogin1 = new raven.application.form.PanelLogin();
+        panelLogin1 = new raven.application.form.login.PanelLogin();
         lbTitle = new javax.swing.JLabel();
         lbUser = new javax.swing.JLabel();
         txtUser = new javax.swing.JTextField();
@@ -53,7 +56,6 @@ public class LoginForm extends javax.swing.JPanel {
         lbUser.setText("User Name");
         panelLogin1.add(lbUser);
 
-        txtUser.setText("sa");
         txtUser.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txtUserActionPerformed(evt);
@@ -64,7 +66,11 @@ public class LoginForm extends javax.swing.JPanel {
         lbPass.setText("Password");
         panelLogin1.add(lbPass);
 
-        txtPass.setText("sa");
+        txtPass.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtPassActionPerformed(evt);
+            }
+        });
         panelLogin1.add(txtPass);
 
         cmdLogin.setText("Login");
@@ -94,19 +100,30 @@ public class LoginForm extends javax.swing.JPanel {
     }// </editor-fold>//GEN-END:initComponents
 
     private void cmdLoginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmdLoginActionPerformed
-        if (txtUser.getText().isEmpty()) {
-            Notifications.getInstance().show(Notifications.Type.WARNING, Notifications.Location.TOP_CENTER, "Không nhập gì à :)?!");
-        } else if (txtUser.getText().equalsIgnoreCase("sa")) {
-            if (txtPass.getText().equalsIgnoreCase("sa")) {
-                Application.login();
-                Notifications.getInstance().show(Notifications.Type.SUCCESS, Notifications.Location.TOP_CENTER, "Hoan hô giỏi quá. Đăng nhập thành công!");
-            } else {
-                Notifications.getInstance().show(Notifications.Type.WARNING, Notifications.Location.TOP_CENTER, "Sai tài khoản hoặc mật khẩu!");
-            }
 
+        if (txtUser.getText().isEmpty()) {
+            Notifications.getInstance().show(Notifications.Type.INFO, Notifications.Location.TOP_CENTER, "Vui lòng nhập user");
+            txtPass.requestFocus();
         }
 
+        if (txtUser.getText().isEmpty()) {
+            Notifications.getInstance().show(Notifications.Type.INFO, Notifications.Location.TOP_CENTER, "Vui lòng nhập password");
+            txtUser.requestFocus();
+        }
 
+        List<VaiTro> list = new RepositoryNhanVien().getAllLG();
+        for (VaiTro vaiTro : list) {
+            if (txtUser.getText().equalsIgnoreCase(vaiTro.getHo_ten())) {
+                if (txtPass.getText().equalsIgnoreCase(vaiTro.getMa_khau())) {
+                    if (vaiTro.getChuc_vu()) {
+                        Application.login();
+                        Notifications.getInstance().show(Notifications.Type.SUCCESS, Notifications.Location.TOP_CENTER, "Hoan hô giỏi quá. Đăng nhập thành công!");
+                    } else {
+                        Notifications.getInstance().show(Notifications.Type.WARNING, Notifications.Location.TOP_CENTER, "Sai tài khoản hoặc mật khẩu!");
+                    }
+                }
+            }
+        }
 
 
     }//GEN-LAST:event_cmdLoginActionPerformed
@@ -115,12 +132,16 @@ public class LoginForm extends javax.swing.JPanel {
         // TODO add your handling code here:
     }//GEN-LAST:event_txtUserActionPerformed
 
+    private void txtPassActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtPassActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtPassActionPerformed
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton cmdLogin;
     private javax.swing.JLabel lbPass;
     private javax.swing.JLabel lbTitle;
     private javax.swing.JLabel lbUser;
-    private raven.application.form.PanelLogin panelLogin1;
+    private raven.application.form.login.PanelLogin panelLogin1;
     private javax.swing.JPasswordField txtPass;
     private javax.swing.JTextField txtUser;
     // End of variables declaration//GEN-END:variables

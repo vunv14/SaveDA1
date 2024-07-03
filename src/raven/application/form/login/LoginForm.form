@@ -34,7 +34,7 @@
     </DimensionLayout>
   </Layout>
   <SubComponents>
-    <Container class="raven.application.form.PanelLogin" name="panelLogin1">
+    <Container class="raven.application.form.login.PanelLogin" name="panelLogin1">
       <SubComponents>
         <Component class="javax.swing.JLabel" name="lbTitle">
           <Properties>
@@ -48,9 +48,6 @@
           </Properties>
         </Component>
         <Component class="javax.swing.JTextField" name="txtUser">
-          <Properties>
-            <Property name="text" type="java.lang.String" value="sa"/>
-          </Properties>
           <Events>
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="txtUserActionPerformed"/>
           </Events>
@@ -61,9 +58,9 @@
           </Properties>
         </Component>
         <Component class="javax.swing.JPasswordField" name="txtPass">
-          <Properties>
-            <Property name="text" type="java.lang.String" value="sa"/>
-          </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="txtPassActionPerformed"/>
+          </Events>
         </Component>
         <Component class="javax.swing.JButton" name="cmdLogin">
           <Properties>
