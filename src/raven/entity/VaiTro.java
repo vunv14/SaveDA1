@@ -6,14 +6,8 @@ package raven.entity;
 
 import java.sql.Date;
 import lombok.Data;
-import lombok.NoArgsConstructor;
 
-/**
- *
- * @author Nguyễn Vũ
- */
 @Data
-@NoArgsConstructor
 public class VaiTro {
 
     private Integer id;

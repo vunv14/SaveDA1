@@ -4,12 +4,11 @@
  */
 package raven.entity;
 
-
 import lombok.Data;
-import lombok.NoArgsConstructor;
+
 
 @Data
-@NoArgsConstructor
+
 public class ChatLieu {
 
     private Integer id;

@@ -5,14 +5,14 @@
 package raven.entity;
 
 import lombok.Data;
-import lombok.NoArgsConstructor;
+
 
 /**
  *
  * @author Nguyễn Vũ
  */
+
 @Data
-@NoArgsConstructor
 public class Anh {
 
     private Integer id;
