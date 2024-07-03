@@ -94,17 +94,17 @@ public class LoginForm extends javax.swing.JPanel {
     }// </editor-fold>//GEN-END:initComponents
 
     private void cmdLoginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmdLoginActionPerformed
-//        if (txtUser.getText().isEmpty()) {
-//            Notifications.getInstance().show(Notifications.Type.WARNING, Notifications.Location.TOP_CENTER, "Không nhập gì à :)?!");
-//        } else if (txtUser.getText().equalsIgnoreCase("sa")) {
-//            if (txtPass.getText().equalsIgnoreCase("sa")) {
-//                Application.login();
-//                Notifications.getInstance().show(Notifications.Type.SUCCESS, Notifications.Location.TOP_CENTER, "Hoan hô giỏi quá. Đăng nhập thành công!");
-//            } else {
-//                Notifications.getInstance().show(Notifications.Type.WARNING, Notifications.Location.TOP_CENTER, "Sai tài khoản hoặc mật khẩu!");
-//            }
-//
-//        }
+        if (txtUser.getText().isEmpty()) {
+            Notifications.getInstance().show(Notifications.Type.WARNING, Notifications.Location.TOP_CENTER, "Không nhập gì à :)?!");
+        } else if (txtUser.getText().equalsIgnoreCase("sa")) {
+            if (txtPass.getText().equalsIgnoreCase("sa")) {
+                Application.login();
+                Notifications.getInstance().show(Notifications.Type.SUCCESS, Notifications.Location.TOP_CENTER, "Hoan hô giỏi quá. Đăng nhập thành công!");
+            } else {
+                Notifications.getInstance().show(Notifications.Type.WARNING, Notifications.Location.TOP_CENTER, "Sai tài khoản hoặc mật khẩu!");
+            }
+
+        }
 
 
 
