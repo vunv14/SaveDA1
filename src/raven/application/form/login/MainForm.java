@@ -19,6 +19,7 @@ import raven.application.Application;
 import raven.application.form.other.FormDashboard;
 import raven.application.form.other.FormInbox;
 import raven.application.form.other.FormRead;
+import raven.application.form.other.hoadon.FormHoaDon;
 import raven.menu.Menu;
 import raven.menu.MenuAction;
 
@@ -72,8 +73,8 @@ public class MainForm extends JLayeredPane {
             // Application.mainForm.showForm(new DefaultForm("Form : " + index + " " + subIndex));
             if (index == 0) {
                 Application.showForm(new FormDashboard());
-            } else if (index == 1) {
-                Application.showForm(new FormInbox());
+            } else if (index == 5) {
+                Application.showForm(new FormHoaDon());
             } else if (index == 10) {
                 Application.logout();
             } else {

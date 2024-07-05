@@ -29,7 +29,7 @@ public class Menu extends JPanel {
         {"Mặt Hàng"},
         {"Sản Phẩm"},
         {"Nhân Viên"},
-        {"Thuộc Tính"},
+        {"Thuộc Tính","Xuất xứ","Màu","Thương hiệu","Ảnh","Chất lượng","Kích thước"},
         {"Bán Hàng"},
         {"Hóa Đơn"},
         {"Khách Hàng"},
