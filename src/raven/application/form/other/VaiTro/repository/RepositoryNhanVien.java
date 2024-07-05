@@ -53,8 +53,7 @@ public class RepositoryNhanVien {
         List<VaiTro> list = new RepositoryNhanVien().getAllLG();
         list.stream().forEach(a-> System.out.println(a.toString()));
 
-        
-
+      
     }
     
 }

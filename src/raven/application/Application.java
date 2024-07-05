@@ -13,7 +13,7 @@ import javax.swing.UIManager;
 import raven.application.form.login.LoginForm;
 import raven.application.form.login.MainForm;
 import raven.toast.Notifications;
-
+import raven.entity.VaiTro;
 /**
  *
  * @author Raven
@@ -23,6 +23,17 @@ public class Application extends javax.swing.JFrame {
     private static Application app;
     private final MainForm mainForm;
     private final LoginForm loginForm;
+    
+ private static VaiTro currentUser;    
+    
+  public static VaiTro getCurrentUser() {
+        return currentUser;
+    }
+
+    public static void setCurrentUser(VaiTro user) {
+        currentUser = user;
+    }
+ 
 
     public Application() {
         initComponents();
