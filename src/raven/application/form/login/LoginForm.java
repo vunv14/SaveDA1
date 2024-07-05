@@ -100,30 +100,53 @@ public class LoginForm extends javax.swing.JPanel {
     }// </editor-fold>//GEN-END:initComponents
 
     private void cmdLoginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmdLoginActionPerformed
+//
+//        if (txtUser.getText().isEmpty()) {
+//            Notifications.getInstance().show(Notifications.Type.INFO, Notifications.Location.TOP_CENTER, "Vui lòng nhập user");
+//            txtPass.requestFocus();
+//        }
+//
+//        if (txtUser.getText().isEmpty()) {
+//            Notifications.getInstance().show(Notifications.Type.INFO, Notifications.Location.TOP_CENTER, "Vui lòng nhập password");
+//            txtUser.requestFocus();
+//        }
+//
+//        List<VaiTro> list = new RepositoryNhanVien().getAllLG();
+//        for (VaiTro vaiTro : list) {
+//            if (txtUser.getText().equalsIgnoreCase(vaiTro.getHo_ten())) {
+//                if (txtPass.getText().equalsIgnoreCase(vaiTro.getMa_khau())) {
+//                    if (vaiTro.getChuc_vu()) {
+//                        Application.login();
+//                        Notifications.getInstance().show(Notifications.Type.SUCCESS, Notifications.Location.TOP_CENTER, "Hoan hô giỏi quá. Đăng nhập thành công!");
+//                    } else {
+//                        Notifications.getInstance().show(Notifications.Type.WARNING, Notifications.Location.TOP_CENTER, "Sai tài khoản hoặc mật khẩu!");
+//                    }
+//                }
+//            }
+//        }
 
-        if (txtUser.getText().isEmpty()) {
-            Notifications.getInstance().show(Notifications.Type.INFO, Notifications.Location.TOP_CENTER, "Vui lòng nhập user");
-            txtPass.requestFocus();
-        }
+ if (txtUser.getText().isEmpty() || txtPass.getText().isEmpty()) {
+        Notifications.getInstance().show(Notifications.Type.INFO, Notifications.Location.TOP_CENTER, "Vui lòng nhập user và password");
+        return;
+    }
 
-        if (txtUser.getText().isEmpty()) {
-            Notifications.getInstance().show(Notifications.Type.INFO, Notifications.Location.TOP_CENTER, "Vui lòng nhập password");
-            txtUser.requestFocus();
+    List<VaiTro> list = new RepositoryNhanVien().getAllLG();
+    boolean loggedIn = false;
+    for (VaiTro vaiTro : list) {
+        if (txtUser.getText().equalsIgnoreCase(vaiTro.getHo_ten()) && txtPass.getText().equalsIgnoreCase(vaiTro.getMa_khau())) {
+            loggedIn = true;
+            // Save current user's role for permission checking
+            Application.setCurrentUser(vaiTro);
+            break;
         }
+    }
 
-        List<VaiTro> list = new RepositoryNhanVien().getAllLG();
-        for (VaiTro vaiTro : list) {
-            if (txtUser.getText().equalsIgnoreCase(vaiTro.getHo_ten())) {
-                if (txtPass.getText().equalsIgnoreCase(vaiTro.getMa_khau())) {
-                    if (vaiTro.getChuc_vu()) {
-                        Application.login();
-                        Notifications.getInstance().show(Notifications.Type.SUCCESS, Notifications.Location.TOP_CENTER, "Hoan hô giỏi quá. Đăng nhập thành công!");
-                    } else {
-                        Notifications.getInstance().show(Notifications.Type.WARNING, Notifications.Location.TOP_CENTER, "Sai tài khoản hoặc mật khẩu!");
-                    }
-                }
-            }
-        }
+    if (loggedIn) {
+        Application.login();
+        Notifications.getInstance().show(Notifications.Type.SUCCESS, Notifications.Location.TOP_CENTER, "Đăng nhập thành công!");
+    } else {
+        Notifications.getInstance().show(Notifications.Type.WARNING, Notifications.Location.TOP_CENTER, "Sai tài khoản hoặc mật khẩu!");
+    }
 
 
     }//GEN-LAST:event_cmdLoginActionPerformed

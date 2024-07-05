@@ -19,9 +19,11 @@ import raven.application.Application;
 import raven.application.form.other.FormDashboard;
 import raven.application.form.other.FormInbox;
 import raven.application.form.other.FormRead;
+import raven.entity.VaiTro;
 import raven.application.form.other.hoadon.FormHoaDon;
 import raven.menu.Menu;
 import raven.menu.MenuAction;
+import raven.toast.Notifications;
 
 /**
  *
@@ -32,6 +34,8 @@ public class MainForm extends JLayeredPane {
     public MainForm() {
         init();
     }
+    boolean check1 = true;
+    boolean check2 = true;
 
     private void init() {
         setBorder(new EmptyBorder(5, 5, 5, 5));
@@ -76,9 +80,41 @@ public class MainForm extends JLayeredPane {
             } else if (index == 5) {
                 Application.showForm(new FormHoaDon());
             } else if (index == 10) {
-                Application.logout();
-            } else {
-                action.cancel();
+
+                VaiTro currentUser = Application.getCurrentUser();
+
+                if (currentUser.getChuc_vu()) {
+                    if (check1) {
+                        Notifications.getInstance().show(Notifications.Type.SUCCESS, Notifications.Location.TOP_CENTER, "Đăng nhập với tư cách quản lí");
+                        check1 = false;
+                    }
+                    if (index == 0) {
+                        Application.showForm(new FormDashboard());
+                    } else if (index == 1) {
+                        Application.showForm(new FormInbox());
+                    } else if (index == 2) {
+
+                    } else if (index == 10) {
+                        Application.logout();
+                    } else {
+                        action.cancel();
+                    }
+                } else {
+                    if (check2) {
+                        Notifications.getInstance().show(Notifications.Type.SUCCESS, Notifications.Location.TOP_CENTER, "Đăng nhập với tư cách nhan vien");
+                        check2 = false;
+                    }
+                    if (index == 0) {
+                        Application.showForm(new FormDashboard());
+                    } else if (index == 1) {
+                        Application.showForm(new FormDashboard());
+                    } else if (index == 10) {
+                        Application.logout();
+                    } else {
+                        Notifications.getInstance().show(Notifications.Type.WARNING, Notifications.Location.TOP_CENTER, "Nhan Vien không thể bấm vào được");
+
+                    }
+                }
             }
         });
     }
