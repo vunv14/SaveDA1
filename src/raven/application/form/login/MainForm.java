@@ -19,6 +19,7 @@ import raven.application.Application;
 import raven.application.form.other.FormDashboard;
 import raven.application.form.other.FormInbox;
 import raven.application.form.other.FormRead;
+import raven.application.form.other.NewJPanel;
 import raven.menu.Menu;
 import raven.menu.MenuAction;
 
@@ -73,8 +74,11 @@ public class MainForm extends JLayeredPane {
             if (index == 0) {
                 Application.showForm(new FormDashboard());
             } else if (index == 1) {
-                Application.showForm(new FormInbox());
-            } else if (index == 10) {
+                Application.showForm(new FormInbox());  
+            } else if(index == 2){
+                Application.showForm(new NewJPanel());
+             }
+            else if (index == 10) {
                 Application.logout();
             } else {
                 action.cancel();

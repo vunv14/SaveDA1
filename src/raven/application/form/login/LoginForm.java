@@ -113,18 +113,31 @@ public class LoginForm extends javax.swing.JPanel {
 
         List<VaiTro> list = new RepositoryNhanVien().getAllLG();
         for (VaiTro vaiTro : list) {
-            if (txtUser.getText().equalsIgnoreCase(vaiTro.getHo_ten())) {
-                if (txtPass.getText().equalsIgnoreCase(vaiTro.getMa_khau())) {
+                if(txtUser.getText().equalsIgnoreCase(vaiTro.getHo_ten()) && txtPass.getText().equalsIgnoreCase(vaiTro.getMat_khau())){
                     if (vaiTro.getChuc_vu()) {
                         Application.login();
                         Notifications.getInstance().show(Notifications.Type.SUCCESS, Notifications.Location.TOP_CENTER, "Hoan hô giỏi quá. Đăng nhập thành công!");
                     } else {
-                        Notifications.getInstance().show(Notifications.Type.WARNING, Notifications.Location.TOP_CENTER, "Sai tài khoản hoặc mật khẩu!");
+                        Notifications.getInstance().show(Notifications.Type.WARNING, Notifications.Location.TOP_CENTER, "Không được phép vào đây");
                     }
-                }
-            }
+                      return;
+                  } 
+                        Notifications.getInstance().show(Notifications.Type.WARNING, Notifications.Location.TOP_CENTER, "Sai tài khoản hoặc mật khẩu!");
+                    
+                
+                
         }
 
+        //            if (txtUser.getText().equalsIgnoreCase(vaiTro.getHo_ten())) {
+//                if (txtPass.getText().equalsIgnoreCase(vaiTro.getMat_khau())) {
+//                    if (vaiTro.getChuc_vu()) {
+//                        Application.login();
+//                        Notifications.getInstance().show(Notifications.Type.SUCCESS, Notifications.Location.TOP_CENTER, "Hoan hô giỏi quá. Đăng nhập thành công!");
+//                    } else {
+//                        Notifications.getInstance().show(Notifications.Type.WARNING, Notifications.Location.TOP_CENTER, "Sai tài khoản hoặc mật khẩu!");
+//                    }
+//                }
+//            }
 
     }//GEN-LAST:event_cmdLoginActionPerformed
 
