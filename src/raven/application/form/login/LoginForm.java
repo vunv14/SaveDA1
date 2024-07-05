@@ -9,6 +9,7 @@ import raven.toast.Notifications;
 import java.util.ArrayList;
 import java.util.List;
 import raven.application.form.other.VaiTro.repository.RepositoryNhanVien;
+//import raven.application.form.other.VaiTro.repository.RepositoryNhanVien;
 
 /**
  *
@@ -86,58 +87,58 @@ public class LoginForm extends javax.swing.JPanel {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(218, Short.MAX_VALUE)
+                .addContainerGap(216, Short.MAX_VALUE)
                 .addComponent(panelLogin1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(197, 197, 197))
+                .addGap(199, 199, 199))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(68, 68, 68)
+                .addGap(70, 70, 70)
                 .addComponent(panelLogin1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(96, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 
     private void cmdLoginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmdLoginActionPerformed
 
-        if (txtUser.getText().isEmpty()) {
-            Notifications.getInstance().show(Notifications.Type.INFO, Notifications.Location.TOP_CENTER, "Vui lòng nhập user");
-            txtPass.requestFocus();
-        }
 
-        if (txtUser.getText().isEmpty()) {
-            Notifications.getInstance().show(Notifications.Type.INFO, Notifications.Location.TOP_CENTER, "Vui lòng nhập password");
-            txtUser.requestFocus();
-        }
+ if (txtUser.getText().isEmpty() || txtPass.getText().isEmpty()) {
+        Notifications.getInstance().show(Notifications.Type.INFO, Notifications.Location.TOP_CENTER, "Vui lòng nhập user và password");
+        return;
+    }
 
-        List<VaiTro> list = new RepositoryNhanVien().getAllLG();
-        for (VaiTro vaiTro : list) {
-                if(txtUser.getText().equalsIgnoreCase(vaiTro.getHo_ten()) && txtPass.getText().equalsIgnoreCase(vaiTro.getMat_khau())){
-                    if (vaiTro.getChuc_vu()) {
-                        Application.login();
-                        Notifications.getInstance().show(Notifications.Type.SUCCESS, Notifications.Location.TOP_CENTER, "Hoan hô giỏi quá. Đăng nhập thành công!");
-                    } else {
-                        Notifications.getInstance().show(Notifications.Type.WARNING, Notifications.Location.TOP_CENTER, "Không được phép vào đây");
-                    }
-                      return;
-                  } 
-                        Notifications.getInstance().show(Notifications.Type.WARNING, Notifications.Location.TOP_CENTER, "Sai tài khoản hoặc mật khẩu!");
-                    
-                
-                
+    List<VaiTro> list = new RepositoryNhanVien().getAllLG();
+    boolean loggedIn = false;
+    for (VaiTro vaiTro : list) {
+        if (txtUser.getText().equalsIgnoreCase(vaiTro.getHo_ten()) && txtPass.getText().equalsIgnoreCase(vaiTro.getMa_khau())) {
+            loggedIn = true;
+            // Save current user's role for permission checking
+            Application.setCurrentUser(vaiTro);
+            break;
         }
+    }
 
-        //            if (txtUser.getText().equalsIgnoreCase(vaiTro.getHo_ten())) {
-//                if (txtPass.getText().equalsIgnoreCase(vaiTro.getMat_khau())) {
+
+       // List<VaiTro> list = new RepositoryNhanVien().getAllLG();
+//        for (VaiTro vaiTro : list) {
+//                if(txtUser.getText().equalsIgnoreCase(vaiTro.getHo_ten()) && txtPass.getText().equalsIgnoreCase(vaiTro.getMat_khau())){
 //                    if (vaiTro.getChuc_vu()) {
 //                        Application.login();
 //                        Notifications.getInstance().show(Notifications.Type.SUCCESS, Notifications.Location.TOP_CENTER, "Hoan hô giỏi quá. Đăng nhập thành công!");
 //                    } else {
-//                        Notifications.getInstance().show(Notifications.Type.WARNING, Notifications.Location.TOP_CENTER, "Sai tài khoản hoặc mật khẩu!");
+//                        Notifications.getInstance().show(Notifications.Type.WARNING, Notifications.Location.TOP_CENTER, "Không được phép vào đây");
 //                    }
-//                }
-//            }
+//                      return;
+//                  } 
+//                        Notifications.getInstance().show(Notifications.Type.WARNING, Notifications.Location.TOP_CENTER, "Sai tài khoản hoặc mật khẩu!");  
+//        }
+//    if (loggedIn) {
+//        Application.login();
+//        Notifications.getInstance().show(Notifications.Type.SUCCESS, Notifications.Location.TOP_CENTER, "Đăng nhập thành công!");
+//    } else {
+//        Notifications.getInstance().show(Notifications.Type.WARNING, Notifications.Location.TOP_CENTER, "Sai tài khoản hoặc mật khẩu!");
+//    }
 
     }//GEN-LAST:event_cmdLoginActionPerformed
 

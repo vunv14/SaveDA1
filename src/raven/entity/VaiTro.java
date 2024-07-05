@@ -5,37 +5,28 @@
 package raven.entity;
 
 import java.sql.Date;
-//import lombok.AllArgsConstructor;
-//import lombok.Data;
-//import lombok.Getter;
-//import lombok.NoArgsConstructor;
-//import lombok.Setter;
-//import lombok.ToString;
 
-//@ToString
-//@Getter
-//@Setter
-//@NoArgsConstructor
-//@AllArgsConstructor
+
+
+
 
 public class VaiTro {
 
     private Integer id;
-    
+
     private Boolean gioi_tinh;
-    
+
     private Date ngay_sinh;
-    
+
     private String cccd;
-    
+
     private String dia_chia;
-    
+
     private String ho_ten;
-    
-    private String mat_khau;
-    
     private Boolean trang_thai;
     
+    private String mat_khau;
+
     private Boolean chuc_vu;
 
     public VaiTro(Integer id, String ho_ten, String mat_khau, Boolean trang_thai, Boolean chuc_vu) {
@@ -147,7 +138,17 @@ public class VaiTro {
         this.chuc_vu = chuc_vu;
     }
 
+
+    
    
     
-    
+
+
+    //private String ma_khau;
+
+    public String getMa_khau() {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    }
+
+
 }

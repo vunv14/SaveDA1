@@ -17,7 +17,10 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.util.ArrayList;
+
 //import lombok.val;
+
+
 import raven.DBConnect.DBConnect;
 public class RepositoryNhanVien {
     
@@ -45,6 +48,7 @@ public class RepositoryNhanVien {
        return list;
     }
     
+
     public List<VaiTro> getAll(){
         sql = "select id,gioi_tinh,ngay_sinh,cccd,"
                 + "dia_chia,ho_ten,trang_thai,chuc_vu,"
@@ -92,8 +96,15 @@ public class RepositoryNhanVien {
         } catch (Exception e) {
             e.printStackTrace();
         }
-        
     }
+
+//    public static void main(String[] args) {
+//        List<VaiTro> list = new RepositoryNhanVien().getAllLG();
+//        list.stream().forEach(a-> System.out.println(a.toString()));
+//
+//      
+//>>>>>>> origin/master
+//    }
     
     public void update(VaiTro x){
          sql = "update vai_tro set gioi_tinh = ? , ngay_sinh = ?, cccd = ?,"
@@ -176,12 +187,12 @@ public class RepositoryNhanVien {
                 .filter((t) -> t.getHo_ten().contains(name))
                 .findFirst().orElse(null);
      }
+}
     
     
     
-    }
     
-    
+
  
     
 

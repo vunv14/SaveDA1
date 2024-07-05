@@ -29,7 +29,7 @@ public class Menu extends JPanel {
         {"Mặt Hàng"},
         {"Sản Phẩm"},
         {"Nhân Viên"},
-        {"Thuộc Tính"},
+        {"Thuộc Tính","Xuất xứ","Màu","Thương hiệu","Ảnh","Chất lượng","Kích thước"},
         {"Bán Hàng"},
         {"Hóa Đơn"},
         {"Khách Hàng"},
@@ -41,20 +41,6 @@ public class Menu extends JPanel {
         {"Đăng Xuất"},
     };
     
-        private final String menuItemsStaff[][] = {
-        {"~Sales(Bán Hàng)~"},
-        {"Mặt Hàng"},
-        {"Sản Phẩm"},
-        {"Bán Hàng"},
-        {"Hóa Đơn"},
-        {"Khách Hàng"},
-        {"~Statistics(Thống Kê)~"},
-        {"Đổi Mật Khẩu"},
-        {"Đăng Xuất"},
-    };
-    
-    
-
     public boolean isMenuFull() {
         return menuFull;
     }
@@ -88,11 +74,11 @@ public class Menu extends JPanel {
     protected final int menuMinWidth = 60;
     protected final int headerFullHgap = 5;
 
-    public Menu() {
+    public Menu( ) {
         init();
     }
 
-    private void init() {
+    private void init( ) {
         setLayout(new MenuLayout());
         putClientProperty(FlatClientProperties.STYLE, ""
                 + "border:20,2,2,2;"
@@ -132,18 +118,35 @@ public class Menu extends JPanel {
         add(toolBarAccentColor);
     }
 
-    private void createMenu() {
+    private void createMenu( ) {
         int index = 0;
         for (int i = 0; i < menuItems.length; i++) {
             String menuName = menuItems[i][0];
             if (menuName.startsWith("~") && menuName.endsWith("~")) {
                 panelMenu.add(createTitle(menuName));
             } else {
+              
+                                
                 MenuItem menuItem = new MenuItem(this, menuItems[i], index++, events);
                 panelMenu.add(menuItem);
+                
             }
         }
     }
+    
+    
+//    private void createMenuNhanVien() {
+//        int index = 0;
+//        for (int i = 0; i < menuItems.length; i++) {
+//            String menuName = menuItems[i][0];
+//            if (menuName.startsWith("~") && menuName.endsWith("~")) {
+//                panelMenu.add(createTitle(menuName));
+//            } else {
+//                MenuItem menuItem = new MenuItem(this, menuItems[i], index++, events);
+//                panelMenu.add(menuItem);
+//            }
+//        }
+//    }
 
     private JLabel createTitle(String title) {
         String menuName = title.substring(1, title.length() - 1);
