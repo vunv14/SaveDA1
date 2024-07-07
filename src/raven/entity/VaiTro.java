@@ -6,10 +6,6 @@ package raven.entity;
 
 import java.sql.Date;
 
-
-
-
-
 public class VaiTro {
 
     private Integer id;
@@ -23,11 +19,14 @@ public class VaiTro {
     private String dia_chia;
 
     private String ho_ten;
-    private Boolean trang_thai;
-    
     private String mat_khau;
+    private Boolean trang_thai;
 
     private Boolean chuc_vu;
+
+    public VaiTro() {
+    }
+    //id,ho_ten,mat_khau,trang_thai,chuc_vu
 
     public VaiTro(Integer id, String ho_ten, String mat_khau, Boolean trang_thai, Boolean chuc_vu) {
         this.id = id;
@@ -37,33 +36,29 @@ public class VaiTro {
         this.chuc_vu = chuc_vu;
     }
 
-    public VaiTro(Boolean gioi_tinh, Date ngay_sinh, String cccd, String dia_chia, String ho_ten, String mat_khau, Boolean trang_thai, Boolean chuc_vu) {
-        this.gioi_tinh = gioi_tinh;
-        this.ngay_sinh = ngay_sinh;
-        this.cccd = cccd;
-        this.dia_chia = dia_chia;
-        this.ho_ten = ho_ten;
-        this.mat_khau = mat_khau;
-        this.trang_thai = trang_thai;
-        this.chuc_vu = chuc_vu;
-    }
-    
-    
     
 
-    public VaiTro(Integer id, Boolean gioi_tinh, Date ngay_sinh, String cccd, String dia_chia, String ho_ten, String mat_khau, Boolean trang_thai, Boolean chuc_vu) {
+    public VaiTro(Integer id, Boolean gioi_tinh, Date ngay_sinh, String cccd, String dia_chia, String ho_ten, Boolean trang_thai, String mat_khau, Boolean chuc_vu) {
         this.id = id;
         this.gioi_tinh = gioi_tinh;
         this.ngay_sinh = ngay_sinh;
         this.cccd = cccd;
         this.dia_chia = dia_chia;
         this.ho_ten = ho_ten;
-        this.mat_khau = mat_khau;
         this.trang_thai = trang_thai;
+        this.mat_khau = mat_khau;
         this.chuc_vu = chuc_vu;
     }
 
-    public VaiTro() {
+    public VaiTro(Boolean gioi_tinh, Date ngay_sinh, String cccd, String dia_chia, String ho_ten, Boolean trang_thai, String mat_khau, Boolean chuc_vu) {
+        this.gioi_tinh = gioi_tinh;
+        this.ngay_sinh = ngay_sinh;
+        this.cccd = cccd;
+        this.dia_chia = dia_chia;
+        this.ho_ten = ho_ten;
+        this.trang_thai = trang_thai;
+        this.mat_khau = mat_khau;
+        this.chuc_vu = chuc_vu;
     }
 
     public Integer getId() {
@@ -114,20 +109,20 @@ public class VaiTro {
         this.ho_ten = ho_ten;
     }
 
-    public String getMat_khau() {
-        return mat_khau;
-    }
-
-    public void setMat_khau(String mat_khau) {
-        this.mat_khau = mat_khau;
-    }
-
     public Boolean getTrang_thai() {
         return trang_thai;
     }
 
     public void setTrang_thai(Boolean trang_thai) {
         this.trang_thai = trang_thai;
+    }
+
+    public String getMat_khau() {
+        return mat_khau;
+    }
+
+    public void setMat_khau(String mat_khau) {
+        this.mat_khau = mat_khau;
     }
 
     public Boolean getChuc_vu() {
@@ -137,18 +132,5 @@ public class VaiTro {
     public void setChuc_vu(Boolean chuc_vu) {
         this.chuc_vu = chuc_vu;
     }
-
-
-    
-   
-    
-
-
-    //private String ma_khau;
-
-    public String getMa_khau() {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
-    }
-
 
 }

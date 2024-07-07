@@ -76,11 +76,16 @@ public class MainForm extends JLayeredPane {
     }
 
     private void initMenuEvent() {
-        menu.addMenuEvent((int index, int subIndex, MenuAction action) -> {
+          menu.addMenuEvent((int index, int subIndex, MenuAction action) -> {
             // Application.mainForm.showForm(new DefaultForm("Form : " + index + " " + subIndex));
           if (index == 0) {
                 Application.showForm(new FormDashboard());
-            } else if (index == 5) {
+            }
+           else if (index == 2) {
+                        Application.showForm(new NewJPanel());
+                    }
+          
+          else if (index == 5) {
                 Application.showForm(new FormHoaDon());
             } else if (index == 10) {
 
@@ -95,9 +100,7 @@ public class MainForm extends JLayeredPane {
                         Application.showForm(new FormDashboard());
                     } else if (index == 1) {
                         Application.showForm(new FormInbox());
-                    } else if (index == 2) {
-
-                    } else if (index == 10) {
+                    }  else if (index == 10) {
                         Application.logout();
                     } else {
                         action.cancel();
@@ -110,8 +113,11 @@ public class MainForm extends JLayeredPane {
                     if (index == 0) {
                         Application.showForm(new FormDashboard());
                     } else if (index == 1) {
+                        
                         Application.showForm(new FormDashboard());
-                    } else if (index == 10) {
+                    }
+                   
+                    else if (index == 10) {
                         Application.logout();
                     } else {
                         Notifications.getInstance().show(Notifications.Type.WARNING, Notifications.Location.TOP_CENTER, "Nhan Vien không thể bấm vào được");
