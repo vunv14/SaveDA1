@@ -25,42 +25,54 @@ public class NewJPanel extends javax.swing.JPanel {
 
     public NewJPanel() {
         initComponents();
-       loadData();
-       loadDataV2();
+        loadData();
+        loadDataV2();
     }
-    
-      public Boolean check() {
+
+    public Boolean check() {
 
         if (!(jRadioNam.isSelected() || jRadioNu.isSelected())) {
-            JOptionPane.showMessageDialog(this, "bạn chưa nhập gioiTinh");
+            Notifications.getInstance().show(Notifications.Type.ERROR, Notifications.Location.TOP_CENTER, "chưa nhập giới tính!");
             return false;
         }
         if (txt2.getText().equals("")) {
-            JOptionPane.showMessageDialog(this, "bạn chưa nhập ngày sinh");
+            Notifications.getInstance().show(Notifications.Type.ERROR, Notifications.Location.TOP_CENTER, "chưa nhập năm sinh!");
             return false;
         }
         if (txt3.getText().equals("")) {
-            JOptionPane.showMessageDialog(this, "bạn chưa nhập số căn cước ");
+
+            Notifications.getInstance().show(Notifications.Type.ERROR, Notifications.Location.TOP_CENTER, "bạn chưa nhập số căn cước!");
             return false;
         }
         if (txt4.getText().equals("")) {
-            JOptionPane.showMessageDialog(this, "bạn chưa nhập địa chỉ");
+
+            Notifications.getInstance().show(Notifications.Type.ERROR, Notifications.Location.TOP_CENTER, "bạn chưa nhập địa chỉ!");
+
             return false;
         }
-          if (txt5.getText().equals("")) {
-            JOptionPane.showMessageDialog(this, "bạn chưa nhập họ tên");
+        if (txt5.getText().equals("")) {
+
+            Notifications.getInstance().show(Notifications.Type.ERROR, Notifications.Location.TOP_CENTER, "bạn chưa nhập họ tên!");
+
             return false;
         }
         if (!(jRadioLam.isSelected() || jRadioNghi.isSelected())) {
-            JOptionPane.showMessageDialog(this, "bạn chưa nhập trạng thái");
+            //JOptionPane.showMessageDialog(this, "bạn chưa nhập trạng thái");
+            Notifications.getInstance().show(Notifications.Type.ERROR, Notifications.Location.TOP_CENTER, "bạn chưa nhập trạng thái!");
+
             return false;
         }
-         if (!(jRadioAD.isSelected() || jRadioNV.isSelected())) {
-            JOptionPane.showMessageDialog(this, "bạn chưa nhập chức vụ");
+        if (!(jRadioAD.isSelected() || jRadioNV.isSelected())) {
+            Notifications.getInstance()
+                    .show(Notifications.Type.ERROR, Notifications.Location.TOP_CENTER, "bạn chưa nhập chức vụ!");
+
+            //JOptionPane.showMessageDialog(this, "bạn chưa nhập chức vụ");
             return false;
         }
         if (txt6.getText().equals("")) {
-            JOptionPane.showMessageDialog(this, "bạn chưa nhập mật khẩu");
+            Notifications.getInstance().show(Notifications.Type.ERROR, Notifications.Location.TOP_CENTER, "bạn chưa nhập mật khẩu!");
+
+            // JOptionPane.showMessageDialog(this, "bạn chưa nhập mật khẩu");
             return false;
         }
 
@@ -92,8 +104,8 @@ public class NewJPanel extends javax.swing.JPanel {
         }
 
     }
-    
-     public void loadDataV2() {
+
+    public void loadDataV2() {
         DefaultTableModel dtm = (DefaultTableModel) jTable2.getModel();
         dtm.setRowCount(0);
         for (VaiTro x : p.getAllV2()) {
@@ -473,38 +485,57 @@ public class NewJPanel extends javax.swing.JPanel {
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
 
-       if(check()){
-        Boolean gioi_tinh = jRadioNam.isSelected() ? true : false;
-        Date ngay_sinh = Date.valueOf(txt2.getText());
-        String cccd = txt3.getText();
-        String dia_chia = txt4.getText();
-        String ho_ten = txt5.getText();
-        Boolean trang_thai = jRadioLam.isSelected() ? true : false;
-        Boolean chuc_vu = jRadioAD.isSelected() ? true : false;
-        String mat_khau = txt6.getText();
-        //p.addNV(new VaiTro(gioi_tinh, ngay_sinh, cccd, dia_chia, ho_ten, mat_khau, trang_thai, chuc_vu));
-        p.addNV(new VaiTro(gioi_tinh, ngay_sinh, cccd, dia_chia, ho_ten, trang_thai, mat_khau, chuc_vu));
-        loadData();
-       }
+        if (check()) {
+            try {
+                Boolean gioi_tinh = jRadioNam.isSelected() ? true : false;
+                Date ngay_sinh = Date.valueOf(txt2.getText());
+                String cccd = txt3.getText();
+                String dia_chia = txt4.getText();
+                String ho_ten = txt5.getText();
+                Boolean trang_thai = jRadioLam.isSelected() ? true : false;
+                Boolean chuc_vu = jRadioAD.isSelected() ? true : false;
+                String mat_khau = txt6.getText();
+                //p.addNV(new VaiTro(gioi_tinh, ngay_sinh, cccd, dia_chia, ho_ten, mat_khau, trang_thai, chuc_vu));
+                p.addNV(new VaiTro(gioi_tinh, ngay_sinh, cccd, dia_chia, ho_ten, trang_thai, mat_khau, chuc_vu));
+                loadData();
+                clear();
+                Notifications.getInstance()
+                        .show(Notifications.Type.SUCCESS, Notifications.Location.TOP_CENTER, "thêm thành công!");
+
+            } catch (Exception e) {
+                Notifications.getInstance()
+                        .show(Notifications.Type.SUCCESS, Notifications.Location.TOP_CENTER, "thêm thành công!" + e.getMessage());
+            }
+        }
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-       if(check()){
-        int i = jTable1.getSelectedRow();
-        VaiTro x = p.getAll().get(i);
-        x.setGioi_tinh(jRadioNam.isSelected() ? true : false);
-        x.setNgay_sinh(Date.valueOf(txt2.getText()));
-        x.setCccd(txt3.getText());
-        x.setDia_chia(txt4.getText());
-        x.setHo_ten(txt5.getText());
-        x.setTrang_thai(jRadioLam.isSelected() ? false : true);
-        x.setTrang_thai(jRadioNghi.isSelected() ? true : false);
-        x.setChuc_vu(jRadioAD.isSelected() ? true : false);
-        x.setChuc_vu(jRadioNV.isSelected() ? false : true);
-        x.setMat_khau(txt6.getText());
-        p.update(x);
-        loadData();
-       }
+        if (check()) {
+            try {
+                int i = jTable1.getSelectedRow();
+                VaiTro x = p.getAll().get(i);
+                x.setGioi_tinh(jRadioNam.isSelected() ? true : false);
+                x.setNgay_sinh(Date.valueOf(txt2.getText()));
+                x.setCccd(txt3.getText());
+                x.setDia_chia(txt4.getText());
+                x.setHo_ten(txt5.getText());
+                x.setTrang_thai(jRadioLam.isSelected() ? false : true);
+                x.setTrang_thai(jRadioNghi.isSelected() ? true : false);
+                x.setChuc_vu(jRadioAD.isSelected() ? true : false);
+                x.setChuc_vu(jRadioNV.isSelected() ? false : true);
+                x.setMat_khau(txt6.getText());
+                p.update(x);
+                loadData();
+                clear();
+                Notifications.getInstance()
+                        .show(Notifications.Type.SUCCESS, Notifications.Location.TOP_CENTER, "update thành công!");
+
+            } catch (Exception e) {
+                Notifications.getInstance()
+                        .show(Notifications.Type.SUCCESS, Notifications.Location.TOP_CENTER, "update thất bại!" + e.getMessage());
+
+            }
+        }
 
     }//GEN-LAST:event_jButton2ActionPerformed
 
@@ -523,7 +554,7 @@ public class NewJPanel extends javax.swing.JPanel {
         jRadioNV.setSelected(x.getChuc_vu() ? false : true);
         jRadioAD.setSelected(x.getChuc_vu() ? true : false);
         txt6.setText(x.getMat_khau());
-        
+
     }//GEN-LAST:event_jTable1MouseClicked
 
     private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
@@ -531,19 +562,30 @@ public class NewJPanel extends javax.swing.JPanel {
     }//GEN-LAST:event_jButton5ActionPerformed
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
-         int i = jTable1.getSelectedRow();
-         VaiTro x = p.getAll().get(i);
-         System.out.println(x.getId());
-         p.delete(x.getId());
-         loadData();
+        int i = jTable1.getSelectedRow();
+        if (i != -1) {
+            try {
+                VaiTro x = p.getAll().get(i);
+                p.delete(x.getId());
+                loadData();
+                
+                Notifications.getInstance()
+                        .show(Notifications.Type.SUCCESS, Notifications.Location.TOP_CENTER, "xoá thành công!");
+
+            } catch (Exception e) {
+                Notifications.getInstance()
+                        .show(Notifications.Type.ERROR, Notifications.Location.TOP_CENTER, "xoá thất bại!" + e.getMessage());
+            }
+        }
+
     }//GEN-LAST:event_jButton3ActionPerformed
 
     private void jButton6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton6ActionPerformed
-       loadDataV2();
+        loadDataV2();
     }//GEN-LAST:event_jButton6ActionPerformed
 
     private void jTable2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTable2MouseClicked
-       int i = jTable2.getSelectedRow();
+        int i = jTable2.getSelectedRow();
         VaiTro x = p.getAllV2().get(i);
         txt1.setText(x.getId() + "");
         jRadioNam.setSelected(x.getGioi_tinh() ? false : true);
@@ -557,18 +599,27 @@ public class NewJPanel extends javax.swing.JPanel {
         jRadioNV.setSelected(x.getChuc_vu() ? false : true);
         jRadioAD.setSelected(x.getChuc_vu() ? true : false);
         txt6.setText(x.getMat_khau());
-        
+
     }//GEN-LAST:event_jTable2MouseClicked
 
     private void jButton7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton7ActionPerformed
-         int i = jTable2.getSelectedRow();
-         VaiTro x = p.getAllV2().get(i);
-         System.out.println(x.getId());
-         p.deleteV2(x.getId());
-         loadDataV2();
+        int i = jTable2.getSelectedRow();
+        if (i != -1) {
+            try {
+                VaiTro x = p.getAllV2().get(i);
+                p.deleteV2(x.getId());
+                loadDataV2();
+                  Notifications.getInstance()
+                        .show(Notifications.Type.SUCCESS, Notifications.Location.TOP_CENTER, "huỷ thành công!");
+            } catch (Exception e) {
+                  Notifications.getInstance()
+                        .show(Notifications.Type.ERROR, Notifications.Location.TOP_CENTER, "huỷ thất bại!"+e.getMessage());
+            }
+        }
+
     }//GEN-LAST:event_jButton7ActionPerformed
-    
-    public void showDetail(VaiTro x){
+
+    public void showDetail(VaiTro x) {
         txt1.setText(x.getId() + "");
         jRadioNam.setSelected(x.getGioi_tinh() ? false : true);
         jRadioNu.setSelected(x.getGioi_tinh() ? true : false);
@@ -582,26 +633,32 @@ public class NewJPanel extends javax.swing.JPanel {
         jRadioAD.setSelected(x.getChuc_vu() ? true : false);
         txt6.setText(x.getMat_khau());
     }
-    
-    
+
+
     private void jButton8ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton8ActionPerformed
-          if (txt7.getText().isEmpty()) {
-            System.out.println("chưa nhập mã");
+        if (txt7.getText().isEmpty()) {
+            Notifications
+                    .getInstance()
+                    .show(Notifications.Type.ERROR, Notifications.Location.TOP_CENTER, "bạn chưa nhập mã!");
+
         } else {
             VaiTro x = p.finbyName(txt7.getText());
             if (x == null) {
-             JOptionPane.showMessageDialog(this, "k tìm thấy");
+                Notifications.getInstance()
+                        .show(Notifications.Type.ERROR, Notifications.Location.TOP_CENTER, "chưa tìm thấy!");
+
             } else {
-                JOptionPane.showMessageDialog(this, "tìm thấy");
-                showDetail(x);   
+                Notifications.getInstance().show(Notifications.Type.SUCCESS, Notifications.Location.TOP_CENTER, "đã tìm thấy!");
+
+                showDetail(x);
             }
         }
-        
-        
+
+
     }//GEN-LAST:event_jButton8ActionPerformed
 
     private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
-       clear();
+        clear();
     }//GEN-LAST:event_jButton4ActionPerformed
 
     private void jButton9ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton9ActionPerformed
