@@ -320,7 +320,7 @@ private ArrayList<SanPham> dsSP = new ArrayList<>();
         String ten = txtTen.getText();
         Integer soLuong = Integer.valueOf(txtSoLuong.getText());
         String moTa = txtMoTa.getText();
-        SanPham sp = new SanPham(moTa, ten, soLuong, moTa);
+        SanPham sp = new SanPham(ma, ten, soLuong, moTa);
         return sp;
     }
 

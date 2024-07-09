@@ -20,8 +20,8 @@ public class SanPhamRepository {
     public ArrayList<SanPham> getAll() {
         String sql = """
                      SELECT [id]
-                           ,[ten_san_pham]
                            ,[ma_sp]
+                           ,[ten_san_pham]
                            ,[so_luong]
                            ,[mo_ta]
                            ,[create_at]
