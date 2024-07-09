@@ -5,9 +5,9 @@
 package raven.entity;
 
 import java.sql.Date;
-import lombok.Data;
+//import lombok.Data;
 
-@Data
+//@Data
 
 public class SanPham {
 

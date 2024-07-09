@@ -4,11 +4,11 @@
  */
 package raven.entity;
 
-import lombok.Data;
+//import lombok.Data;
 
 
 
-@Data
+//@Data
 
 public class XuatXu {
 

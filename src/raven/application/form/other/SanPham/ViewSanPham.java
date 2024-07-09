@@ -6,6 +6,7 @@ package raven.application.form.other.SanPham;
 
 import java.util.ArrayList;
 import java.util.concurrent.atomic.AtomicInteger;
+import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 import raven.entity.SanPham;
 
@@ -220,9 +221,38 @@ private ArrayList<SanPham> dsSP = new ArrayList<>();
         );
     }// </editor-fold>//GEN-END:initComponents
 
+    public boolean checkTrong(){
+        if(txtMa.getText().trim().equals("")){
+            JOptionPane.showMessageDialog(this, "Vui lòng điền mã sản phẩm");
+            return false;
+        }else if(txtTen.getText().trim().equals("")){
+            JOptionPane.showMessageDialog(this, "Vui lòng điền tên sản phẩm");
+            return false;
+        }else if(txtSoLuong.getText().trim().equals("")){
+            JOptionPane.showMessageDialog(this, "Vui lòng điền số lượng sản phẩm");
+            return false;
+        }else if(txtMoTa.getText().trim().equals("")){
+            JOptionPane.showMessageDialog(this, "Vui lòng điền mô tả sản phẩm");
+            return false;
+        }else{
+            return true;
+        }
+    }
+    
+    public boolean checkTrung(){
+        for (SanPham sp : dsSP) {
+            if(sp.getMa_san_pham().equalsIgnoreCase(txtMa.getText())){
+                JOptionPane.showMessageDialog(this, "Trùng mã!");
+                return false;
+            }
+        }
+        return true;
+    }
     private void btnAddActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAddActionPerformed
         // TODO add your handling code here:
-        repo.add(getForm());
+        if(checkTrong()&&checkTrung()){
+            repo.add(getForm());
+        }
         showData(repo.getAll());
     }//GEN-LAST:event_btnAddActionPerformed
 
