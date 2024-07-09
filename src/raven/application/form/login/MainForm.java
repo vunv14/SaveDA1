@@ -24,7 +24,6 @@ import raven.application.form.other.NewJPanel;
 import raven.application.form.other.SanPham.ViewSanPham;
 import raven.entity.VaiTro;
 import raven.application.form.other.hoadon.FormHoaDon;
-
 import raven.menu.Menu;
 import raven.menu.MenuAction;
 import raven.toast.Notifications;
@@ -77,60 +76,44 @@ public class MainForm extends JLayeredPane {
     }
 
     private void initMenuEvent() {
-          menu.addMenuEvent((int index, int subIndex, MenuAction action) -> {
+        menu.addMenuEvent((int index, int subIndex, MenuAction action) -> {
             // Application.mainForm.showForm(new DefaultForm("Form : " + index + " " + subIndex));
-          if (index == 0) {
-                Application.showForm(new FormDashboard());
-            }
-          else if(index==1){
-              Application.showForm(new ViewSanPham());
-          }
-           else if (index == 2) {
-                        Application.showForm(new NewJPanel());
-                    }
-          else if (index == 5) {
-                Application.showForm(new FormHoaDon());
-            } else if (index == 10) {
+            VaiTro currentUser = Application.getCurrentUser();
 
-                VaiTro currentUser = Application.getCurrentUser();
+            if (currentUser.getChuc_vu()) {
+                if (check1) {
+                    Notifications.getInstance().show(Notifications.Type.SUCCESS, Notifications.Location.TOP_CENTER, "Đăng nhập với tư cách quản lí");
+                    check1 = false;
+                }
+                if (index == 0) {
+                    Application.showForm(new FormDashboard());
 
-                if (currentUser.getChuc_vu()) {
-                    if (check1) {
-                        Notifications.getInstance().show(Notifications.Type.SUCCESS, Notifications.Location.TOP_CENTER, "Đăng nhập với tư cách quản lí");
-                        check1 = false;
-                    }
-                    if (index == 0) {
-                        Application.showForm(new FormDashboard());
-                    } else if (index == 1) {
-                        Application.showForm(new FormInbox());
-                    } else if (index == 2) {
-                        
-                    } else if (index == 10) {
-                    }  else if (index == 10) {
-                        Application.logout();
-                    } else {
-                        action.cancel();
-                    }
+                } else if (index == 1) {
+                    Application.showForm(new ViewSanPham());
+                } else if (index == 10) {
+                } else if (index == 10) {
+                    Application.logout();
                 } else {
-                    if (check2) {
-                        Notifications.getInstance().show(Notifications.Type.SUCCESS, Notifications.Location.TOP_CENTER, "Đăng nhập với tư cách nhan vien");
-                        check2 = false;
-                    }
-                    if (index == 0) {
-                        Application.showForm(new FormDashboard());
-                    } else if (index == 1) {
-                        
-                        Application.showForm(new FormDashboard());
-                    }
-                   
-                    else if (index == 10) {
-                        Application.logout();
-                    } else {
-                        Notifications.getInstance().show(Notifications.Type.WARNING, Notifications.Location.TOP_CENTER, "Nhan Vien không thể bấm vào được");
+                    action.cancel();
+                }
+            } else {
+                if (check2) {
+                    Notifications.getInstance().show(Notifications.Type.SUCCESS, Notifications.Location.TOP_CENTER, "Đăng nhập với tư cách nhan vien");
+                    check2 = false;
+                }
+                if (index == 0) {
+                    Application.showForm(new FormDashboard());
+                } else if (index == 1) {
 
-                    }
+                    Application.showForm(new FormDashboard());
+                } else if (index == 10) {
+                    Application.logout();
+                } else {
+                    Notifications.getInstance().show(Notifications.Type.WARNING, Notifications.Location.TOP_CENTER, "Nhan Vien không thể bấm vào được");
+
                 }
             }
+
         });
     }
 

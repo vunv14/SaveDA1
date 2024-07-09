@@ -4,6 +4,7 @@
  */
 package raven.application.form.other.SanPham;
 
+import com.formdev.flatlaf.FlatClientProperties;
 import java.util.ArrayList;
 import java.util.concurrent.atomic.AtomicInteger;
 import javax.swing.JOptionPane;
@@ -27,6 +28,44 @@ private ArrayList<SanPham> dsSP = new ArrayList<>();
         dsSP=repo.getAll();
         showData(dsSP);
     }
+    
+    public void init(){
+        jLabel5.putClientProperty(FlatClientProperties.STYLE, ""
+                + "font:$h1.font");
+        jLabel1.putClientProperty(FlatClientProperties.STYLE, ""
+                + "font:$h1.font");
+        jLabel2.putClientProperty(FlatClientProperties.STYLE, ""
+                + "font:$h1.font");
+        jLabel3.putClientProperty(FlatClientProperties.STYLE, ""
+                + "font:$h1.font");
+        jLabel4.putClientProperty(FlatClientProperties.STYLE, ""
+                + "font:$h1.font");
+        txtMa.putClientProperty(FlatClientProperties.STYLE, ""
+                + "font:$h1.font");
+        txtMoTa.putClientProperty(FlatClientProperties.STYLE, ""
+                + "font:$h1.font");
+        txtTen.putClientProperty(FlatClientProperties.STYLE, ""
+                + "font:$h1.font");
+        txtSoLuong.putClientProperty(FlatClientProperties.STYLE, ""
+                + "font:$h1.font");
+        txtSearch.putClientProperty(FlatClientProperties.STYLE, ""
+                + "font:$h1.font");
+        btnAdd.putClientProperty(FlatClientProperties.STYLE, ""
+                + "borderWidth:0;"
+                + "focusWidth:0");
+        btnDelete.putClientProperty(FlatClientProperties.STYLE, ""
+                + "borderWidth:0;"
+                + "focusWidth:0");
+        btnUpdate.putClientProperty(FlatClientProperties.STYLE, ""
+                + "borderWidth:0;"
+                + "focusWidth:0");
+        btnSearch.putClientProperty(FlatClientProperties.STYLE, ""
+                + "borderWidth:0;"
+                + "focusWidth:0");
+        tbList.putClientProperty(FlatClientProperties.STYLE, ""
+                + "font:$h1.font");
+    }
+    
     public void showData(ArrayList<SanPham> arSP){
         dtm.setRowCount(0);
         AtomicInteger index = new AtomicInteger(1);
@@ -217,7 +256,7 @@ private ArrayList<SanPham> dsSP = new ArrayList<>();
                                 .addComponent(txtMoTa, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE)))))
                 .addGap(30, 30, 30)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 165, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(51, Short.MAX_VALUE))
+                .addContainerGap(38, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 
