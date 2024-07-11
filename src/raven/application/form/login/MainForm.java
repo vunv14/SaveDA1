@@ -90,8 +90,9 @@ public class MainForm extends JLayeredPane {
 
                 } else if (index == 1) {
                     Application.showForm(new ViewSanPham());
-                } else if (index == 10) {
-                } else if (index == 10) {
+                } else if(index == 2){
+                    Application.showForm(new NewJPanel());
+                }else if (index == 10) {
                     Application.logout();
                 } else {
                     action.cancel();

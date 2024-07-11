@@ -10,6 +10,7 @@ import java.util.concurrent.atomic.AtomicInteger;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 import raven.entity.SanPham;
+import raven.toast.Notifications;
 
 /**
  *
@@ -173,30 +174,22 @@ private ArrayList<SanPham> dsSP = new ArrayList<>();
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addGap(0, 0, Short.MAX_VALUE)
-                .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 202, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(264, 264, 264))
             .addGroup(layout.createSequentialGroup()
+                .addGap(108, 108, 108)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 745, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                             .addComponent(txtSearch, javax.swing.GroupLayout.PREFERRED_SIZE, 280, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addGroup(layout.createSequentialGroup()
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addGroup(layout.createSequentialGroup()
-                                        .addGap(14, 14, 14)
-                                        .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 57, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 57, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                                        .addContainerGap()
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 2, javax.swing.GroupLayout.PREFERRED_SIZE)
                                         .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 55, javax.swing.GroupLayout.PREFERRED_SIZE)))
                                 .addGap(18, 18, 18)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                    .addComponent(txtSoLuong, javax.swing.GroupLayout.DEFAULT_SIZE, 224, Short.MAX_VALUE)
-                                    .addComponent(txtMa))))
+                                    .addComponent(txtSoLuong)
+                                    .addComponent(txtMa, javax.swing.GroupLayout.PREFERRED_SIZE, 224, javax.swing.GroupLayout.PREFERRED_SIZE))))
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(layout.createSequentialGroup()
                                 .addGap(30, 30, 30)
@@ -205,8 +198,8 @@ private ArrayList<SanPham> dsSP = new ArrayList<>();
                                     .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 57, javax.swing.GroupLayout.PREFERRED_SIZE))
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                    .addComponent(txtTen, javax.swing.GroupLayout.DEFAULT_SIZE, 217, Short.MAX_VALUE)
-                                    .addComponent(txtMoTa))
+                                    .addComponent(txtTen)
+                                    .addComponent(txtMoTa, javax.swing.GroupLayout.PREFERRED_SIZE, 217, javax.swing.GroupLayout.PREFERRED_SIZE))
                                 .addGap(41, 41, 41)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                                     .addComponent(btnAdd)
@@ -216,15 +209,19 @@ private ArrayList<SanPham> dsSP = new ArrayList<>();
                                 .addGap(18, 18, 18)
                                 .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, 166, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(42, 42, 42)
-                                .addComponent(btnSearch)))))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                                .addComponent(btnSearch))))
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 745, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 202, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(262, 262, 262)))
+                .addContainerGap(127, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addGap(21, 21, 21)
+            .addGroup(layout.createSequentialGroup()
+                .addGap(67, 67, 67)
                 .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(25, 25, 25)
+                .addGap(27, 27, 27)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(txtSearch, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -254,24 +251,24 @@ private ArrayList<SanPham> dsSP = new ArrayList<>();
                             .addGroup(layout.createSequentialGroup()
                                 .addGap(50, 50, 50)
                                 .addComponent(txtMoTa, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE)))))
-                .addGap(30, 30, 30)
+                .addGap(50, 50, 50)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 165, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(38, Short.MAX_VALUE))
+                .addContainerGap(101, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 
     public boolean checkTrong(){
         if(txtMa.getText().trim().equals("")){
-            JOptionPane.showMessageDialog(this, "Vui lòng điền mã sản phẩm");
+            Notifications.getInstance().show(Notifications.Type.INFO, Notifications.Location.TOP_CENTER, "Vui lòng điền mã sản phẩm");
             return false;
         }else if(txtTen.getText().trim().equals("")){
-            JOptionPane.showMessageDialog(this, "Vui lòng điền tên sản phẩm");
+            Notifications.getInstance().show(Notifications.Type.INFO, Notifications.Location.TOP_CENTER, "Vui lòng điền tên sản phẩm");
             return false;
         }else if(txtSoLuong.getText().trim().equals("")){
-            JOptionPane.showMessageDialog(this, "Vui lòng điền số lượng sản phẩm");
+            Notifications.getInstance().show(Notifications.Type.INFO, Notifications.Location.TOP_CENTER, "Vui lòng điền số lượng sản phẩm");
             return false;
         }else if(txtMoTa.getText().trim().equals("")){
-            JOptionPane.showMessageDialog(this, "Vui lòng điền mô tả sản phẩm");
+            Notifications.getInstance().show(Notifications.Type.INFO, Notifications.Location.TOP_CENTER, "Vui lòng điền mô tả sản phẩm");
             return false;
         }else{
             return true;
@@ -281,7 +278,7 @@ private ArrayList<SanPham> dsSP = new ArrayList<>();
     public boolean checkTrung(){
         for (SanPham sp : dsSP) {
             if(sp.getMa_san_pham().equalsIgnoreCase(txtMa.getText())){
-                JOptionPane.showMessageDialog(this, "Trùng mã!");
+                Notifications.getInstance().show(Notifications.Type.WARNING, Notifications.Location.TOP_CENTER, "Trùng mã!");
                 return false;
             }
         }

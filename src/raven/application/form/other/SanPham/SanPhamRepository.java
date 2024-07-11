@@ -30,6 +30,7 @@ public class SanPhamRepository {
                            ,[update_by]
                            ,[trang_thai]
                        FROM [dbo].[san_pham]
+                     where trang_thai=1
                      """;
         ArrayList<SanPham> dsSP = new ArrayList<>();
         try (Connection con = DBConnect.getConnection();PreparedStatement ps = con.prepareCall(sql)){
