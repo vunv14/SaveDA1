@@ -39,9 +39,14 @@ public class RepositoryNhanVien {
             con = DBConnect.getConnection();
             ps = con.prepareStatement(sql);
             rs = ps.executeQuery();
-            while (rs.next()) {                   
-                list.add(new VaiTro(rs.getInt(1), rs.getString(2), rs.getString(3), rs.getBoolean(4), rs.getBoolean(5)));
-                //list.add(new VaiTro(rs.getInt(1), rs.getString(2), rs.getBoolean(sql), sql, Boolean.TRUE))
+            while (rs.next()) {  
+                VaiTro x = new VaiTro();
+                x.setId(rs.getInt("id"));
+                x.setHoTen(rs.getString("ho_ten"));
+               x.setMatKhau(rs.getString("mat_khau"));
+               x.setTrangThai(rs.getBoolean("trang_thai"));
+               x.setChucVu(rs.getBoolean("chuc_vu"));
+               list.add(x);
             } 
         } catch (Exception e) {
             e.printStackTrace();
@@ -51,26 +56,27 @@ public class RepositoryNhanVien {
     
 
     public List<VaiTro> getAll(){
-        sql = "select id,gioi_tinh,ngay_sinh,cccd,"
-                + "dia_chia,ho_ten,trang_thai,chuc_vu,"
-                + "mat_khau from vai_tro where trang_thai = 0";
+       sql ="select id,ma,gioi_tinh,sdt,ngay_sinh,cccd,\n" +
+"                 dia_chia,ho_ten,chuc_vu,\n" +
+"                 mat_khau,trang_thai from vai_tro where trang_thai = 0";
         List<VaiTro> arr = new ArrayList<>();
         try {
             con = DBConnect.getConnection();
             ps = con.prepareStatement(sql);
-            //ps.setBoolean(1, true);
             rs = ps.executeQuery();
             while (rs.next()) {                   
                      VaiTro x = new VaiTro();
-                     x.setId(rs.getInt("id"));
-                     x.setGioi_tinh(rs.getBoolean("gioi_tinh"));
-                     x.setNgay_sinh(rs.getDate("ngay_sinh"));
-                     x.setCccd(rs.getString("cccd"));
-                     x.setDia_chia(rs.getString("dia_chia"));
-                     x.setHo_ten(rs.getString("ho_ten"));
-                     x.setTrang_thai(rs.getBoolean("trang_thai"));
-                     x.setChuc_vu(rs.getBoolean("chuc_vu"));
-                     x.setMat_khau(rs.getString("mat_khau"));
+                       x.setId(rs.getInt("id"));
+                       x.setMa(rs.getString("ma"));
+                       x.setGioiTinh(rs.getBoolean("gioi_tinh"));
+                       x.setSdt(rs.getString("sdt"));
+                       x.setNgaySinh(rs.getDate("ngay_sinh"));
+                       x.setCccd(rs.getString("cccd"));
+                       x.setDiaChia(rs.getString("dia_chia"));
+                       x.setHoTen(rs.getString("ho_ten"));
+                       x.setChucVu(rs.getBoolean("chuc_vu"));
+                       x.setMatKhau(rs.getString("mat_khau"));
+                       x.setTrangThai(rs.getBoolean("trang_thai"));
                      arr.add(x);
             } 
         } catch (Exception e) {
@@ -80,48 +86,45 @@ public class RepositoryNhanVien {
     }
     
     public void addNV(VaiTro x){
-        sql ="insert into vai_tro(gioi_tinh,ngay_sinh,cccd,dia_chia,"
-                + "ho_ten,trang_thai,chuc_vu,mat_khau) values(?,?,?,?,?,?,?,?)";
+        sql = "insert into vai_tro(ma,gioi_tinh,sdt,"
+                + "ngay_sinh,cccd,dia_chia,ho_ten,chuc_vu,"
+                + "mat_khau,trang_thai)\n" +
+                "values(?,?,?,?,?,?,?,0,?,0)";
         try {
              con = DBConnect.getConnection();
             ps = con.prepareStatement(sql);
-            ps.setBoolean(1, x.getGioi_tinh());
-            ps.setDate(2, x.getNgay_sinh());
-            ps.setString(3, x.getCccd());
-            ps.setString(4, x.getDia_chia());
-            ps.setString(5, x.getHo_ten());
-            ps.setBoolean(6, x.getTrang_thai());
-            ps.setBoolean(7, x.getChuc_vu());
-            ps.setString(8, x.getMat_khau());
+            ps.setString(1, x.getMa());
+            ps.setBoolean(2, x.getGioiTinh());
+            ps.setString(3, x.getSdt());
+            ps.setDate(4, x.getNgaySinh());
+            ps.setString(5, x.getCccd());
+            ps.setString(6, x.getDiaChia());
+            ps.setString(7, x.getHoTen());
+            ps.setString(8, x.getMatKhau());
             ps.executeUpdate();
         } catch (Exception e) {
             e.printStackTrace();
         }
     }
 
-//    public static void main(String[] args) {
-//        List<VaiTro> list = new RepositoryNhanVien().getAllLG();
-//        list.stream().forEach(a-> System.out.println(a.toString()));
-//
-//      
-//>>>>>>> origin/master
-//    }
     
     public void update(VaiTro x){
-         sql = "update vai_tro set gioi_tinh = ? , ngay_sinh = ?, cccd = ?,"
-                 + " dia_chia = ?,\n" +
-            "ho_ten = ?, trang_thai = ? , chuc_vu = ?, mat_khau = ? where id = ?";
+        sql = "update vai_tro set ma = ? , gioi_tinh = ?, sdt = ?, ngay_sinh = ?, cccd = ?, dia_chia = ?,\n" +
+        "ho_ten = ? , mat_khau = ? where id = ?";
         try {
             con = DBConnect.getConnection();
             ps = con.prepareStatement(sql);
-            ps.setBoolean(1, x.getGioi_tinh());
-            ps.setDate(2, x.getNgay_sinh());
-            ps.setString(3, x.getCccd());
-            ps.setString(4, x.getDia_chia());
-            ps.setString(5, x.getHo_ten());
-            ps.setBoolean(6, x.getTrang_thai());
-            ps.setBoolean(7, x.getChuc_vu());
-            ps.setString(8, x.getMat_khau());
+           ps = con.prepareStatement(sql);
+            ps.setString(1, x.getMa());
+            ps.setBoolean(2, x.getGioiTinh());
+            ps.setString(3, x.getSdt());
+            ps.setDate(4, x.getNgaySinh());
+            ps.setString(5, x.getCccd());
+            ps.setString(6, x.getDiaChia());
+            ps.setString(7, x.getHoTen());
+            //ps.setBoolean(8, x.getChucVu());
+            ps.setString(8, x.getMatKhau());
+            ///ps.setBoolean(10, x.getTrangThai());
             ps.setInt(9, x.getId());
             ps.executeUpdate();
         } catch (Exception e) {
@@ -154,26 +157,27 @@ public class RepositoryNhanVien {
     }
     
      public List<VaiTro> getAllV2(){
-        sql = "select id,gioi_tinh,ngay_sinh,cccd,"
-                + "dia_chia,ho_ten,trang_thai,chuc_vu,"
-                + "mat_khau from vai_tro where trang_thai = 1";
+        sql ="select id,ma,gioi_tinh,sdt,ngay_sinh,cccd,\n" +
+"                 dia_chia,ho_ten,chuc_vu,\n" +
+"                 mat_khau,trang_thai from vai_tro where trang_thai = 1";
         List<VaiTro> list1 = new ArrayList<>();
         try {
             con = DBConnect.getConnection();
             ps = con.prepareStatement(sql);
-            //ps.setBoolean(1, true);
             rs = ps.executeQuery();
             while (rs.next()) {                   
                      VaiTro x = new VaiTro();
-                     x.setId(rs.getInt("id"));
-                     x.setGioi_tinh(rs.getBoolean("gioi_tinh"));
-                     x.setNgay_sinh(rs.getDate("ngay_sinh"));
-                     x.setCccd(rs.getString("cccd"));
-                     x.setDia_chia(rs.getString("dia_chia"));
-                     x.setHo_ten(rs.getString("ho_ten"));
-                     x.setTrang_thai(rs.getBoolean("trang_thai"));
-                     x.setChuc_vu(rs.getBoolean("chuc_vu"));
-                     x.setMat_khau(rs.getString("mat_khau"));
+                       x.setId(rs.getInt("id"));
+                       x.setMa(rs.getString("ma"));
+                       x.setGioiTinh(rs.getBoolean("gioi_tinh"));
+                       x.setSdt(rs.getString("sdt"));
+                       x.setNgaySinh(rs.getDate("ngay_sinh"));
+                       x.setCccd(rs.getString("cccd"));
+                       x.setDiaChia(rs.getString("dia_chia"));
+                       x.setHoTen(rs.getString("ho_ten"));
+                       x.setChucVu(rs.getBoolean("chuc_vu"));
+                       x.setMatKhau(rs.getString("mat_khau"));
+                       x.setTrangThai(rs.getBoolean("trang_thai"));
                      list1.add(x);
             } 
         } catch (Exception e) {
@@ -185,7 +189,7 @@ public class RepositoryNhanVien {
      
      public VaiTro finbyName(String name){
         return getAll().stream()
-                .filter((t) -> t.getHo_ten().contains(name))
+                .filter((t) -> t.getHoTen().contains(name))
                 .findFirst().orElse(null);
      }
 }

@@ -14,21 +14,24 @@ package raven.entity;
 
 //@Data
 public class Anh {
-
     private Integer id;
-    
-    private String ten_anh;
+
+    private String maAnh;
+  
+    private String tenAnh;
+
+    private Boolean trangThai;
 
     public Anh() {
     }
-
-    public Anh(Integer id, String ten_anh, Boolean trang_thai) {
-        this.id = id;
-        this.ten_anh = ten_anh;
-        this.trang_thai = trang_thai;
-    }
     
-    private Boolean trang_thai;
+
+    public Anh(Integer id, String maAnh, String tenAnh, Boolean trangThai) {
+        this.id = id;
+        this.maAnh = maAnh;
+        this.tenAnh = tenAnh;
+        this.trangThai = trangThai;
+    }
 
     public Integer getId() {
         return id;
@@ -38,20 +41,28 @@ public class Anh {
         this.id = id;
     }
 
-    public String getTen_anh() {
-        return ten_anh;
+    public String getMaAnh() {
+        return maAnh;
     }
 
-    public void setTen_anh(String ten_anh) {
-        this.ten_anh = ten_anh;
+    public void setMaAnh(String maAnh) {
+        this.maAnh = maAnh;
     }
 
-    public Boolean getTrang_thai() {
-        return trang_thai;
+    public String getTenAnh() {
+        return tenAnh;
     }
 
-    public void setTrang_thai(Boolean trang_thai) {
-        this.trang_thai = trang_thai;
+    public void setTenAnh(String tenAnh) {
+        this.tenAnh = tenAnh;
+    }
+
+    public Boolean getTrangThai() {
+        return trangThai;
+    }
+
+    public void setTrangThai(Boolean trangThai) {
+        this.trangThai = trangThai;
     }
     
     

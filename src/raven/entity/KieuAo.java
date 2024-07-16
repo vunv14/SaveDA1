@@ -4,30 +4,27 @@
  */
 package raven.entity;
 
-//import lombok.Data;
-
-//@Data
-public class Mau {
-
-    public Mau() {
-    }
-
-
+/**
+ *
+ * @author Nguyen Nam Truong
+ */
+public class KieuAo {
+ 
     private Integer id;
 
-
-    private String maMau;
-
-    private String loaiMau;
+    private String ten;
 
     private Boolean trangThai;
 
-    public Mau(Integer id, String maMau, String loaiMau, Boolean trangThai) {
+    public KieuAo(Integer id, String ten, Boolean trangThai) {
         this.id = id;
-        this.maMau = maMau;
-        this.loaiMau = loaiMau;
+        this.ten = ten;
         this.trangThai = trangThai;
     }
+
+    public KieuAo() {
+    }
+    
 
     public Integer getId() {
         return id;
@@ -37,20 +34,12 @@ public class Mau {
         this.id = id;
     }
 
-    public String getMaMau() {
-        return maMau;
+    public String getTen() {
+        return ten;
     }
 
-    public void setMaMau(String maMau) {
-        this.maMau = maMau;
-    }
-
-    public String getLoaiMau() {
-        return loaiMau;
-    }
-
-    public void setLoaiMau(String loaiMau) {
-        this.loaiMau = loaiMau;
+    public void setTen(String ten) {
+        this.ten = ten;
     }
 
     public Boolean getTrangThai() {
@@ -62,8 +51,4 @@ public class Mau {
     }
     
     
-
-   
-    
 }
-

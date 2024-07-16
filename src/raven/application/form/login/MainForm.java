@@ -21,6 +21,7 @@ import raven.application.form.other.FormInbox;
 import raven.application.form.other.FormRead;
 
 import raven.application.form.other.NewJPanel;
+import raven.application.form.other.NewJPanel1;
 import raven.entity.VaiTro;
 import raven.application.form.other.hoadon.FormHoaDon;
 
@@ -82,7 +83,10 @@ public class MainForm extends JLayeredPane {
                 Application.showForm(new FormDashboard());
             }
            else if (index == 2) {
-                        Application.showForm(new NewJPanel());
+                      Application.showForm(new NewJPanel());  
+                    }
+           else if (index == 4) {
+                        Application.showForm(new NewJPanel1());
                     }
           
           else if (index == 5) {
@@ -91,7 +95,7 @@ public class MainForm extends JLayeredPane {
 
                 VaiTro currentUser = Application.getCurrentUser();
 
-                if (currentUser.getChuc_vu()) {
+                if (currentUser.getChucVu()) {
                     if (check1) {
                         Notifications.getInstance().show(Notifications.Type.SUCCESS, Notifications.Location.TOP_CENTER, "Đăng nhập với tư cách quản lí");
                         check1 = false;

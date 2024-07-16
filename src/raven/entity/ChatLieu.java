@@ -10,7 +10,51 @@ package raven.entity;
 //@Data
 public class ChatLieu {
 
+  
     private Integer id;
+
+
+    private String maChatLieu;
+
+    private String tenLoaiVai;
+
+    public ChatLieu() {
+    }
     
-    private String ten_loai_vai;
+
+    public ChatLieu(Integer id, String maChatLieu, String tenLoaiVai) {
+        this.id = id;
+        this.maChatLieu = maChatLieu;
+        this.tenLoaiVai = tenLoaiVai;
+    }
+    
+    
+
+ 
+    public Integer getId() {
+        return id;
+    }
+
+    public void setId(Integer id) {
+        this.id = id;
+    }
+
+    public String getMaChatLieu() {
+        return maChatLieu;
+    }
+
+    public void setMaChatLieu(String maChatLieu) {
+        this.maChatLieu = maChatLieu;
+    }
+
+    public String getTenLoaiVai() {
+        return tenLoaiVai;
+    }
+
+    public void setTenLoaiVai(String tenLoaiVai) {
+        this.tenLoaiVai = tenLoaiVai;
+    }
+
+    
+    
 }

@@ -111,7 +111,7 @@ if (txtUser.getText().isEmpty() || txtPass.getText().isEmpty()) {
         System.out.println(list.toString());
         boolean loggedIn = false;
         for (VaiTro vaiTro : list) {
-            if (txtUser.getText().equalsIgnoreCase(vaiTro.getHo_ten()) && txtPass.getText().equalsIgnoreCase(vaiTro.getMat_khau())) {
+            if (txtUser.getText().equalsIgnoreCase(vaiTro.getHoTen()) && txtPass.getText().equalsIgnoreCase(vaiTro.getMatKhau())) {
                 loggedIn = true;
                 Application.setCurrentUser(vaiTro);
                 break;
