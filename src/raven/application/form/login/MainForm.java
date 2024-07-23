@@ -19,11 +19,12 @@ import raven.application.Application;
 import raven.application.form.other.FormDashboard;
 import raven.application.form.other.FormInbox;
 import raven.application.form.other.FormRead;
-
-import raven.application.form.other.NewJPanel;
-import raven.application.form.other.NewJPanel1;
-import raven.entity.VaiTro;
+import raven.application.form.other.BanHang_View;
+import raven.application.form.other.DanhSachKhachHang;
+import raven.application.form.other.NhanVien_View;
+import raven.application.form.other.View_QR;
 import raven.application.form.other.hoadon.FormHoaDon;
+import raven.entity.VaiTro;
 
 import raven.menu.Menu;
 import raven.menu.MenuAction;
@@ -77,56 +78,52 @@ public class MainForm extends JLayeredPane {
     }
 
     private void initMenuEvent() {
-          menu.addMenuEvent((int index, int subIndex, MenuAction action) -> {
+        menu.addMenuEvent((int index, int subIndex, MenuAction action) -> {
             // Application.mainForm.showForm(new DefaultForm("Form : " + index + " " + subIndex));
-          if (index == 0) {
-                Application.showForm(new FormDashboard());
-            }
-           else if (index == 2) {
-                      Application.showForm(new NewJPanel());  
-                    }
-           else if (index == 4) {
-                        Application.showForm(new NewJPanel1());
-                    }
-          
-          else if (index == 5) {
-                Application.showForm(new FormHoaDon());
-            } else if (index == 10) {
+            VaiTro currentUser = Application.getCurrentUser();
 
-                VaiTro currentUser = Application.getCurrentUser();
-
-                if (currentUser.getChucVu()) {
-                    if (check1) {
-                        Notifications.getInstance().show(Notifications.Type.SUCCESS, Notifications.Location.TOP_CENTER, "Đăng nhập với tư cách quản lí");
-                        check1 = false;
-                    }
-                    if (index == 0) {
-                        Application.showForm(new FormDashboard());
-                    } else if (index == 1) {
-                        Application.showForm(new FormInbox());
-                    }  else if (index == 10) {
-                        Application.logout();
-                    } else {
-                        action.cancel();
-                    }
+            if (currentUser.getChucVu()) {
+                if (check1) {
+                    Notifications.getInstance().show(Notifications.Type.SUCCESS, Notifications.Location.TOP_CENTER, "Đăng nhập với tư cách quản lí");
+                    check1 = false;
+                }
+                if (index == 0) {
+             Application.showForm(new FormDashboard());
+                } else if (index == 1) {
+                    Application.showForm(new FormInbox());
+                }else if(index == 2){
+                    Application.showForm(new NhanVien_View());
+                }
+                else if(index == 4){
+                    Application.showForm(new BanHang_View());
+                }
+                else if(index == 6){
+                    Application.showForm(new DanhSachKhachHang());
+                }
+                
+                
+                else if(index == 5){
+                    Application.showForm(new FormHoaDon());
+                }else if (index == 10) {
+                    Application.logout();
                 } else {
-                    if (check2) {
-                        Notifications.getInstance().show(Notifications.Type.SUCCESS, Notifications.Location.TOP_CENTER, "Đăng nhập với tư cách nhan vien");
-                        check2 = false;
-                    }
-                    if (index == 0) {
-                        Application.showForm(new FormDashboard());
-                    } else if (index == 1) {
-                        
-                        Application.showForm(new FormDashboard());
-                    }
-                   
-                    else if (index == 10) {
-                        Application.logout();
-                    } else {
-                        Notifications.getInstance().show(Notifications.Type.WARNING, Notifications.Location.TOP_CENTER, "Nhan Vien không thể bấm vào được");
+                    action.cancel();
+                }
+            } else {
+                if (check2) {
+                    Notifications.getInstance().show(Notifications.Type.SUCCESS, Notifications.Location.TOP_CENTER, "Đăng nhập với tư cách nhan vien");
+                    check2 = false;
+                }
+                if (index == 0) {
+                    Application.showForm(new FormDashboard());
+                } else if (index == 1) {
 
-                    }
+                    Application.showForm(new FormDashboard());
+                } else if (index == 10) {
+                    Application.logout();
+                } else {
+                    Notifications.getInstance().show(Notifications.Type.WARNING, Notifications.Location.TOP_CENTER, "Nhan Vien không thể bấm vào được");
+
                 }
             }
         });
@@ -190,7 +187,7 @@ public class MainForm extends JLayeredPane {
         @Override
         public void layoutContainer(Container parent) {
             synchronized (parent.getTreeLock()) {
-                boolean ltr = parent.getComponentOrientation().isLeftToRight();
+boolean ltr = parent.getComponentOrientation().isLeftToRight();
                 Insets insets = UIScale.scale(parent.getInsets());
                 int x = insets.left;
                 int y = insets.top;

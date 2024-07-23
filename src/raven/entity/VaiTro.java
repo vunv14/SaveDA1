@@ -23,33 +23,20 @@ public class VaiTro {
     public VaiTro() {
     }
 
-    public VaiTro(String ma, Boolean gioiTinh, String sdt, Date ngaySinh, String cccd, String diaChia, String hoTen, String matKhau) {
-        this.ma = ma;
+    public VaiTro(Boolean gioiTinh, String sdt, Date ngaySinh, String cccd, String diaChia, String hoTen) {
         this.gioiTinh = gioiTinh;
         this.sdt = sdt;
         this.ngaySinh = ngaySinh;
         this.cccd = cccd;
         this.diaChia = diaChia;
         this.hoTen = hoTen;
-        this.matKhau = matKhau;
     }
-    
-    
     
 
-    public VaiTro(Integer id, String ma, Boolean gioiTinh, String sdt, Date ngaySinh, String cccd, String diaChia, String hoTen, Boolean chucVu, String matKhau, Boolean trangThai) {
-        this.id = id;
-        this.ma = ma;
-        this.gioiTinh = gioiTinh;
-        this.sdt = sdt;
-        this.ngaySinh = ngaySinh;
-        this.cccd = cccd;
-        this.diaChia = diaChia;
-        this.hoTen = hoTen;
-        this.chucVu = chucVu;
-        this.matKhau = matKhau;
-        this.trangThai = trangThai;
-    }
+   
+    
+
+
 
     public VaiTro(Integer id, String hoTen, Boolean chucVu, String matKhau, Boolean trangThai) {
         this.id = id;

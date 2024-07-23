@@ -4,8 +4,6 @@
  */
 package raven.entity;
 
-//import lombok.Data;
-
 
 /**
  *

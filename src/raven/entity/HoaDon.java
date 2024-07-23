@@ -4,22 +4,27 @@
  */
 package raven.entity;
 
-//import lombok.Data;
 
-
-//@Data
-
+import java.sql.Date;
 public class HoaDon {
 
     private Integer id;
 
     private KhachHang kh;
+    
+//     public Double tt(){
+//        return 
+//    }
 
     private VaiTro nv;
    
     private PhieuGiamGiaHoaDon phieuGiamGiaHoaDon;
   
     private String maHd;
+    
+     private Date createAt;
+
+    private Date updateAt;
 
     private Double tongTien;
 
@@ -28,12 +33,35 @@ public class HoaDon {
     public HoaDon() {
     }
 
-    public HoaDon(Integer id, KhachHang kh, VaiTro nv, PhieuGiamGiaHoaDon phieuGiamGiaHoaDon, String maHd, Double tongTien, Boolean trangThai) {
+    public HoaDon(String maHd) {
+        this.maHd = maHd;
+    }
+
+    public HoaDon(VaiTro nv) {
+        this.nv = nv;
+    }
+
+    public HoaDon(VaiTro nv, Boolean trangThai) {
+        this.nv = nv;
+        this.trangThai = trangThai;
+    }
+
+    
+    
+    
+    
+    
+    
+    
+
+    public HoaDon(Integer id, KhachHang kh, VaiTro nv, PhieuGiamGiaHoaDon phieuGiamGiaHoaDon, String maHd, Date createAt, Date updateAt, Double tongTien, Boolean trangThai) {
         this.id = id;
         this.kh = kh;
         this.nv = nv;
         this.phieuGiamGiaHoaDon = phieuGiamGiaHoaDon;
         this.maHd = maHd;
+        this.createAt = createAt;
+        this.updateAt = updateAt;
         this.tongTien = tongTien;
         this.trangThai = trangThai;
     }
@@ -78,6 +106,22 @@ public class HoaDon {
         this.maHd = maHd;
     }
 
+    public Date getCreateAt() {
+        return createAt;
+    }
+
+    public void setCreateAt(Date createAt) {
+        this.createAt = createAt;
+    }
+
+    public Date getUpdateAt() {
+        return updateAt;
+    }
+
+    public void setUpdateAt(Date updateAt) {
+        this.updateAt = updateAt;
+    }
+
     public Double getTongTien() {
         return tongTien;
     }
@@ -94,7 +138,6 @@ public class HoaDon {
         this.trangThai = trangThai;
     }
 
-  
     
     
 }

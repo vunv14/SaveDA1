@@ -14,6 +14,8 @@ public class HoaDonChiTiet {
     private SanPhamChiTiet spct;
 
     private HoaDon hd;
+    
+   
 
     private Integer soLuong;
 
@@ -35,6 +37,32 @@ public class HoaDonChiTiet {
 
     public HoaDonChiTiet() {
     }
+
+    public HoaDonChiTiet(SanPhamChiTiet spct, HoaDon hd, Integer soLuong) {
+        this.spct = spct;
+        this.hd = hd;
+        this.soLuong = soLuong;
+    }
+    
+    
+
+    public HoaDonChiTiet(SanPhamChiTiet spct, HoaDon hd, Integer soLuong, Double gia) {
+        this.spct = spct;
+        this.hd = hd;
+        this.soLuong = soLuong;
+        this.gia = gia;
+    }
+
+    public HoaDonChiTiet(SanPhamChiTiet spct, Integer soLuong, Double gia, Boolean trangThai) {
+        this.spct = spct;
+        this.soLuong = soLuong;
+        this.gia = gia;
+        this.trangThai = trangThai;
+    }
+    
+    
+    
+    
 
     public HoaDonChiTiet(SanPhamChiTiet spct, Integer soLuong, Double gia) {
         this.spct = spct;

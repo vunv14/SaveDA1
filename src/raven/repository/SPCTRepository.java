@@ -36,72 +36,69 @@ public class SPCTRepository {
     
     private String sql = null;
     
-
     
-
-    public List<SanPhamChiTiet> getAll(){
- sql = "select x.id,k.ma_kich_thuoc,t.ma_thuong_hieu,v.ma_xuat_xu,s.ma_san_pham,a.ma_anh,m.ma_mau,c.ma_chat_lieu,y.ten\n" +
-"				,s.so_luong,s.ten_san_pham,x.gia,s.trang_thai\n" +
+        public List<SanPhamChiTiet> getAll(){
+           sql = "select x.id,k.id,t.ten_thuong_hieu,v.dia_chia,a.ma_anh,m.loai_mau,c.ten_loai_vai\n" +
+"				,x.so_luong,s.ten_san_pham,x.gia,ka.ten,s.trang_thai\n" +
 "from san_pham_chi_tiet x left join kich_thuoc k\n" +
-"		on x.id_kich_thuoc = k.id\n" +
-"		left join thuong_hieu t \n" +
-"		on x.id_thuong_hieu = t.id\n" +
-"		left join xuat_xu v\n" +
-"		on x.id_xuat_xu = v.id\n" +
-"		left join san_pham s \n" +
-"		on x.id_sp = s.id\n" +
-"			left join anh a \n" +
-"					on x.id_anh = a.id\n" +
-"					left join mau m \n" +
-"				on x.id_mau = m.id\n" +
-"				left join chat_lieu c \n" +
-"					on x.id_chat_lieu = c.id\n" +
-"					left join kieu_ao y\n" +
-"						on x.id_kieu_ao = y.id";
+"						on x.id_kich_thuoc = k.id\n" +
+"						left join thuong_hieu t \n" +
+"						on x.id_thuong_hieu = t.id\n" +
+"						left join xuat_xu v\n" +
+"						on x.id_xuat_xu = v.id\n" +
+"						left join san_pham s \n" +
+"						on x.id_sp = s.id\n" +
+"						left join anh a \n" +
+"						on x.id_anh = a.id\n" +
+"						left join mau m \n" +
+"						on x.id_mau = m.id\n" +
+"						left join chat_lieu c \n" +
+"						on x.id_chat_lieu = c.id\n" +
+"						left join kieu_ao ka \n" +
+"						on x.id_kieu_ao = ka.id";
         List<SanPhamChiTiet> arr = new ArrayList<>();
         try {
             con = DBConnect.getConnection();
             ps = con.prepareStatement(sql);
             rs = ps.executeQuery();
             while (rs.next()) {                   
-                 SanPhamChiTiet sp = new SanPhamChiTiet();
+                SanPhamChiTiet sp = new SanPhamChiTiet();
                 sp.setId(rs.getInt("id"));
                 KichThuoc k = new KichThuoc();
-                k.setMaKichThuoc(rs.getString("ma_kich_thuoc"));
+                k.setId(rs.getInt("id"));
                 sp.setKt(k);
                 
                 ThuongHieu t = new ThuongHieu();
-                t.setMaThuongHieu(rs.getString("ma_thuong_hieu"));
+                t.setTenThuongHieu(rs.getString("ten_thuong_hieu"));
                 sp.setTh(t);
                 
                 XuatXu x = new XuatXu();
-                x.setMaXuatXu(rs.getString("ma_xuat_xu"));
+                x.setDiaChia(rs.getString("dia_chia"));
                 sp.setXx(x);
-                
-                SanPham s = new SanPham();
-                s.setMaSanPham(rs.getString("ma_san_pham"));
-                s.setSoLuong(rs.getInt("so_luong"));
-                s.setTenSanPham(rs.getString("ten_san_pham"));
-                s.setTrangThai(rs.getBoolean("trang_thai"));
-                sp.setSp(s);
-                
                 Anh a = new Anh();
                 a.setMaAnh(rs.getString("ma_anh"));
                 sp.setA(a);
                 
-                Mau m = new Mau();
-                m.setMaMau(rs.getString("ma_mau"));
+                 Mau m = new Mau();
+                m.setLoaiMau(rs.getString("loai_mau"));
                 sp.setM(m);
                 
                 ChatLieu c = new ChatLieu();
-                c.setMaChatLieu(rs.getString("ma_chat_lieu"));
+                c.setTenLoaiVai(rs.getString("ten_loai_vai"));
                 sp.setCl(c);
+                sp.setSoLuong(rs.getInt("so_luong"));
+                
+                SanPham s = new SanPham();
+//                s.setMaSanPham(rs.getString("ma_san_pham"));
+//                //s.setSoLuong(rs.getInt("so_luong"));
+                s.setTenSanPham(rs.getString("ten_san_pham"));
+                s.setTrangThai(rs.getBoolean("trang_thai"));
+                sp.setSp(s);
                 
                 KieuAo y = new KieuAo();
                 y.setTen(rs.getString("ten"));
                 sp.setKa(y);
                 sp.setGia(rs.getDouble("gia"));
-                
                 arr.add(sp);
             } 
         } catch (Exception e) {
@@ -109,6 +106,22 @@ public class SPCTRepository {
         }
        return arr;
     }
+    
+    
+    
+    
+    
+    
+    
+    public void add(){
+        
+    }
+    
+    
+    
+    
+    
+    
     
 
     

@@ -8,30 +8,19 @@ import java.sql.Date;
 
 public class SanPham {
 
-
     private Integer id;
-
 
     private String maSanPham;
 
-
     private String tenSanPham;
-
-
-    private Integer soLuong;
-
 
     private String moTa;
 
-
     private Date createAt;
-
 
     private Date updateAt;
 
-
     private Integer createBy;
-
 
     private Integer updateBy;
 
@@ -40,13 +29,11 @@ public class SanPham {
     public SanPham() {
     }
     
-    
 
-    public SanPham(Integer id, String maSanPham, String tenSanPham, Integer soLuong, String moTa, Date createAt, Date updateAt, Integer createBy, Integer updateBy, Boolean trangThai) {
+    public SanPham(Integer id, String maSanPham, String tenSanPham, String moTa, Date createAt, Date updateAt, Integer createBy, Integer updateBy, Boolean trangThai) {
         this.id = id;
         this.maSanPham = maSanPham;
         this.tenSanPham = tenSanPham;
-        this.soLuong = soLuong;
         this.moTa = moTa;
         this.createAt = createAt;
         this.updateAt = updateAt;
@@ -77,14 +64,6 @@ public class SanPham {
 
     public void setTenSanPham(String tenSanPham) {
         this.tenSanPham = tenSanPham;
-    }
-
-    public Integer getSoLuong() {
-        return soLuong;
-    }
-
-    public void setSoLuong(Integer soLuong) {
-        this.soLuong = soLuong;
     }
 
     public String getMoTa() {
@@ -134,6 +113,6 @@ public class SanPham {
     public void setTrangThai(Boolean trangThai) {
         this.trangThai = trangThai;
     }
-   
+    
     
 }

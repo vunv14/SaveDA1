@@ -4,10 +4,6 @@
  */
 package raven.entity;
 
-//import lombok.Data;
-
-
-//@Data
 public class ChatLieu {
 
   
