@@ -4,14 +4,32 @@
  */
 package raven.entity;
 
-//import lombok.Data;
+import lombok.AllArgsConstructor;
+import lombok.Builder;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
 
-//@Data
+@Getter
+@Setter
+@NoArgsConstructor
+@AllArgsConstructor
+@Builder
 public class ThuongHieu {
 
     private Integer id;
     
-    private String ten_thuong_hieu;
+    private String ma;
     
-    private Boolean trang_thai;
+    private String thuongHieu;
+    
+    private Boolean trangThai;
+
+    public ThuongHieu(String ma, String thuongHieu, Boolean trangThai) {
+        this.ma = ma;
+        this.thuongHieu = thuongHieu;
+        this.trangThai = trangThai;
+    }
+    
+    
 }

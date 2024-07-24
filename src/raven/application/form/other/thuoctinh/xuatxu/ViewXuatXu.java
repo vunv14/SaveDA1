@@ -8,6 +8,6 @@ package raven.application.form.other.thuoctinh.xuatxu;
  *
  * @author Nguyễn Vũ
  */
-public class repository {
+public class ViewXuatXu {
     
 }

@@ -13,19 +13,128 @@ public class SanPham {
 
     private Integer id;
     
-    private String ten_san_pham;
+    public String ma;
     
-    private Integer so_luong;
+    private String tenSanPham;
     
-    private String mo_ta;
+    private String moTa;
     
-    private Date create_at;
+    private Date createAt;
     
-    private Date update_at;
+    private Date updateAt;
     
-    private Integer create_by;
+    private Integer createBy;
     
-    private Integer update_by;
+    private Integer updateby;
     
-    private Boolean trang_thai;
+    private Boolean trangThai;
+
+    public SanPham(Integer id, String ma, String tenSanPham, String moTa, Date createAt, Date updateAt, Integer createBy, Integer updateby, Boolean trangThai) {
+        this.id = id;
+        this.ma = ma;
+        this.tenSanPham = tenSanPham;
+        this.moTa = moTa;
+        this.createAt = createAt;
+        this.updateAt = updateAt;
+        this.createBy = createBy;
+        this.updateby = updateby;
+        this.trangThai = trangThai;
+    }
+
+    public SanPham() {
+    }
+
+    public Integer getId() {
+        return id;
+    }
+
+    public void setId(Integer id) {
+        this.id = id;
+    }
+
+    public String getMa() {
+        return ma;
+    }
+
+    public void setMa(String ma) {
+        this.ma = ma;
+    }
+
+    public String getTenSanPham() {
+        return tenSanPham;
+    }
+
+    public void setTenSanPham(String tenSanPham) {
+        this.tenSanPham = tenSanPham;
+    }
+
+    public String getMoTa() {
+        return moTa;
+    }
+
+    public void setMoTa(String moTa) {
+        this.moTa = moTa;
+    }
+
+    public Date getCreateAt() {
+        return createAt;
+    }
+
+    public void setCreateAt(Date createAt) {
+        this.createAt = createAt;
+    }
+
+    public Date getUpdateAt() {
+        return updateAt;
+    }
+
+    public void setUpdateAt(Date updateAt) {
+        this.updateAt = updateAt;
+    }
+
+    public Integer getCreateBy() {
+        return createBy;
+    }
+
+    public void setCreateBy(Integer createBy) {
+        this.createBy = createBy;
+    }
+
+    public Integer getUpdateby() {
+        return updateby;
+    }
+
+    public void setUpdateby(Integer updateby) {
+        this.updateby = updateby;
+    }
+
+    public Boolean getTrangThai() {
+        return trangThai;
+    }
+
+    public void setTrangThai(Boolean trangThai) {
+        this.trangThai = trangThai;
+    }
+
+    
+public SanPham(String ma, String tenSanPham, String moTa, Date createAt, Date updateAt, Integer createBy, Integer updateBy, Boolean trangThai) {
+        this.ma = ma;
+        this.tenSanPham = tenSanPham;
+        this.moTa = moTa;
+        this.createAt = createAt;
+        this.updateAt = updateAt;
+        this.createBy = createBy;
+        this.updateby = updateBy;
+        this.trangThai = trangThai;
+    }
+
+    @Override
+    public String toString() {
+        return "SanPham{" + "id=" + id + ", ma=" + ma + ", tenSanPham=" + tenSanPham + ", moTa=" + moTa + ", createAt=" + createAt + ", updateAt=" + updateAt + ", createBy=" + createBy + ", updateby=" + updateby + ", trangThai=" + trangThai + '}';
+    }
+
+
+    
+    
+    
 }

@@ -6,13 +6,36 @@ package raven.entity;
 
 //import lombok.Data;
 
+import lombok.AllArgsConstructor;
+import lombok.Builder;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
+
+
 //@Data
+
+@Getter
+@Setter
+@NoArgsConstructor
+@AllArgsConstructor
+@Builder
+
 public class Mau {
 
     private Integer id;
     
-    private String loai_mau;
+    private String ma;
     
-    private Boolean trang_thai;
+    private String loaiMau;
+    
+    private Boolean trangThai;
+
+    public Mau(String ma, String loaiMau) {
+        this.ma = ma;
+        this.loaiMau = loaiMau;
+    }
+    
+    
 }
 

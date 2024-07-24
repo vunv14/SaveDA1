@@ -17,18 +17,18 @@ public class Anh {
 
     private Integer id;
     
-    private String ten_anh;
-
-    public Anh() {
-    }
-
-    public Anh(Integer id, String ten_anh, Boolean trang_thai) {
-        this.id = id;
-        this.ten_anh = ten_anh;
-        this.trang_thai = trang_thai;
-    }
+    private String ma;
     
-    private Boolean trang_thai;
+    private String Anh;
+    
+    private Boolean trangThai;
+
+    public Anh(Integer id, String ma, String Anh, Boolean trangThai) {
+        this.id = id;
+        this.ma = ma;
+        this.Anh = Anh;
+        this.trangThai = trangThai;
+    }
 
     public Integer getId() {
         return id;
@@ -38,21 +38,33 @@ public class Anh {
         this.id = id;
     }
 
-    public String getTen_anh() {
-        return ten_anh;
+    public String getMa() {
+        return ma;
     }
 
-    public void setTen_anh(String ten_anh) {
-        this.ten_anh = ten_anh;
+    public void setMa(String ma) {
+        this.ma = ma;
     }
 
-    public Boolean getTrang_thai() {
-        return trang_thai;
+    public String getAnh() {
+        return Anh;
     }
 
-    public void setTrang_thai(Boolean trang_thai) {
-        this.trang_thai = trang_thai;
+    public void setAnh(String Anh) {
+        this.Anh = Anh;
+    }
+
+    public Boolean getTrangThai() {
+        return trangThai;
+    }
+
+    public void setTrangThai(Boolean trangThai) {
+        this.trangThai = trangThai;
+    }
+
+    public Anh() {
     }
     
+
     
 }

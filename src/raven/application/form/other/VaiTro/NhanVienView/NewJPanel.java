@@ -2,7 +2,7 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JPanel.java to edit this template
  */
-package raven.application.form.other;
+package raven.application.form.other.VaiTro.NhanVienView;
 
 import java.awt.HeadlessException;
 import java.io.File;
@@ -479,7 +479,7 @@ public class NewJPanel extends javax.swing.JPanel {
         String cccd = txt3.getText();
         String dia_chia = txt4.getText();
         String ho_ten = txt5.getText();
-        Boolean trang_thai = jRadioLam.isSelected() ? true : false;
+        Boolean trang_thai = jRadioLam.isSelected() ? false : true;
         Boolean chuc_vu = jRadioAD.isSelected() ? true : false;
         String mat_khau = txt6.getText();
         //p.addNV(new VaiTro(gioi_tinh, ngay_sinh, cccd, dia_chia, ho_ten, mat_khau, trang_thai, chuc_vu));

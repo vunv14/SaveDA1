@@ -1,15 +1,12 @@
 package raven.application.form.login;
 
 import com.formdev.flatlaf.FlatClientProperties;
-import javax.swing.JOptionPane;
 import net.miginfocom.swing.MigLayout;
 import raven.application.Application;
 import raven.entity.VaiTro;
 import raven.toast.Notifications;
-import java.util.ArrayList;
 import java.util.List;
 import raven.application.form.other.VaiTro.repository.RepositoryNhanVien;
-//import raven.application.form.other.VaiTro.repository.RepositoryNhanVien;
 
 /**
  *
@@ -20,6 +17,7 @@ public class LoginForm extends javax.swing.JPanel {
     public LoginForm() {
         initComponents();
         init();
+
     }
 
     private void init() {
@@ -102,7 +100,7 @@ public class LoginForm extends javax.swing.JPanel {
 
     private void cmdLoginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmdLoginActionPerformed
 
-if (txtUser.getText().isEmpty() || txtPass.getText().isEmpty()) {
+        if (txtUser.getText().isEmpty() || txtPass.getText().isEmpty()) {
             Notifications.getInstance().show(Notifications.Type.INFO, Notifications.Location.TOP_CENTER, "Vui lòng nhập user và password");
             return;
         }
@@ -123,22 +121,6 @@ if (txtUser.getText().isEmpty() || txtPass.getText().isEmpty()) {
         } else {
             Notifications.getInstance().show(Notifications.Type.WARNING, Notifications.Location.TOP_CENTER, "Sai tài khoản hoặc mật khẩu!");
         }
-
-
-//        List<VaiTro> list = new RepositoryNhanVien().getAllLG();
-//        for (VaiTro vaiTro : list) {
-//                if(txtUser.getText().equalsIgnoreCase(vaiTro.getHo_ten()) && txtPass.getText().equalsIgnoreCase(vaiTro.getMat_khau())){
-//                    if (vaiTro.getChuc_vu()) {
-//                        Application.login();
-//                        Notifications.getInstance().show(Notifications.Type.SUCCESS, Notifications.Location.TOP_CENTER, "Hoan hô giỏi quá. Đăng nhập thành công!");
-//                    } else {
-//                        Notifications.getInstance().show(Notifications.Type.WARNING, Notifications.Location.TOP_CENTER, "Không được phép vào đây");
-//                    }
-//                      return;
-//                  } 
-//                        Notifications.getInstance().show(Notifications.Type.WARNING, Notifications.Location.TOP_CENTER, "Sai tài khoản hoặc mật khẩu!");  
-//        }
-
     }//GEN-LAST:event_cmdLoginActionPerformed
 
     private void txtUserActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtUserActionPerformed

@@ -4,28 +4,36 @@
  */
 package raven.entity;
 
-//import lombok.Data;
 
 
-//@Data
-public class ChatLieu {
+/**
+ *
+ * @author Nguyễn Vũ
+ */
 
+
+public class KieuAo {
     private Integer id;
     
     private String ma;
     
-    private String loaivai;
+    private String ten;
     
     private Boolean trangThai;
 
-    public ChatLieu(Integer id, String ma, String loaivai, Boolean trangThai) {
+    public KieuAo(String ma, String ten) {
+        this.ma = ma;
+        this.ten = ten;
+    }
+
+    public KieuAo(Integer id, String ma, String ten, Boolean trangThai) {
         this.id = id;
         this.ma = ma;
-        this.loaivai = loaivai;
+        this.ten = ten;
         this.trangThai = trangThai;
     }
 
-    public ChatLieu() {
+    public KieuAo() {
     }
 
     public Integer getId() {
@@ -44,12 +52,12 @@ public class ChatLieu {
         this.ma = ma;
     }
 
-    public String getLoaivai() {
-        return loaivai;
+    public String getTen() {
+        return ten;
     }
 
-    public void setLoaivai(String loaivai) {
-        this.loaivai = loaivai;
+    public void setTen(String ten) {
+        this.ten = ten;
     }
 
     public Boolean getTrangThai() {
@@ -59,7 +67,19 @@ public class ChatLieu {
     public void setTrangThai(Boolean trangThai) {
         this.trangThai = trangThai;
     }
+
+    public KieuAo(String ma, String ten, Boolean trangThai) {
+        this.ma = ma;
+        this.ten = ten;
+        this.trangThai = trangThai;
+    }
+
     
+    @Override
+    public String toString() {
+        return "KieuAo{" + "id=" + id + ", ma=" + ma + ", ten=" + ten + ", trangThai=" + trangThai + '}';
+    }
+
+
     
-            
 }
