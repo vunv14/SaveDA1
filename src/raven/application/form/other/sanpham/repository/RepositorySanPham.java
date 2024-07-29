@@ -80,13 +80,13 @@ public class RepositorySanPham {
         try {
             con = DBConnect.getConnection();
             ps = con.prepareStatement(sql);
-            ps.setObject(1, sp.getMa());
+            ps.setObject(1, sp.getMaSanPham());
             ps.setObject(2, sp.getTenSanPham());
             ps.setObject(3, sp.getMoTa());
             ps.setObject(4, sp.getCreateAt());
             ps.setObject(5, sp.getUpdateAt());
             ps.setObject(6, sp.getCreateBy());
-            ps.setObject(7, sp.getUpdateby());
+            ps.setObject(7, sp.getUpdateBy());
             ps.setObject(8, sp.getTrangThai());
             return ps.executeUpdate();
         } catch (Exception e) {
@@ -128,7 +128,7 @@ public class RepositorySanPham {
             ps.setObject(3, sp.getCreateAt());
             ps.setObject(4, sp.getCreateAt());
             ps.setObject(5, sp.getCreateBy());
-            ps.setObject(6, sp.getUpdateby());
+            ps.setObject(6, sp.getUpdateBy());
             ps.setObject(7, id);
             return ps.executeUpdate();
         } catch (Exception e) {
@@ -159,7 +159,7 @@ public class RepositorySanPham {
                 while (rs.next()) {
                     SanPham sp = new SanPham();
                     sp.setId(rs.getInt(1));
-                    sp.setMa(rs.getString(2));
+                    sp.setMaSanPham(rs.getString(2));
                     sp.setTenSanPham(rs.getString(3));
                     sp.setMoTa(rs.getString(4));
                     sp.setTrangThai(rs.getBoolean(5));
@@ -195,7 +195,7 @@ public class RepositorySanPham {
         while (rs.next()) {
             SanPham sp = new SanPham();
             sp.setId(rs.getInt(1));
-            sp.setMa(rs.getString(2));
+            sp.setMaSanPham(rs.getString(2));
             sp.setTenSanPham(rs.getString(3));
             sp.setMoTa(rs.getString(4));
             sp.setTrangThai(rs.getBoolean(5));
@@ -208,9 +208,14 @@ public class RepositorySanPham {
     }
     return list;
 }
+ 
+ 
     public static void main(String[] args) {
         List<SanPham> list = new RepositorySanPham().sanpham(1);
         list.stream().forEach(a->System.out.println(a.toString()));
     }
+    
+    
+    
 
 }

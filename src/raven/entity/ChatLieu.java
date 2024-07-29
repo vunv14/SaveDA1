@@ -4,30 +4,29 @@
  */
 package raven.entity;
 
-//import lombok.Data;
-
-
-//@Data
 public class ChatLieu {
 
     private Integer id;
-    
-    private String ma;
-    
-    private String loaivai;
+
+
+    private String maChatLieu;
+
+    private String tenLoaiVai;
     
     private Boolean trangThai;
-
-    public ChatLieu(Integer id, String ma, String loaivai, Boolean trangThai) {
-        this.id = id;
-        this.ma = ma;
-        this.loaivai = loaivai;
-        this.trangThai = trangThai;
-    }
-
     public ChatLieu() {
     }
+    
 
+    public ChatLieu(Integer id, String maChatLieu, String tenLoaiVai) {
+        this.id = id;
+        this.maChatLieu = maChatLieu;
+        this.tenLoaiVai = tenLoaiVai;
+    }
+    
+    
+
+ 
     public Integer getId() {
         return id;
     }
@@ -36,29 +35,46 @@ public class ChatLieu {
         this.id = id;
     }
 
-    public String getMa() {
-        return ma;
+    public String getMaChatLieu() {
+        return maChatLieu;
     }
 
-    public void setMa(String ma) {
-        this.ma = ma;
+    public void setMaChatLieu(String maChatLieu) {
+        this.maChatLieu = maChatLieu;
     }
 
-    public String getLoaivai() {
-        return loaivai;
+    public String getTenLoaiVai() {
+        return tenLoaiVai;
     }
 
-    public void setLoaivai(String loaivai) {
-        this.loaivai = loaivai;
+    public void setTenLoaiVai(String tenLoaiVai) {
+        this.tenLoaiVai = tenLoaiVai;
     }
 
     public Boolean getTrangThai() {
         return trangThai;
     }
-
+    
     public void setTrangThai(Boolean trangThai) {
         this.trangThai = trangThai;
     }
+
+    public ChatLieu(Integer id, String maChatLieu, String tenLoaiVai, Boolean trangThai) {
+        this.id = id;
+        this.maChatLieu = maChatLieu;
+        this.tenLoaiVai = tenLoaiVai;
+        this.trangThai = trangThai;
+    }
+
+    public ChatLieu(String maChatLieu, String tenLoaiVai, Boolean trangThai) {
+        this.maChatLieu = maChatLieu;
+        this.tenLoaiVai = tenLoaiVai;
+        this.trangThai = trangThai;
+    }
+
+   
+    
+    
     
     
             

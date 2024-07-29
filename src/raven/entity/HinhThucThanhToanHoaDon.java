@@ -4,30 +4,27 @@
  */
 package raven.entity;
 
-
 /**
  *
- * @author Nguyễn Vũ
+ * @author Nguyen Nam Truong
  */
-
-//@Data
-public class Anh {
+public class HinhThucThanhToanHoaDon {
     private Integer id;
 
-    private String maAnh;
-  
-    private String tenAnh;
+    private Integer idHoadon;
+
+    private Integer idHttt;
 
     private Boolean trangThai;
 
-    public Anh() {
+    public HinhThucThanhToanHoaDon() {
     }
     
 
-    public Anh(Integer id, String maAnh, String tenAnh, Boolean trangThai) {
+    public HinhThucThanhToanHoaDon(Integer id, Integer idHoadon, Integer idHttt, Boolean trangThai) {
         this.id = id;
-        this.maAnh = maAnh;
-        this.tenAnh = tenAnh;
+        this.idHoadon = idHoadon;
+        this.idHttt = idHttt;
         this.trangThai = trangThai;
     }
 
@@ -39,20 +36,20 @@ public class Anh {
         this.id = id;
     }
 
-    public String getMaAnh() {
-        return maAnh;
+    public Integer getIdHoadon() {
+        return idHoadon;
     }
 
-    public void setMaAnh(String maAnh) {
-        this.maAnh = maAnh;
+    public void setIdHoadon(Integer idHoadon) {
+        this.idHoadon = idHoadon;
     }
 
-    public String getTenAnh() {
-        return tenAnh;
+    public Integer getIdHttt() {
+        return idHttt;
     }
 
-    public void setTenAnh(String tenAnh) {
-        this.tenAnh = tenAnh;
+    public void setIdHttt(Integer idHttt) {
+        this.idHttt = idHttt;
     }
 
     public Boolean getTrangThai() {
@@ -63,6 +60,5 @@ public class Anh {
         this.trangThai = trangThai;
     }
     
-
     
 }

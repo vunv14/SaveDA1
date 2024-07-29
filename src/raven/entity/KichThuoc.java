@@ -10,44 +10,44 @@ package raven.entity;
 //@Data
 public class KichThuoc {
 
-    private Integer id;
-    
-    private String ma;
-    
-    private String size;
-    
-    private Double rongAo;
-    
-    private Double daiAo;
-    
-    private Double rongVai;
-    
-    private Double daiTay;
-    
-    private Boolean trangThai;
 
-    public KichThuoc(Integer id, String size, Double rongAo, Double daiAo, Double rongVai, Double daiTay, Boolean trangThai) {
-        this.id = id;
-        this.size = size;
-        this.rongAo = rongAo;
-        this.daiAo = daiAo;
-        this.rongVai = rongVai;
-        this.daiTay = daiTay;
-        this.trangThai = trangThai;
-    }
+    private Integer id;
+
+
+    private String maKichThuoc;
+
+
+    private String size;
+
+
+    private Double rongAo;
+
+ 
+    private  Double daiAo;
+
+
+    private  Double rongVai;
+
+ 
+    private  Double daiTay;
+
+ 
+    private Boolean trangThai;
 
     public KichThuoc() {
     }
     
     
 
-    public KichThuoc(String ma, String size, Double rongAo, Double daiAo, Double rongVai, Double daiTay) {
-        this.ma = ma;
+    public KichThuoc(Integer id, String maKichThuoc, String size, Double rongAo, Double daiAo, Double rongVai, Double daiTay, Boolean trangThai) {
+        this.id = id;
+        this.maKichThuoc = maKichThuoc;
         this.size = size;
         this.rongAo = rongAo;
         this.daiAo = daiAo;
         this.rongVai = rongVai;
         this.daiTay = daiTay;
+        this.trangThai = trangThai;
     }
 
     public Integer getId() {
@@ -58,12 +58,12 @@ public class KichThuoc {
         this.id = id;
     }
 
-    public String getMa() {
-        return ma;
+    public String getMaKichThuoc() {
+        return maKichThuoc;
     }
 
-    public void setMa(String ma) {
-        this.ma = ma;
+    public void setMaKichThuoc(String maKichThuoc) {
+        this.maKichThuoc = maKichThuoc;
     }
 
     public String getSize() {
@@ -113,19 +113,23 @@ public class KichThuoc {
     public void setTrangThai(Boolean trangThai) {
         this.trangThai = trangThai;
     }
+
+    public KichThuoc(String maKichThuoc, String size, Double rongAo, Double daiAo, Double rongVai, Double daiTay) {
+        this.maKichThuoc = maKichThuoc;
+        this.size = size;
+        this.rongAo = rongAo;
+        this.daiAo = daiAo;
+        this.rongVai = rongVai;
+        this.daiTay = daiTay;
+  
+    }
     
-    
-    public Object[] toDaTaRow( ){
-        return  new Object[]{1,ma,size,rongAo,daiAo,rongVai,daiTay};
+    public Object[] toDaTaRow(){
+        return new Object[]{maKichThuoc,size,rongAo,daiAo,rongVai,daiTay};
     }
 
-    @Override
-    public String toString() {
-        return "KichThuoc{" + "id=" + id + ", ma=" + ma + ", size=" + size + ", rongAo=" + rongAo + ", daiAo=" + daiAo + ", rongVai=" + rongVai + ", daiTay=" + daiTay + ", trangThai=" + trangThai + '}';
-    }
-
-    public KichThuoc(String ma, String size, Double rongAo, Double daiAo, Double rongVai, Double daiTay, Boolean trangThai) {
-        this.ma = ma;
+    public KichThuoc(String maKichThuoc, String size, Double rongAo, Double daiAo, Double rongVai, Double daiTay, Boolean trangThai) {
+        this.maKichThuoc = maKichThuoc;
         this.size = size;
         this.rongAo = rongAo;
         this.daiAo = daiAo;
@@ -133,9 +137,6 @@ public class KichThuoc {
         this.daiTay = daiTay;
         this.trangThai = trangThai;
     }
-    
-    
-    
-    
-    
+
+   
 }

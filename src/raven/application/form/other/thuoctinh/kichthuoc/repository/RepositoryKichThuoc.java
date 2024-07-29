@@ -50,7 +50,7 @@ public class RepositoryKichThuoc {
         try {
             con = DBConnect.getConnection();
             ps = con.prepareStatement(sql);
-            ps.setObject(1, kt.getMa());
+            ps.setObject(1, kt.getMaKichThuoc());
             ps.setObject(2, kt.getSize());
             ps.setObject(3, kt.getRongAo());
             ps.setObject(4, kt.getDaiAo());

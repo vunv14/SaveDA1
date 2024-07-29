@@ -34,6 +34,7 @@ public class Menu extends JPanel {
         {"Hóa Đơn"},
         {"Khách Hàng"},
         {"Khuyến Mại"},
+        {"Đợt Giảm Giá"},
         {"~Statistics(Thống Kê)~"},
         {"Thống Kê"},
         {"~Account(Tài Khoản)~"},

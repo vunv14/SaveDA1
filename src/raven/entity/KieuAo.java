@@ -4,27 +4,19 @@
  */
 package raven.entity;
 
-
-
 /**
  *
- * @author Nguyễn Vũ
+ * @author Nguyen Nam Truong
  */
-
-
 public class KieuAo {
+ 
     private Integer id;
-    
+
     private String ma;
     
     private String ten;
-    
-    private Boolean trangThai;
 
-    public KieuAo(String ma, String ten) {
-        this.ma = ma;
-        this.ten = ten;
-    }
+    private Boolean trangThai;
 
     public KieuAo(Integer id, String ma, String ten, Boolean trangThai) {
         this.id = id;
@@ -33,8 +25,24 @@ public class KieuAo {
         this.trangThai = trangThai;
     }
 
+    public String getMa() {
+        return ma;
+    }
+
+    public void setMa(String ma) {
+        this.ma = ma;
+    }
+
+    public KieuAo(String ma, String ten, Boolean trangThai) {
+        this.ma = ma;
+        this.ten = ten;
+        this.trangThai = trangThai;
+    }
+
+
     public KieuAo() {
     }
+    
 
     public Integer getId() {
         return id;
@@ -42,14 +50,6 @@ public class KieuAo {
 
     public void setId(Integer id) {
         this.id = id;
-    }
-
-    public String getMa() {
-        return ma;
-    }
-
-    public void setMa(String ma) {
-        this.ma = ma;
     }
 
     public String getTen() {
@@ -67,19 +67,6 @@ public class KieuAo {
     public void setTrangThai(Boolean trangThai) {
         this.trangThai = trangThai;
     }
-
-    public KieuAo(String ma, String ten, Boolean trangThai) {
-        this.ma = ma;
-        this.ten = ten;
-        this.trangThai = trangThai;
-    }
-
     
-    @Override
-    public String toString() {
-        return "KieuAo{" + "id=" + id + ", ma=" + ma + ", ten=" + ten + ", trangThai=" + trangThai + '}';
-    }
-
-
     
 }

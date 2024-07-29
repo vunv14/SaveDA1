@@ -21,52 +21,50 @@ import utils.ExcelHelper;
  */
 public class NewJPanel extends javax.swing.JPanel {
 
-    private RepositoryNhanVien p = new RepositoryNhanVien();
-
-    public NewJPanel() {
-        initComponents();
-       loadData();
-       loadDataV2();
-    }
+ private RepositoryNhanVien p = new RepositoryNhanVien();
     
-      public Boolean check() {
-
-        if (!(jRadioNam.isSelected() || jRadioNu.isSelected())) {
-            JOptionPane.showMessageDialog(this, "bạn chưa nhập gioiTinh");
-            return false;
-        }
-        if (txt2.getText().equals("")) {
-            JOptionPane.showMessageDialog(this, "bạn chưa nhập ngày sinh");
-            return false;
-        }
-        if (txt3.getText().equals("")) {
-            JOptionPane.showMessageDialog(this, "bạn chưa nhập số căn cước ");
-            return false;
-        }
-        if (txt4.getText().equals("")) {
-            JOptionPane.showMessageDialog(this, "bạn chưa nhập địa chỉ");
-            return false;
-        }
-          if (txt5.getText().equals("")) {
-            JOptionPane.showMessageDialog(this, "bạn chưa nhập họ tên");
-            return false;
-        }
-        if (!(jRadioLam.isSelected() || jRadioNghi.isSelected())) {
-            JOptionPane.showMessageDialog(this, "bạn chưa nhập trạng thái");
-            return false;
-        }
-         if (!(jRadioAD.isSelected() || jRadioNV.isSelected())) {
-            JOptionPane.showMessageDialog(this, "bạn chưa nhập chức vụ");
-            return false;
-        }
-        if (txt6.getText().equals("")) {
-            JOptionPane.showMessageDialog(this, "bạn chưa nhập mật khẩu");
-            return false;
-        }
-
-        return true;
-
+    private  Integer idNVL;
+    private Integer idNVN;
+    public NewJPanel() {
+//         initComponents();
+//        loadData(p.getAll());
+//        loadDataV2();
+//        loadData();
+//        setPlaceholderForTxt6();
     }
+//    
+//public void loadDataV2() {
+//        DefaultTableModel dtm = (DefaultTableModel) jTable4.getModel();
+//        dtm.setRowCount(0);
+//        int count = 1;
+//        for (VaiTro x : p.getAllV2()) {
+//            dtm.addRow(new Object[]{
+//                +count,
+//                "NV"+ x.getId(),
+//                x.getHoTen(),
+//                x.getSdt(),
+//                x.getDiaChia(),
+//                x.getCccd(),
+//                x.getGioiTinh() ? "Nữ" : "Nam",
+//                x.getNgaySinh(),
+//                x.getChucVu() ? "ADMIN" : "Nhân Viên",
+//                x.getTrangThai() ? "Nghỉ Làm" : "Đang Làm"
+//            });
+//        }
+//
+//    }
+//    
+//    
+//    public Boolean check() {
+//        if (txt1.getText().equals("")) {
+//            Notifications.getInstance().show(Notifications.Type.ERROR, Notifications.Location.TOP_CENTER, "Chưa nhập họ tên!");
+//            return false;
+//        }
+//        if (txt2.getText().equals("")) {
+//            Notifications.getInstance().show(Notifications.Type.ERROR, Notifications.Location.TOP_CENTER, "Chưa số điện thoại!");
+//            return false;
+//        }
+//         if (!txt2.getText().matches("^09\\d{8}$")) {
 
     public void clear() {
         txt1.setText("");
@@ -80,31 +78,30 @@ public class NewJPanel extends javax.swing.JPanel {
         txt6.setText("");
     }
 
-    public void loadData() {
-        DefaultTableModel dtm = (DefaultTableModel) jTable1.getModel();
-        dtm.setRowCount(0);
-        for (VaiTro x : p.getAll()) {
-            dtm.addRow(new Object[]{
-                x.getId(), x.getGioi_tinh() ? "nữ" : "nam", x.getNgay_sinh(), x.getCccd(), x.getDia_chia(),
-                x.getHo_ten(), x.getTrang_thai() ? "nghỉ" : "làm",
-                x.getChuc_vu() ? "admin" : "nhân viên", x.getMat_khau()
-            });
-        }
-
-    }
-    
-     public void loadDataV2() {
+     public void loadData() {
         DefaultTableModel dtm = (DefaultTableModel) jTable2.getModel();
         dtm.setRowCount(0);
-        for (VaiTro x : p.getAllV2()) {
+        int count = 1;
+        for (VaiTro x : p.getAll()) {
             dtm.addRow(new Object[]{
-                x.getId(), x.getGioi_tinh() ? "nữ" : "nam", x.getNgay_sinh(), x.getCccd(), x.getDia_chia(),
-                x.getHo_ten(), x.getTrang_thai() ? "nghỉ" : "làm",
-                x.getChuc_vu() ? "admin" : "nhân viên", x.getMat_khau()
+                +count,
+               "NV"+ x.getId(),
+                x.getHoTen(),
+                x.getSdt(),
+                x.getDiaChia(),
+                x.getCccd(),
+                x.getGioiTinh() ? "Nữ" : "Nam",
+                x.getNgaySinh(),
+                x.getChucVu() ? "ADMIN" : "Nhân Viên",
+                x.getTrangThai() ? "Nghỉ Làm" : "Đang Làm"
             });
         }
 
     }
+
+    
+
+
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -473,56 +470,56 @@ public class NewJPanel extends javax.swing.JPanel {
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
 
-       if(check()){
-        Boolean gioi_tinh = jRadioNam.isSelected() ? true : false;
-        Date ngay_sinh = Date.valueOf(txt2.getText());
-        String cccd = txt3.getText();
-        String dia_chia = txt4.getText();
-        String ho_ten = txt5.getText();
-        Boolean trang_thai = jRadioLam.isSelected() ? false : true;
-        Boolean chuc_vu = jRadioAD.isSelected() ? true : false;
-        String mat_khau = txt6.getText();
-        //p.addNV(new VaiTro(gioi_tinh, ngay_sinh, cccd, dia_chia, ho_ten, mat_khau, trang_thai, chuc_vu));
-        p.addNV(new VaiTro(gioi_tinh, ngay_sinh, cccd, dia_chia, ho_ten, trang_thai, mat_khau, chuc_vu));
-        loadData();
-       }
+//       if(check()){
+//        Boolean gioi_tinh = jRadioNam.isSelected() ? true : false;
+//        Date ngay_sinh = Date.valueOf(txt2.getText());
+//        String cccd = txt3.getText();
+//        String dia_chia = txt4.getText();
+//        String ho_ten = txt5.getText();
+//        Boolean trang_thai = jRadioLam.isSelected() ? false : true;
+//        Boolean chuc_vu = jRadioAD.isSelected() ? true : false;
+//        String mat_khau = txt6.getText();
+//        //p.addNV(new VaiTro(gioi_tinh, ngay_sinh, cccd, dia_chia, ho_ten, mat_khau, trang_thai, chuc_vu));
+//        p.addNV(new VaiTro(gioi_tinh, ngay_sinh, cccd, dia_chia, ho_ten, trang_thai, mat_khau, chuc_vu));
+//        loadData();
+//       }
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-       if(check()){
-        int i = jTable1.getSelectedRow();
-        VaiTro x = p.getAll().get(i);
-        x.setGioi_tinh(jRadioNam.isSelected() ? true : false);
-        x.setNgay_sinh(Date.valueOf(txt2.getText()));
-        x.setCccd(txt3.getText());
-        x.setDia_chia(txt4.getText());
-        x.setHo_ten(txt5.getText());
-        x.setTrang_thai(jRadioLam.isSelected() ? false : true);
-        x.setTrang_thai(jRadioNghi.isSelected() ? true : false);
-        x.setChuc_vu(jRadioAD.isSelected() ? true : false);
-        x.setChuc_vu(jRadioNV.isSelected() ? false : true);
-        x.setMat_khau(txt6.getText());
-        p.update(x);
-        loadData();
-       }
+//       if(check()){
+//        int i = jTable1.getSelectedRow();
+//        VaiTro x = p.getAll().get(i);
+//        x.setGioi_tinh(jRadioNam.isSelected() ? true : false);
+//        x.setNgay_sinh(Date.valueOf(txt2.getText()));
+//        x.setCccd(txt3.getText());
+//        x.setDia_chia(txt4.getText());
+//        x.setHo_ten(txt5.getText());
+//        x.setTrang_thai(jRadioLam.isSelected() ? false : true);
+//        x.setTrang_thai(jRadioNghi.isSelected() ? true : false);
+//        x.setChuc_vu(jRadioAD.isSelected() ? true : false);
+//        x.setChuc_vu(jRadioNV.isSelected() ? false : true);
+//        x.setMat_khau(txt6.getText());
+//        p.update(x);
+//        loadData();
+//       }
 
     }//GEN-LAST:event_jButton2ActionPerformed
 
     private void jTable1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTable1MouseClicked
-        int i = jTable1.getSelectedRow();
-        VaiTro x = p.getAll().get(i);
-        txt1.setText(x.getId() + "");
-        jRadioNam.setSelected(x.getGioi_tinh() ? false : true);
-        jRadioNu.setSelected(x.getGioi_tinh() ? true : false);
-        txt2.setText(x.getNgay_sinh() + "");
-        txt3.setText(x.getCccd());
-        txt4.setText(x.getDia_chia());
-        txt5.setText(x.getHo_ten());
-        jRadioLam.setSelected(x.getTrang_thai() ? false : true);
-        jRadioNghi.setSelected(x.getTrang_thai() ? true : false);
-        jRadioNV.setSelected(x.getChuc_vu() ? false : true);
-        jRadioAD.setSelected(x.getChuc_vu() ? true : false);
-        txt6.setText(x.getMat_khau());
+//        int i = jTable1.getSelectedRow();
+//        VaiTro x = p.getAll().get(i);
+//        txt1.setText(x.getId() + "");
+//        jRadioNam.setSelected(x.getGioi_tinh() ? false : true);
+//        jRadioNu.setSelected(x.getGioi_tinh() ? true : false);
+//        txt2.setText(x.getNgay_sinh() + "");
+//        txt3.setText(x.getCccd());
+//        txt4.setText(x.getDia_chia());
+//        txt5.setText(x.getHo_ten());
+//        jRadioLam.setSelected(x.getTrang_thai() ? false : true);
+//        jRadioNghi.setSelected(x.getTrang_thai() ? true : false);
+//        jRadioNV.setSelected(x.getChuc_vu() ? false : true);
+//        jRadioAD.setSelected(x.getChuc_vu() ? true : false);
+//        txt6.setText(x.getMat_khau());
         
     }//GEN-LAST:event_jTable1MouseClicked
 
@@ -539,64 +536,64 @@ public class NewJPanel extends javax.swing.JPanel {
     }//GEN-LAST:event_jButton3ActionPerformed
 
     private void jButton6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton6ActionPerformed
-       loadDataV2();
+//       loadDataV2();
     }//GEN-LAST:event_jButton6ActionPerformed
 
     private void jTable2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTable2MouseClicked
-       int i = jTable2.getSelectedRow();
-        VaiTro x = p.getAllV2().get(i);
-        txt1.setText(x.getId() + "");
-        jRadioNam.setSelected(x.getGioi_tinh() ? false : true);
-        jRadioNu.setSelected(x.getGioi_tinh() ? true : false);
-        txt2.setText(x.getNgay_sinh() + "");
-        txt3.setText(x.getCccd());
-        txt4.setText(x.getDia_chia());
-        txt5.setText(x.getHo_ten());
-        jRadioLam.setSelected(x.getTrang_thai() ? false : true);
-        jRadioNghi.setSelected(x.getTrang_thai() ? true : false);
-        jRadioNV.setSelected(x.getChuc_vu() ? false : true);
-        jRadioAD.setSelected(x.getChuc_vu() ? true : false);
-        txt6.setText(x.getMat_khau());
+//       int i = jTable2.getSelectedRow();
+//        VaiTro x = p.getAllV2().get(i);
+//        txt1.setText(x.getId() + "");
+//        jRadioNam.setSelected(x.getGioi_tinh() ? false : true);
+//        jRadioNu.setSelected(x.getGioi_tinh() ? true : false);
+//        txt2.setText(x.getNgay_sinh() + "");
+//        txt3.setText(x.getCccd());
+//        txt4.setText(x.getDia_chia());
+//        txt5.setText(x.getHo_ten());
+//        jRadioLam.setSelected(x.getTrang_thai() ? false : true);
+//        jRadioNghi.setSelected(x.getTrang_thai() ? true : false);
+//        jRadioNV.setSelected(x.getChuc_vu() ? false : true);
+//        jRadioAD.setSelected(x.getChuc_vu() ? true : false);
+//        txt6.setText(x.getMat_khau());
         
     }//GEN-LAST:event_jTable2MouseClicked
-
+//
     private void jButton7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton7ActionPerformed
          int i = jTable2.getSelectedRow();
          VaiTro x = p.getAllV2().get(i);
          System.out.println(x.getId());
          p.deleteV2(x.getId());
-         loadDataV2();
+//         loadDataV2();
     }//GEN-LAST:event_jButton7ActionPerformed
     
-    public void showDetail(VaiTro x){
-        txt1.setText(x.getId() + "");
-        jRadioNam.setSelected(x.getGioi_tinh() ? false : true);
-        jRadioNu.setSelected(x.getGioi_tinh() ? true : false);
-        txt2.setText(x.getNgay_sinh() + "");
-        txt3.setText(x.getCccd());
-        txt4.setText(x.getDia_chia());
-        txt5.setText(x.getHo_ten());
-        jRadioLam.setSelected(x.getTrang_thai() ? false : true);
-        jRadioNghi.setSelected(x.getTrang_thai() ? true : false);
-        jRadioNV.setSelected(x.getChuc_vu() ? false : true);
-        jRadioAD.setSelected(x.getChuc_vu() ? true : false);
-        txt6.setText(x.getMat_khau());
-    }
-    
-    
+//    public void showDetail(VaiTro x){
+//        txt1.setText(x.getId() + "");
+//        jRadioNam.setSelected(x.getGioi_tinh() ? false : true);
+//        jRadioNu.setSelected(x.getGioi_tinh() ? true : false);
+//        txt2.setText(x.getNgay_sinh() + "");
+//        txt3.setText(x.getCccd());
+//        txt4.setText(x.getDia_chia());
+//        txt5.setText(x.getHo_ten());
+//        jRadioLam.setSelected(x.getTrang_thai() ? false : true);
+//        jRadioNghi.setSelected(x.getTrang_thai() ? true : false);
+//        jRadioNV.setSelected(x.getChuc_vu() ? false : true);
+//        jRadioAD.setSelected(x.getChuc_vu() ? true : false);
+//        txt6.setText(x.getMat_khau());
+//    }
+//    
+//    
     private void jButton8ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton8ActionPerformed
-          if (txt7.getText().isEmpty()) {
-            System.out.println("chưa nhập mã");
-        } else {
-            VaiTro x = p.finbyName(txt7.getText());
-            if (x == null) {
-             JOptionPane.showMessageDialog(this, "k tìm thấy");
-            } else {
-                JOptionPane.showMessageDialog(this, "tìm thấy");
-                showDetail(x);   
-            }
-        }
-        
+//          if (txt7.getText().isEmpty()) {
+//            System.out.println("chưa nhập mã");
+//        } else {
+//            VaiTro x = p.finbyName(txt7.getText());
+//            if (x == null) {
+//             JOptionPane.showMessageDialog(this, "k tìm thấy");
+//            } else {
+//                JOptionPane.showMessageDialog(this, "tìm thấy");
+//                showDetail(x);   
+//            }
+//        }
+//        
         
     }//GEN-LAST:event_jButton8ActionPerformed
 

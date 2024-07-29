@@ -28,7 +28,6 @@ public class reponeSanPhamCT {
     private Date createAt;
     private Date updateAt;
     private String createBy;
-
     private String updateBy;
     private int trangThai;
 

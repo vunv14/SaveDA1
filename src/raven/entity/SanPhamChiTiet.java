@@ -4,106 +4,122 @@
  */
 package raven.entity;
 
-import java.util.Date;
+import java.sql.Date;
+
 
 /**
  *
- * @author Nguyễn Vũ
+ * @author Nguyen Nam Truong
  */
+
 public class SanPhamChiTiet {
-    private int id;
-    private int idKichThuoc;
-    private int idThuongHieu;
-    private int idXuatXu;
-    private int idSp;
-    private int idAnh;
-    private int idMau;
-    private int idChatLieu;
-    private int idKieuAo;
+ 
+    private Integer id;
+
+    private int  IdKichThuoc;
+
+    private int  IdThuongHieu;
+
+    private int IdXuatXu ;
+
+    private int IdSp;
+
+    private int IdAnh;
+
+    private int IdMau;
+
+    private int IdChatLieu;
+
+    private int IdKieuAo;
+    
     private String ma;
-    private Float gia;
-    private int soLuong;
-    private String doDay;
+    
+       private Float gia;
+       
+         private Integer soLuong;
+         
+             private String doDay;
+
     private Date createAt;
+
     private Date updateAt;
-    private String createBy;
 
-    private String updateBy;
-    private int trangThai;
+    private Integer createBy;
 
-    public SanPhamChiTiet() {
-    }
+    private Integer updateBy;
 
-    public int getId() {
+    private Boolean trangThai;
+
+    public Integer getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(Integer id) {
         this.id = id;
     }
 
     public int getIdKichThuoc() {
-        return idKichThuoc;
+        return IdKichThuoc;
     }
 
-    public void setIdKichThuoc(int idKichThuoc) {
-        this.idKichThuoc = idKichThuoc;
+    public void setIdKichThuoc(int IdKichThuoc) {
+        this.IdKichThuoc = IdKichThuoc;
     }
 
     public int getIdThuongHieu() {
-        return idThuongHieu;
+        return IdThuongHieu;
     }
 
-    public void setIdThuongHieu(int idThuongHieu) {
-        this.idThuongHieu = idThuongHieu;
+    public void setIdThuongHieu(int IdThuongHieu) {
+        this.IdThuongHieu = IdThuongHieu;
     }
 
     public int getIdXuatXu() {
-        return idXuatXu;
+        return IdXuatXu;
     }
 
-    public void setIdXuatXu(int idXuatXu) {
-        this.idXuatXu = idXuatXu;
+    public void setIdXuatXu(int IdXuatXu) {
+        this.IdXuatXu = IdXuatXu;
     }
 
     public int getIdSp() {
-        return idSp;
+        return IdSp;
     }
 
-    public void setIdSp(int idSp) {
-        this.idSp = idSp;
+    public void setIdSp(int IdSp) {
+        this.IdSp = IdSp;
     }
 
     public int getIdAnh() {
-        return idAnh;
+        return IdAnh;
     }
 
-    public void setIdAnh(int idAnh) {
-        this.idAnh = idAnh;
+    public void setIdAnh(int IdAnh) {
+        this.IdAnh = IdAnh;
     }
 
     public int getIdMau() {
-        return idMau;
+        return IdMau;
     }
 
-    public void setIdMau(int idMau) {
-        this.idMau = idMau;
+    public void setIdMau(int IdMau) {
+        this.IdMau = IdMau;
     }
 
     public int getIdChatLieu() {
-        return idChatLieu;
+        return IdChatLieu;
     }
 
-    public void setIdChatLieu(int idChatLieu) {
-        this.idChatLieu = idChatLieu;
+    public void setIdChatLieu(int IdChatLieu) {
+        this.IdChatLieu = IdChatLieu;
     }
 
     public int getIdKieuAo() {
-        return idKieuAo;
+        return IdKieuAo;
     }
 
-    public void setIdKieuAo(int idKieuAo) {
-        this.idKieuAo = idKieuAo;
+    public void setIdKieuAo(int IdKieuAo) {
+        this.IdKieuAo = IdKieuAo;
     }
 
     public String getMa() {
@@ -122,11 +138,11 @@ public class SanPhamChiTiet {
         this.gia = gia;
     }
 
-    public int getSoLuong() {
+    public Integer getSoLuong() {
         return soLuong;
     }
 
-    public void setSoLuong(int soLuong) {
+    public void setSoLuong(Integer soLuong) {
         this.soLuong = soLuong;
     }
 
@@ -154,40 +170,63 @@ public class SanPhamChiTiet {
         this.updateAt = updateAt;
     }
 
-    public String getCreateBy() {
+    public Integer getCreateBy() {
         return createBy;
     }
 
-    public void setCreateBy(String createBy) {
+    public void setCreateBy(Integer createBy) {
         this.createBy = createBy;
     }
 
-    public String getUpdateBy() {
+    public Integer getUpdateBy() {
         return updateBy;
     }
 
-    public void setUpdateBy(String updateBy) {
+    public void setUpdateBy(Integer updateBy) {
         this.updateBy = updateBy;
     }
 
-    public int getTrangThai() {
-        return trangThai;
-    }
+public Boolean getTrangThai() {
+    return trangThai != null ? trangThai : false; // Hoặc giá trị mặc định khác
+}
 
-    public void setTrangThai(int trangThai) {
+    public void setTrangThai(Boolean trangThai) {
         this.trangThai = trangThai;
     }
 
-    public SanPhamChiTiet(int id, int idKichThuoc, int idThuongHieu, int idXuatXu, int idSp, int idAnh, int idMau, int idChatLieu, int idKieuAo, String ma, Float gia, int soLuong, String doDay, Date createAt, Date updateAt, String createBy, String updateBy, int trangThai) {
+    public SanPhamChiTiet() {
+    }
+
+    public SanPhamChiTiet(int IdKichThuoc, int IdThuongHieu, int IdXuatXu, int IdSp, int IdAnh, int IdMau, int IdChatLieu, int IdKieuAo, String ma, Float gia, Integer soLuong, String doDay, Date createAt, Date updateAt, Integer createBy, Integer updateBy, Boolean trangThai) {
+        this.IdKichThuoc = IdKichThuoc;
+        this.IdThuongHieu = IdThuongHieu;
+        this.IdXuatXu = IdXuatXu;
+        this.IdSp = IdSp;
+        this.IdAnh = IdAnh;
+        this.IdMau = IdMau;
+        this.IdChatLieu = IdChatLieu;
+        this.IdKieuAo = IdKieuAo;
+        this.ma = ma;
+        this.gia = gia;
+        this.soLuong = soLuong;
+        this.doDay = doDay;
+        this.createAt = createAt;
+        this.updateAt = updateAt;
+        this.createBy = createBy;
+        this.updateBy = updateBy;
+        this.trangThai = trangThai;
+    }
+
+    public SanPhamChiTiet(Integer id, int IdKichThuoc, int IdThuongHieu, int IdXuatXu, int IdSp, int IdAnh, int IdMau, int IdChatLieu, int IdKieuAo, String ma, Float gia, Integer soLuong, String doDay, Date createAt, Date updateAt, Integer createBy, Integer updateBy, Boolean trangThai) {
         this.id = id;
-        this.idKichThuoc = idKichThuoc;
-        this.idThuongHieu = idThuongHieu;
-        this.idXuatXu = idXuatXu;
-        this.idSp = idSp;
-        this.idAnh = idAnh;
-        this.idMau = idMau;
-        this.idChatLieu = idChatLieu;
-        this.idKieuAo = idKieuAo;
+        this.IdKichThuoc = IdKichThuoc;
+        this.IdThuongHieu = IdThuongHieu;
+        this.IdXuatXu = IdXuatXu;
+        this.IdSp = IdSp;
+        this.IdAnh = IdAnh;
+        this.IdMau = IdMau;
+        this.IdChatLieu = IdChatLieu;
+        this.IdKieuAo = IdKieuAo;
         this.ma = ma;
         this.gia = gia;
         this.soLuong = soLuong;
@@ -199,15 +238,15 @@ public class SanPhamChiTiet {
         this.trangThai = trangThai;
     }
 
-    public SanPhamChiTiet(int idKichThuoc, int idThuongHieu, int idXuatXu, int idSp, int idAnh, int idMau, int idChatLieu, int idKieuAo, String ma, Float gia, int soLuong, String doDay, Date createAt, Date updateAt, String createBy, String updateBy, int trangThai) {
-        this.idKichThuoc = idKichThuoc;
-        this.idThuongHieu = idThuongHieu;
-        this.idXuatXu = idXuatXu;
-        this.idSp = idSp;
-        this.idAnh = idAnh;
-        this.idMau = idMau;
-        this.idChatLieu = idChatLieu;
-        this.idKieuAo = idKieuAo;
+    public SanPhamChiTiet(int IdKichThuoc, int IdThuongHieu, int IdXuatXu, int IdSp, int IdAnh, int IdMau, int IdChatLieu, int IdKieuAo, String ma, Float gia, Integer soLuong, String doDay, Date createAt, Date updateAt, Integer createBy, Integer updateBy) {
+        this.IdKichThuoc = IdKichThuoc;
+        this.IdThuongHieu = IdThuongHieu;
+        this.IdXuatXu = IdXuatXu;
+        this.IdSp = IdSp;
+        this.IdAnh = IdAnh;
+        this.IdMau = IdMau;
+        this.IdChatLieu = IdChatLieu;
+        this.IdKieuAo = IdKieuAo;
         this.ma = ma;
         this.gia = gia;
         this.soLuong = soLuong;
@@ -216,9 +255,12 @@ public class SanPhamChiTiet {
         this.updateAt = updateAt;
         this.createBy = createBy;
         this.updateBy = updateBy;
-        this.trangThai = trangThai;
     }
-
+    
     
 
+    
+    
+    
+    
 }

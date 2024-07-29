@@ -47,7 +47,7 @@ public class RepositorySanPhamCT {
         LEFT JOIN kich_thuoc kt ON spct.id_kich_thuoc = kt.id
         LEFT JOIN xuat_xu xx ON spct.id_xuat_xu = xx.id
         LEFT JOIN mau m ON spct.id_mau = m.id
-        WHERE spct.trang_thai = 1 OR spct.trang_thai = 2
+        WHERE spct.trang_thai = 1
         ORDER BY spct.ma
         OFFSET ? ROWS FETCH NEXT ? ROWS ONLY
     """;
@@ -86,7 +86,7 @@ public class RepositorySanPhamCT {
             LEFT JOIN kich_thuoc kt ON spct.id_kich_thuoc = kt.id
             LEFT JOIN xuat_xu xx ON spct.id_xuat_xu = xx.id
             LEFT JOIN mau m ON spct.id_mau = m.id
-            WHERE (spct.trang_thai = 1 OR spct.trang_thai = 2) AND spct.id_sp = ?
+            WHERE spct.trang_thai = 1 and spct.id_sp = ?
             ORDER BY spct.ma 
             OFFSET ? ROWS
             FETCH NEXT ? ROWS ONLY
@@ -165,8 +165,8 @@ public class RepositorySanPhamCT {
             ps.setObject(7, spct.getIdKieuAo());
             ps.setObject(8, (Date) spct.getCreateAt());
             ps.setObject(9, (Date) spct.getUpdateAt());
-            ps.setString(10, spct.getCreateBy());
-            ps.setString(11, spct.getUpdateBy());
+            ps.setObject(10, spct.getCreateBy());
+            ps.setObject(11, spct.getUpdateBy());
             ps.setObject(12, spct.getGia());
             ps.setObject(13, spct.getSoLuong());
             ps.setObject(14, spct.getDoDay());
@@ -226,9 +226,9 @@ public class RepositorySanPhamCT {
             ps.setString(12, spct.getDoDay());
             ps.setDate(13, (Date) spct.getCreateAt());
             ps.setDate(14, (Date) spct.getUpdateAt());
-            ps.setString(15, spct.getCreateBy());
-            ps.setString(16, spct.getUpdateBy());
-            ps.setInt(17, spct.getTrangThai());
+            ps.setInt(15, spct.getCreateBy());
+            ps.setInt(16, spct.getUpdateBy());
+            ps.setBoolean(17, spct.getTrangThai());
             return ps.executeUpdate();
 
         } catch (Exception e) {
@@ -434,5 +434,72 @@ public class RepositorySanPhamCT {
         }
         return null;
     }
+  
+  
+  
+  
+  
+  public List<ModelSanPhamCT> findAllBanHang(String tenSp, String size, String material, String color) {
+    // Xây dựng câu lệnh SQL
+    String sql = """
+    SELECT spct.ma, spct.so_luong, spct.gia, sp.ten_san_pham, 
+           cl.ten_loai_vai, kt.size, th.ten_thuong_hieu,
+           xx.dia_chi, m.loai_mau, spct.do_day, ka.ten
+    FROM san_pham_chi_tiet spct
+    LEFT JOIN san_pham sp ON spct.id_sp = sp.id
+    LEFT JOIN chat_lieu cl ON spct.id_chat_lieu = cl.id
+    LEFT JOIN thuong_hieu th ON spct.id_thuong_hieu = th.id
+    LEFT JOIN kieu_ao ka ON spct.id_kieu_ao = ka.id
+    LEFT JOIN kich_thuoc kt ON spct.id_kich_thuoc = kt.id
+    LEFT JOIN xuat_xu xx ON spct.id_xuat_xu = xx.id
+    LEFT JOIN mau m ON spct.id_mau = m.id
+    WHERE (spct.trang_thai = 1 OR spct.trang_thai = 2)
+    """;
+    StringBuilder sb = new StringBuilder(sql);
+
+    if (tenSp != null && !tenSp.isEmpty()) {
+        sb.append(" AND sp.ten_san_pham LIKE ?");
+    }
+    if (size != null && !size.equals("Tất Cả")) {
+        sb.append(" AND kt.size = ?");
+    }
+    if (material != null && !material.equals("Tất Cả")) {
+        sb.append(" AND cl.ten_loai_vai = ?");
+    }
+    if (color != null && !color.equals("Tất Cả")) {
+        sb.append(" AND m.loai_mau = ?");
+    }
+
+    List<ModelSanPhamCT> list = new ArrayList<>();
+    try (Connection con = DBConnect.getConnection();
+         PreparedStatement ps = con.prepareStatement(sb.toString())) {
+
+        int index = 1;
+        if (tenSp != null && !tenSp.isEmpty()) {
+            ps.setString(index++, "%" + tenSp + "%");
+        }
+        if (size != null && !size.equals("Tất Cả")) {
+            ps.setString(index++, size);
+        }
+        if (material != null && !material.equals("Tất Cả")) {
+            ps.setString(index++, material);
+        }
+        if (color != null && !color.equals("Tất Cả")) {
+            ps.setString(index++, color);
+        }
+
+        try (ResultSet rs = ps.executeQuery()) {
+            while (rs.next()) {
+                list.add(new ModelSanPhamCT(rs.getString(1), rs.getInt(2), rs.getFloat(3),
+                        rs.getString(4), rs.getString(5), rs.getString(6), rs.getString(7),
+                        rs.getString(8), rs.getString(9), rs.getString(10), rs.getString(11)));
+            }
+        }
+    } catch (Exception e) {
+        e.printStackTrace();
+    }
+    return list;
+}
+
 
 }

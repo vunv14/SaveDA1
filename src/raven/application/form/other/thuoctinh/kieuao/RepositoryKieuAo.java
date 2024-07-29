@@ -45,11 +45,11 @@ public class RepositoryKieuAo {
     }
     
     public int addKieuAo(KieuAo ka){
-        sql = "INSERT INTO kieu_ao (ma, ten, trang_thai) VALUES (?,?,1)";
+        sql = "INSERT INTO kieu_ao (ma, ten, trang_thai) VALUES (?,?,?)";
         try {
             con =DBConnect.getConnection();
             ps = con.prepareStatement(sql);
-            ps.setObject(1,ka.getMa() );
+            ps.setObject(1,ka.getMa());
             ps.setObject(2, ka.getTen());
             ps.setObject(3, ka.getTrangThai());
             return ps.executeUpdate();

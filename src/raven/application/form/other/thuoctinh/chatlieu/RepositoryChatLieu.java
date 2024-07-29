@@ -45,12 +45,12 @@ public class RepositoryChatLieu {
     
     
      public int addChatLieu(ChatLieu cl){
-        sql = "INSERT INTO chat_lieu(ma_chat_lieu,ten_loai_vai, trang_thai) VALUES (?,?,1);";
+        sql = "INSERT INTO chat_lieu(ma_chat_lieu,ten_loai_vai, trang_thai) VALUES (?,?,?);";
         try {
             con =DBConnect.getConnection();
             ps = con.prepareStatement(sql);
-            ps.setObject(1,cl.getMa() );
-            ps.setObject(2, cl.getLoaivai());
+            ps.setObject(1,cl.getMaChatLieu());
+            ps.setObject(2, cl.getTenLoaiVai());
             ps.setObject(3, cl.getTrangThai());
             return ps.executeUpdate();
         } catch (Exception e) {
@@ -78,7 +78,7 @@ public class RepositoryChatLieu {
         try {
             con = DBConnect.getConnection();
             ps = con.prepareStatement(sql);
-            ps.setObject(1, cl.getLoaivai());
+            ps.setObject(1, cl.getTenLoaiVai());
             ps.setObject(2, id);
             return ps.executeUpdate();
         } catch (Exception e) {

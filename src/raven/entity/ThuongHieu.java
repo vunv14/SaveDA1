@@ -4,32 +4,67 @@
  */
 package raven.entity;
 
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
 
-@Getter
-@Setter
-@NoArgsConstructor
-@AllArgsConstructor
-@Builder
 public class ThuongHieu {
 
     private Integer id;
-    
-    private String ma;
-    
-    private String thuongHieu;
-    
+    private String maThuongHieu;
+
+    private String tenThuongHieu;
     private Boolean trangThai;
 
-    public ThuongHieu(String ma, String thuongHieu, Boolean trangThai) {
-        this.ma = ma;
-        this.thuongHieu = thuongHieu;
+    public ThuongHieu() {
+    }
+    
+    
+    public ThuongHieu(Integer id, String maThuongHieu, String tenThuongHieu, Boolean trangThai) {
+        this.id = id;
+        this.maThuongHieu = maThuongHieu;
+        this.tenThuongHieu = tenThuongHieu;
+        this.trangThai = trangThai;
+    }
+
+    public Integer getId() {
+        return id;
+    }
+
+    public void setId(Integer id) {
+        this.id = id;
+    }
+
+    public String getMaThuongHieu() {
+        return maThuongHieu;
+    }
+
+    public void setMaThuongHieu(String maThuongHieu) {
+        this.maThuongHieu = maThuongHieu;
+    }
+
+    public String getTenThuongHieu() {
+        return tenThuongHieu;
+    }
+
+    public void setTenThuongHieu(String tenThuongHieu) {
+        this.tenThuongHieu = tenThuongHieu;
+    }
+
+    public Boolean getTrangThai() {
+        return trangThai;
+    }
+
+    public void setTrangThai(Boolean trangThai) {
+        this.trangThai = trangThai;
+    }
+
+    public ThuongHieu(String maThuongHieu, String tenThuongHieu, Boolean trangThai) {
+        this.maThuongHieu = maThuongHieu;
+        this.tenThuongHieu = tenThuongHieu;
         this.trangThai = trangThai;
     }
     
+    
+    
+    
+  
     
 }

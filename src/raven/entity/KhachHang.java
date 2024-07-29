@@ -4,18 +4,93 @@
  */
 package raven.entity;
 
-//import lombok.Data;
-
-//@Data
 public class KhachHang {
 
+ 
     private Integer id;
-    
-    private String ten_kh;
-    
-    private Boolean gioi_tinh;
-    
+
+
+    private String maKhachHang;
+
+
+    private String tenKh;
+
+
+    private Boolean gioiTinh;
+
+ 
     private String sdt;
+
+    private Boolean trangThai;
+
+    public KhachHang() {
+    }
     
-    private Boolean trang_thai;
+    
+
+    public KhachHang(Integer id, String maKhachHang, String tenKh, Boolean gioiTinh, String sdt, Boolean trangThai) {
+        this.id = id;
+        this.maKhachHang = maKhachHang;
+        this.tenKh = tenKh;
+        this.gioiTinh = gioiTinh;
+        this.sdt = sdt;
+        this.trangThai = trangThai;
+    }
+
+    public Integer getId() {
+        return id;
+    }
+
+    public void setId(Integer id) {
+        this.id = id;
+    }
+
+    public String getMaKhachHang() {
+        return maKhachHang;
+    }
+
+    public void setMaKhachHang(String maKhachHang) {
+        this.maKhachHang = maKhachHang;
+    }
+
+    public String getTenKh() {
+        return tenKh;
+    }
+
+    public void setTenKh(String tenKh) {
+        this.tenKh = tenKh;
+    }
+
+    public Boolean getGioiTinh() {
+        return gioiTinh;
+    }
+
+    public void setGioiTinh(Boolean gioiTinh) {
+        this.gioiTinh = gioiTinh;
+    }
+
+    public String getSdt() {
+        return sdt;
+    }
+
+    public void setSdt(String sdt) {
+        this.sdt = sdt;
+    }
+
+    public Boolean getTrangThai() {
+        return trangThai;
+    }
+
+    public void setTrangThai(Boolean trangThai) {
+        this.trangThai = trangThai;
+    }
+
+    public KhachHang(String maKhachHang, String tenKh, Boolean gioiTinh, String sdt) {
+        this.maKhachHang = maKhachHang;
+        this.tenKh = tenKh;
+        this.gioiTinh = gioiTinh;
+        this.sdt = sdt;
+    }
+    
+    
 }

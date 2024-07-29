@@ -4,33 +4,76 @@
  */
 package raven.entity;
 
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.Data;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
-
-@Data
-@Builder
-@AllArgsConstructor
-@NoArgsConstructor
-@Getter
-@Setter
 
 public class XuatXu {
 
+
     private Integer id;
 
-    private String ma;
+    private String maXuatXu;
 
-    private String diaChi;
+    private String diaChia;
 
     private Boolean trangThai;
 
-    public XuatXu(String ma, String diaChi) {
-        this.ma = ma;
-        this.diaChi = diaChi;
+    public XuatXu() {
+    }
+    
+
+    public XuatXu(Integer id, String maXuatXu, String diaChia, Boolean trangThai) {
+        this.id = id;
+        this.maXuatXu = maXuatXu;
+        this.diaChia = diaChia;
+        this.trangThai = trangThai;
     }
 
+    public Integer getId() {
+        return id;
+    }
+
+    public void setId(Integer id) {
+        this.id = id;
+    }
+
+    public String getMaXuatXu() {
+        return maXuatXu;
+    }
+
+    public void setMaXuatXu(String maXuatXu) {
+        this.maXuatXu = maXuatXu;
+    }
+
+    public String getDiaChia() {
+        return diaChia;
+    }
+
+    public void setDiaChia(String diaChia) {
+        this.diaChia = diaChia;
+    }
+
+    public Boolean getTrangThai() {
+        return trangThai;
+    }
+
+    public void setTrangThai(Boolean trangThai) {
+        this.trangThai = trangThai;
+    }
+
+    public XuatXu(String maXuatXu, String diaChia) {
+        this.maXuatXu = maXuatXu;
+        this.diaChia = diaChia;
+    }
+
+    public XuatXu(String maXuatXu, String diaChia, Boolean trangThai) {
+        this.maXuatXu = maXuatXu;
+        this.diaChia = diaChia;
+        this.trangThai = trangThai;
+    }
+   
+    
+    
 }
+
+
+
+

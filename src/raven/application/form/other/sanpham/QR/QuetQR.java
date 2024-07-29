@@ -45,12 +45,13 @@ public class QuetQR extends javax.swing.JDialog implements Runnable, ThreadFacto
     private Executor executor = Executors.newSingleThreadExecutor(this);
     public static String maSPCT;
     Viewsanpham viewsanpham;
-    public QuetQR( Viewsanpham viewsanpham, boolean modal) {
+
+    public QuetQR(Viewsanpham viewsanpham, boolean modal) {
         this.viewsanpham = viewsanpham;
         initComponents();
         this.setTitle("Quét Mã QR");
         this.setLocationRelativeTo(null);
-maSPCT = txt_ma.getText();
+        maSPCT = txt_ma.getText();
         // Khởi tạo webcam
         this.initWebcam();
 
@@ -67,8 +68,8 @@ maSPCT = txt_ma.getText();
         // Bắt đầu luồng quét QR
         executor.execute(this);
     }
-    
-    String getText(){
+
+    String getText() {
         String maSPCT = txt_ma.getText();
         return maSPCT;
     }
@@ -145,7 +146,7 @@ maSPCT = txt_ma.getText();
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
                 Viewsanpham viewsanpham = new Viewsanpham();
-                
+
                 QuetQR dialog = new QuetQR(viewsanpham, true);
                 dialog.addWindowListener(new java.awt.event.WindowAdapter() {
                     @Override
@@ -166,7 +167,7 @@ maSPCT = txt_ma.getText();
         panel = new WebcamPanel(webcam);
         panel.setPreferredSize(size);
         panel.setFPSDisplayed(true);
-                                       
+
         jPanel2.setLayout(new java.awt.BorderLayout()); // Sử dụng BorderLayout
         jPanel2.add(panel, java.awt.BorderLayout.CENTER); // Thêm panel vào jPanel2
 
@@ -184,58 +185,58 @@ maSPCT = txt_ma.getText();
     @Override
     public void run() {
         while (true) {
-        try {
-            Thread.sleep(100);
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
-
-        Result result = null;
-        BufferedImage image = null;
-
-        if (webcam.isOpen()) {
-            if ((image = webcam.getImage()) == null) {
-                continue;
+            try {
+                Thread.sleep(100);
+            } catch (InterruptedException e) {
+                e.printStackTrace();
             }
-        } else {
-            System.out.println("Webcam chưa mở.");
-            return; // Kết thúc phương thức nếu webcam không mở
-        }
 
-        // Lưu ảnh vào đĩa để kiểm tra lỗi
-        try {
-            ImageIO.write(image, "PNG", new File("debug_image.png"));
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
+            Result result = null;
+            BufferedImage image = null;
 
-        LuminanceSource source = new BufferedImageLuminanceSource(image);
-        BinaryBitmap bitmap = new BinaryBitmap(new HybridBinarizer(source));
+            if (webcam.isOpen()) {
+                if ((image = webcam.getImage()) == null) {
+                    continue;
+                }
+            } else {
+                System.out.println("Webcam chưa mở.");
+                return; // Kết thúc phương thức nếu webcam không mở
+            }
 
-        try {
-            result = new MultiFormatReader().decode(bitmap);
-            System.out.println(result+"UUUUUUUUUUU");
-        } catch (NotFoundException e) {
-            // Không tìm thấy mã QR trong ảnh
-            System.out.println("Không tìm thấy mã QR trong ảnh.");
-            e.printStackTrace();
-            continue; // Tiếp tục vòng lặp để quét ảnh tiếp theo
-        } catch (Exception e) {
-            // Lỗi khi giải mã mã QR
-            System.out.println("Lỗi khi giải mã mã QR.");
-            e.printStackTrace();
-            continue; // Tiếp tục vòng lặp để quét ảnh tiếp theo
-        }
+            // Lưu ảnh vào đĩa để kiểm tra lỗi
+            try {
+                ImageIO.write(image, "PNG", new File("debug_image.png"));
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
 
-        if (result != null) {
-            maSPCT = result.getText();
-            System.out.println("QR Code Data: " + maSPCT);
-            showProductInfo(maSPCT); // Mở ProductInfoDialog
-            break; // Thoát khỏi vòng lặp khi quét thành công
-        } else {
-            System.out.println("Kết quả giải mã là null.");
+            LuminanceSource source = new BufferedImageLuminanceSource(image);
+            BinaryBitmap bitmap = new BinaryBitmap(new HybridBinarizer(source));
+
+            try {
+                result = new MultiFormatReader().decode(bitmap);
+                System.out.println(result + "UUUUUUUUUUU");
+            } catch (NotFoundException e) {
+                // Không tìm thấy mã QR trong ảnh
+                System.out.println("Không tìm thấy mã QR trong ảnh.");
+                e.printStackTrace();
+                continue; // Tiếp tục vòng lặp để quét ảnh tiếp theo
+            } catch (Exception e) {
+                // Lỗi khi giải mã mã QR
+                System.out.println("Lỗi khi giải mã mã QR.");
+                e.printStackTrace();
+                continue; // Tiếp tục vòng lặp để quét ảnh tiếp theo
+            }
+
+            if (result != null) {
+                maSPCT = result.getText();
+                System.out.println("QR Code Data: " + maSPCT);
+                showProductInfo(maSPCT); // Mở ProductInfoDialog
+                break; // Thoát khỏi vòng lặp khi quét thành công
+            } else {
+                System.out.println("Kết quả giải mã là null.");
+            }
         }
-    }
     }
 
     @Override
@@ -247,16 +248,16 @@ maSPCT = txt_ma.getText();
 
     }
 
-   private void showProductInfo(String qrCodeData) {
-    System.out.println(qrCodeData + "aaaaaaaaaaa");
-    ModelSanPhamCT product = new RepositorySanPhamCT().getAllSPCTByMa(qrCodeData);
-    System.out.println("Product Info: " + product); // Thêm thông báo kiểm tra
+    private void showProductInfo(String qrCodeData) {
+        System.out.println(qrCodeData + "aaaaaaaaaaa");
+        ModelSanPhamCT product = new RepositorySanPhamCT().getAllSPCTByMa(qrCodeData);
+        System.out.println("Product Info: " + product); // Thêm thông báo kiểm tra
 
-    java.awt.EventQueue.invokeLater(() -> {
-        ProductInfoDialog dialog = new ProductInfoDialog(new javax.swing.JFrame(), true);
-        dialog.setProductDetails(product); // Gọi phương thức setProductDetails
-        dialog.setVisible(true);
-    });
-}
+        java.awt.EventQueue.invokeLater(() -> {
+            ProductInfoDialog dialog = new ProductInfoDialog(new javax.swing.JFrame(), true);
+            dialog.setProductDetails(product); // Gọi phương thức setProductDetails
+            dialog.setVisible(true);
+        });
+    }
 
 }

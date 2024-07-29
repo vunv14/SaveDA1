@@ -50,6 +50,7 @@ public class RepositoryMau {
         try {
             con = DBConnect.getConnection();
             ps = con.prepareStatement(sql);
+            ps.setObject(1, m.getMaMau());
             ps.setObject(2, m.getLoaiMau());
             return ps.executeUpdate();
         } catch (Exception e) {

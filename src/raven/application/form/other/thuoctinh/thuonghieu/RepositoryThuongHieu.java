@@ -45,13 +45,14 @@ public class RepositoryThuongHieu {
      
        public int addThuongHieu(ThuongHieu th) {
         sql = """
-             insert into mau (ma_mau,loai_mau) values(?,?);
+             insert into mau (ma_mau,loai_mau,trang_thai) values(?,?,?);
               """;
         try {
             con = DBConnect.getConnection();
             ps = con.prepareStatement(sql);
-            ps.setObject(1, th.getMa());
-            ps.setObject(2, th.getThuongHieu());
+            ps.setObject(1, th.getMaThuongHieu());
+            ps.setObject(2, th.getTenThuongHieu());
+                    ps.setObject(3, th.getTrangThai());
             return ps.executeUpdate();
         } catch (Exception e) {
             e.printStackTrace();

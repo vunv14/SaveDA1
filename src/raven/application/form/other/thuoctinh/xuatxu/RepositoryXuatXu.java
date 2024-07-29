@@ -48,27 +48,29 @@ public class RepositoryXuatXu {
         sql = """
               INSERT INTO [dbo].[xuat_xu]
                          ([ma_xuat_xu]
-                         ,[dia_chi]
+                         ,[dia_chi],
+              trang_thai
                        
                    VALUES
-                          ( ?,?
+                          ( ?,?,?
               
               			)
               """;
         try {
             con = DBConnect.getConnection();
             ps = con.prepareStatement(sql);
-            ps.setObject(1, xx.getMa());
-            ps.setObject(2, xx.getDiaChi());
+            ps.setObject(1, xx.getMaXuatXu());
+            ps.setObject(2, xx.getDiaChia());
+            ps.setObject(3, xx.getTrangThai());
             return ps.executeUpdate();
         } catch (Exception e) {
             e.printStackTrace();
         }
-        
+
         return 0;
     }
-    
-    public int removeByIdXuatXu(int id){
+
+    public int removeByIdXuatXu(int id) {
         sql = "update xuat_xu set trang_thai = 0 where id = ?";
         try {
             con = DBConnect.getConnection();
@@ -80,13 +82,13 @@ public class RepositoryXuatXu {
         }
         return 0;
     }
-    
-    public int updateXuatXuByID(int id, XuatXu xx ){
+
+    public int updateXuatXuByID(int id, XuatXu xx) {
         sql = "update xuat_xu set dia_chi = ? where id = ?";
         try {
             con = DBConnect.getConnection();
             ps = con.prepareStatement(sql);
-            ps.setObject(1, xx.getDiaChi());
+            ps.setObject(1, xx.getDiaChia());
             ps.setObject(2, id);
             return ps.executeUpdate();
         } catch (Exception e) {
@@ -94,8 +96,5 @@ public class RepositoryXuatXu {
         }
         return 0;
     }
-    
-    
-    
 
 }

@@ -53,8 +53,8 @@ public class RepositoryAnh {
         try {
             con =DBConnect.getConnection();
             ps = con.prepareStatement(sql);
-            ps.setObject(1,a.getMa() );
-            ps.setObject(2, a.getAnh());
+            ps.setObject(1,a.getMaAnh());
+            ps.setObject(2, a.getTenAnh());
             ps.setObject(3, a.getTrangThai());
             return ps.executeUpdate();
         } catch (Exception e) {
@@ -82,7 +82,7 @@ public class RepositoryAnh {
         try {
             con = DBConnect.getConnection();
             ps = con.prepareStatement(sql);
-            ps.setObject(1, a.getAnh());
+            ps.setObject(1, a.getTenAnh());
             ps.setObject(2, id);
             return ps.executeUpdate();
         } catch (Exception e) {

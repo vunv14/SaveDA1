@@ -5,61 +5,54 @@
 package raven.entity;
 
 import java.sql.Date;
+import java.util.logging.Logger;
 
 public class VaiTro {
 
     private Integer id;
-
-    private Boolean gioi_tinh;
-
-    private Date ngay_sinh;
-
+    private String ma;
+    private Boolean gioiTinh;
+    private String sdt;
+    private Date ngaySinh;
     private String cccd;
-
-    private String dia_chia;
-
-    private String ho_ten;
-    private String mat_khau;
-    private Boolean trang_thai;
-
-    private Boolean chuc_vu;
-
+    private String diaChia;
+    private String hoTen;
+    
+    private String email;
+    private Boolean chucVu;
+    private String matKhau;
+    private Boolean trangThai;
     public VaiTro() {
     }
-    //id,ho_ten,mat_khau,trang_thai,chuc_vu
 
-    public VaiTro(Integer id, String ho_ten, String mat_khau, Boolean trang_thai, Boolean chuc_vu) {
-        this.id = id;
-        this.ho_ten = ho_ten;
-        this.mat_khau = mat_khau;
-        this.trang_thai = trang_thai;
-        this.chuc_vu = chuc_vu;
+    public VaiTro(Boolean gioiTinh, String sdt, Date ngaySinh, String cccd, String diaChia, String hoTen) {
+        this.gioiTinh = gioiTinh;
+        this.sdt = sdt;
+        this.ngaySinh = ngaySinh;
+        this.cccd = cccd;
+        this.diaChia = diaChia;
+        this.hoTen = hoTen;
     }
 
+    public VaiTro(String matKhau) {
+        this.matKhau = matKhau;
+    }
     
 
-    public VaiTro(Integer id, Boolean gioi_tinh, Date ngay_sinh, String cccd, String dia_chia, String ho_ten, Boolean trang_thai, String mat_khau, Boolean chuc_vu) {
+   
+    
+
+
+
+    public VaiTro(Integer id, String hoTen, Boolean chucVu, String matKhau, Boolean trangThai) {
         this.id = id;
-        this.gioi_tinh = gioi_tinh;
-        this.ngay_sinh = ngay_sinh;
-        this.cccd = cccd;
-        this.dia_chia = dia_chia;
-        this.ho_ten = ho_ten;
-        this.trang_thai = trang_thai;
-        this.mat_khau = mat_khau;
-        this.chuc_vu = chuc_vu;
+        this.hoTen = hoTen;
+        this.chucVu = chucVu;
+        this.matKhau = matKhau;
+        this.trangThai = trangThai;
     }
 
-    public VaiTro(Boolean gioi_tinh, Date ngay_sinh, String cccd, String dia_chia, String ho_ten, Boolean trang_thai, String mat_khau, Boolean chuc_vu) {
-        this.gioi_tinh = gioi_tinh;
-        this.ngay_sinh = ngay_sinh;
-        this.cccd = cccd;
-        this.dia_chia = dia_chia;
-        this.ho_ten = ho_ten;
-        this.trang_thai = trang_thai;
-        this.mat_khau = mat_khau;
-        this.chuc_vu = chuc_vu;
-    }
+
 
     public Integer getId() {
         return id;
@@ -69,20 +62,44 @@ public class VaiTro {
         this.id = id;
     }
 
-    public Boolean getGioi_tinh() {
-        return gioi_tinh;
+    public String getMa() {
+        return ma;
     }
 
-    public void setGioi_tinh(Boolean gioi_tinh) {
-        this.gioi_tinh = gioi_tinh;
+    public void setMa(String ma) {
+        this.ma = ma;
     }
 
-    public Date getNgay_sinh() {
-        return ngay_sinh;
+    public String getEmail() {
+        return email;
     }
 
-    public void setNgay_sinh(Date ngay_sinh) {
-        this.ngay_sinh = ngay_sinh;
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
+    public Boolean getGioiTinh() {
+        return gioiTinh;
+    }
+
+    public void setGioiTinh(Boolean gioiTinh) {
+        this.gioiTinh = gioiTinh;
+    }
+
+    public String getSdt() {
+        return sdt;
+    }
+
+    public void setSdt(String sdt) {
+        this.sdt = sdt;
+    }
+
+    public Date getNgaySinh() {
+        return ngaySinh;
+    }
+
+    public void setNgaySinh(Date ngaySinh) {
+        this.ngaySinh = ngaySinh;
     }
 
     public String getCccd() {
@@ -93,44 +110,47 @@ public class VaiTro {
         this.cccd = cccd;
     }
 
-    public String getDia_chia() {
-        return dia_chia;
+    public String getDiaChia() {
+        return diaChia;
     }
 
-    public void setDia_chia(String dia_chia) {
-        this.dia_chia = dia_chia;
+    public void setDiaChia(String diaChia) {
+        this.diaChia = diaChia;
     }
 
-    public String getHo_ten() {
-        return ho_ten;
+    public String getHoTen() {
+        return hoTen;
     }
 
-    public void setHo_ten(String ho_ten) {
-        this.ho_ten = ho_ten;
+    public void setHoTen(String hoTen) {
+        this.hoTen = hoTen;
     }
 
-    public Boolean getTrang_thai() {
-        return trang_thai;
+    public Boolean getChucVu() {
+        return chucVu;
     }
 
-    public void setTrang_thai(Boolean trang_thai) {
-        this.trang_thai = trang_thai;
+    public void setChucVu(Boolean chucVu) {
+        this.chucVu = chucVu;
     }
 
-    public String getMat_khau() {
-        return mat_khau;
+    public String getMatKhau() {
+        return matKhau;
     }
 
-    public void setMat_khau(String mat_khau) {
-        this.mat_khau = mat_khau;
+    public void setMatKhau(String matKhau) {
+        this.matKhau = matKhau;
     }
 
-    public Boolean getChuc_vu() {
-        return chuc_vu;
+    public Boolean getTrangThai() {
+        return trangThai;
     }
 
-    public void setChuc_vu(Boolean chuc_vu) {
-        this.chuc_vu = chuc_vu;
+    public void setTrangThai(Boolean trangThai) {
+        this.trangThai = trangThai;
     }
-
+    
+    
+    
+    
 }
