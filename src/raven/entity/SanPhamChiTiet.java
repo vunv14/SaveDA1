@@ -6,39 +6,32 @@ package raven.entity;
 
 import java.sql.Date;
 
-
 /**
  *
- * @author Nguyen Nam Truong
+ * @author Nguyễn Vũ
  */
 
 public class SanPhamChiTiet {
- 
+
     private Integer id;
 
-    private int  IdKichThuoc;
+    private KichThuoc kt;
 
-    private int  IdThuongHieu;
+    private ThuongHieu th;
 
-    private int IdXuatXu ;
+    private XuatXu xx;
 
-    private int IdSp;
+    private SanPham sp;
 
-    private int IdAnh;
+    private Anh a;
 
-    private int IdMau;
+    private Mau m;
 
-    private int IdChatLieu;
+    private ChatLieu cl;
 
-    private int IdKieuAo;
+    private KieuAo ka;
     
     private String ma;
-    
-       private Float gia;
-       
-         private Integer soLuong;
-         
-             private String doDay;
 
     private Date createAt;
 
@@ -48,7 +41,49 @@ public class SanPhamChiTiet {
 
     private Integer updateBy;
 
+    private Double gia;
+
+    private Integer soLuong;
+
+    private String doDay;
+
     private Boolean trangThai;
+
+    public SanPhamChiTiet() {
+    }
+
+    public SanPhamChiTiet(SanPham sp) {
+        this.sp = sp;
+    }
+
+    public SanPhamChiTiet(SanPham sp, KieuAo ka) {
+        this.sp = sp;
+        this.ka = ka;
+    }
+    
+    
+
+    public SanPhamChiTiet(Integer id, KichThuoc kt, ThuongHieu th, XuatXu xx, SanPham sp, Anh a, Mau m, ChatLieu cl, KieuAo ka, Date createAt, Date updateAt, Integer createBy, Integer updateBy, Double gia, Integer soLuong, String doDay, Boolean trangThai) {
+        this.id = id;
+        this.kt = kt;
+        this.th = th;
+        this.xx = xx;
+        this.sp = sp;
+        this.a = a;
+        this.m = m;
+        this.cl = cl;
+        this.ka = ka;
+        this.createAt = createAt;
+        this.updateAt = updateAt;
+        this.createBy = createBy;
+        this.updateBy = updateBy;
+        this.gia = gia;
+        this.soLuong = soLuong;
+        this.doDay = doDay;
+        this.trangThai = trangThai;
+    }
+    
+    
 
     public Integer getId() {
         return id;
@@ -58,100 +93,68 @@ public class SanPhamChiTiet {
         this.id = id;
     }
 
-    public int getIdKichThuoc() {
-        return IdKichThuoc;
+    public KichThuoc getKt() {
+        return kt;
     }
 
-    public void setIdKichThuoc(int IdKichThuoc) {
-        this.IdKichThuoc = IdKichThuoc;
+    public void setKt(KichThuoc kt) {
+        this.kt = kt;
     }
 
-    public int getIdThuongHieu() {
-        return IdThuongHieu;
+    public ThuongHieu getTh() {
+        return th;
     }
 
-    public void setIdThuongHieu(int IdThuongHieu) {
-        this.IdThuongHieu = IdThuongHieu;
+    public void setTh(ThuongHieu th) {
+        this.th = th;
     }
 
-    public int getIdXuatXu() {
-        return IdXuatXu;
+    public XuatXu getXx() {
+        return xx;
     }
 
-    public void setIdXuatXu(int IdXuatXu) {
-        this.IdXuatXu = IdXuatXu;
+    public void setXx(XuatXu xx) {
+        this.xx = xx;
     }
 
-    public int getIdSp() {
-        return IdSp;
+    public SanPham getSp() {
+        return sp;
     }
 
-    public void setIdSp(int IdSp) {
-        this.IdSp = IdSp;
+    public void setSp(SanPham sp) {
+        this.sp = sp;
     }
 
-    public int getIdAnh() {
-        return IdAnh;
+    public Anh getA() {
+        return a;
     }
 
-    public void setIdAnh(int IdAnh) {
-        this.IdAnh = IdAnh;
+    public void setA(Anh a) {
+        this.a = a;
     }
 
-    public int getIdMau() {
-        return IdMau;
+    public Mau getM() {
+        return m;
     }
 
-    public void setIdMau(int IdMau) {
-        this.IdMau = IdMau;
+    public void setM(Mau m) {
+        this.m = m;
     }
 
-    public int getIdChatLieu() {
-        return IdChatLieu;
+    public ChatLieu getCl() {
+        return cl;
     }
 
-    public void setIdChatLieu(int IdChatLieu) {
-        this.IdChatLieu = IdChatLieu;
+    public void setCl(ChatLieu cl) {
+        this.cl = cl;
     }
 
-    public int getIdKieuAo() {
-        return IdKieuAo;
+    public KieuAo getKa() {
+        return ka;
     }
 
-    public void setIdKieuAo(int IdKieuAo) {
-        this.IdKieuAo = IdKieuAo;
-    }
-
-    public String getMa() {
-        return ma;
-    }
-
-    public void setMa(String ma) {
-        this.ma = ma;
-    }
-
-    public Float getGia() {
-        return gia;
-    }
-
-    public void setGia(Float gia) {
-        this.gia = gia;
-    }
-
-    public Integer getSoLuong() {
-        return soLuong;
-    }
-
-    public void setSoLuong(Integer soLuong) {
-        this.soLuong = soLuong;
-    }
-
-    public String getDoDay() {
-        return doDay;
-    }
-
-    public void setDoDay(String doDay) {
-        this.doDay = doDay;
+    public void setKa(KieuAo ka) {
+        this.ka = ka;
     }
 
     public Date getCreateAt() {
@@ -186,81 +189,57 @@ public class SanPhamChiTiet {
         this.updateBy = updateBy;
     }
 
-public Boolean getTrangThai() {
-    return trangThai != null ? trangThai : false; // Hoặc giá trị mặc định khác
-}
+    public Double getGia() {
+        return gia;
+    }
+
+    public void setGia(Double gia) {
+        this.gia = gia;
+    }
+
+    public Integer getSoLuong() {
+        return soLuong;
+    }
+
+    public void setSoLuong(Integer soLuong) {
+        this.soLuong = soLuong;
+    }
+
+    public String getDoDay() {
+        return doDay;
+    }
+
+    public void setDoDay(String doDay) {
+        this.doDay = doDay;
+    }
+
+    public Boolean getTrangThai() {
+        return trangThai;
+    }
 
     public void setTrangThai(Boolean trangThai) {
         this.trangThai = trangThai;
     }
 
-    public SanPhamChiTiet() {
-    }
-
-    public SanPhamChiTiet(int IdKichThuoc, int IdThuongHieu, int IdXuatXu, int IdSp, int IdAnh, int IdMau, int IdChatLieu, int IdKieuAo, String ma, Float gia, Integer soLuong, String doDay, Date createAt, Date updateAt, Integer createBy, Integer updateBy, Boolean trangThai) {
-        this.IdKichThuoc = IdKichThuoc;
-        this.IdThuongHieu = IdThuongHieu;
-        this.IdXuatXu = IdXuatXu;
-        this.IdSp = IdSp;
-        this.IdAnh = IdAnh;
-        this.IdMau = IdMau;
-        this.IdChatLieu = IdChatLieu;
-        this.IdKieuAo = IdKieuAo;
+    public SanPhamChiTiet(String ma) {
         this.ma = ma;
-        this.gia = gia;
-        this.soLuong = soLuong;
-        this.doDay = doDay;
-        this.createAt = createAt;
-        this.updateAt = updateAt;
-        this.createBy = createBy;
-        this.updateBy = updateBy;
-        this.trangThai = trangThai;
     }
 
-    public SanPhamChiTiet(Integer id, int IdKichThuoc, int IdThuongHieu, int IdXuatXu, int IdSp, int IdAnh, int IdMau, int IdChatLieu, int IdKieuAo, String ma, Float gia, Integer soLuong, String doDay, Date createAt, Date updateAt, Integer createBy, Integer updateBy, Boolean trangThai) {
+    public String getMa() {
+        return ma;
+    }
+
+    public void setMa(String ma) {
+        this.ma = ma;
+    }
+
+    public SanPhamChiTiet(Integer id, String ma) {
         this.id = id;
-        this.IdKichThuoc = IdKichThuoc;
-        this.IdThuongHieu = IdThuongHieu;
-        this.IdXuatXu = IdXuatXu;
-        this.IdSp = IdSp;
-        this.IdAnh = IdAnh;
-        this.IdMau = IdMau;
-        this.IdChatLieu = IdChatLieu;
-        this.IdKieuAo = IdKieuAo;
         this.ma = ma;
-        this.gia = gia;
-        this.soLuong = soLuong;
-        this.doDay = doDay;
-        this.createAt = createAt;
-        this.updateAt = updateAt;
-        this.createBy = createBy;
-        this.updateBy = updateBy;
-        this.trangThai = trangThai;
     }
 
-    public SanPhamChiTiet(int IdKichThuoc, int IdThuongHieu, int IdXuatXu, int IdSp, int IdAnh, int IdMau, int IdChatLieu, int IdKieuAo, String ma, Float gia, Integer soLuong, String doDay, Date createAt, Date updateAt, Integer createBy, Integer updateBy) {
-        this.IdKichThuoc = IdKichThuoc;
-        this.IdThuongHieu = IdThuongHieu;
-        this.IdXuatXu = IdXuatXu;
-        this.IdSp = IdSp;
-        this.IdAnh = IdAnh;
-        this.IdMau = IdMau;
-        this.IdChatLieu = IdChatLieu;
-        this.IdKieuAo = IdKieuAo;
-        this.ma = ma;
-        this.gia = gia;
-        this.soLuong = soLuong;
-        this.doDay = doDay;
-        this.createAt = createAt;
-        this.updateAt = updateAt;
-        this.createBy = createBy;
-        this.updateBy = updateBy;
-    }
     
     
 
-    
-    
-    
     
 }

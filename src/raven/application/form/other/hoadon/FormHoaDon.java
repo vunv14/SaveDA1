@@ -1,20 +1,14 @@
 package raven.application.form.other.hoadon;
 
 import com.formdev.flatlaf.FlatClientProperties;
-import java.awt.event.MouseAdapter;
-import java.awt.event.MouseEvent;
-import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.text.NumberFormat;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
-import java.util.ArrayList;
 import java.util.List;
 import java.util.Locale;
-import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
-import org.apache.poi.ss.usermodel.Cell;
 import org.apache.poi.ss.usermodel.Sheet;
 import org.apache.poi.ss.usermodel.Row;
 import org.apache.poi.ss.usermodel.Workbook;
@@ -101,11 +95,10 @@ public class FormHoaDon extends javax.swing.JPanel {
         if (donRepository.validateMaHD(maHD)) {
             modelHD.setRowCount(0);
             List<HoaDonResponse> list = donRepository.getHoaDon(maHD);
-            Notifications.getInstance().show(Notifications.Type.SUCCESS, Notifications.Location.TOP_CENTER, "Tìm thấy hóa đơn với mã: " + maHD);
             fillTableHD(list);
             btnNext.setEnabled(false);
         } else {
-            Notifications.getInstance().show(Notifications.Type.WARNING, Notifications.Location.TOP_CENTER, "Không tìm thấy hóa đơn với mã: " + maHD);
+            Notifications.getInstance().show(Notifications.Type.WARNING, Notifications.Location.TOP_CENTER, "Mã QR không hợp lệ");
         }
 
     }
@@ -231,11 +224,10 @@ public class FormHoaDon extends javax.swing.JPanel {
         lbTienThua = new javax.swing.JLabel();
         jScrollPane4 = new javax.swing.JScrollPane();
         tblSPDaMua = new javax.swing.JTable();
-        btnClear1 = new javax.swing.JButton();
         btnClearSearchLSHD = new javax.swing.JButton();
         btnQRLSHD = new javax.swing.JButton();
 
-        jPanel4.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Hóa Đơn", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 14))); // NOI18N
+        jPanel4.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Hóa Đơn", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 18))); // NOI18N
 
         jLabel1.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jLabel1.setText("Tìm kiếm hóa đơn");
@@ -392,7 +384,7 @@ public class FormHoaDon extends javax.swing.JPanel {
                 .addGap(13, 13, 13))
         );
 
-        jPanel6.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Hóa Đơn Chi Tiết", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 14))); // NOI18N
+        jPanel6.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Hóa Đơn Chi Tiết", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 18))); // NOI18N
 
         tblHoaDonChiTiet.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -418,7 +410,7 @@ public class FormHoaDon extends javax.swing.JPanel {
             .addGroup(jPanel6Layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 230, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(68, Short.MAX_VALUE))
+                .addContainerGap(70, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
@@ -439,7 +431,7 @@ public class FormHoaDon extends javax.swing.JPanel {
 
         jTabbedPane1.addTab("Hóa Đơn", jPanel2);
 
-        jPanel3.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Tìm Kiếm Hóa Đơn", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 14))); // NOI18N
+        jPanel3.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Tìm Kiếm Hóa Đơn", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 18))); // NOI18N
 
         tblLSHD.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -466,7 +458,7 @@ public class FormHoaDon extends javax.swing.JPanel {
             }
         });
 
-        jPanel7.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Thông Tin Chi Tiết", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 14))); // NOI18N
+        jPanel7.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Thông Tin Chi Tiết", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 18))); // NOI18N
 
         jLabel5.setText("Mã Hóa Đơn:");
 
@@ -646,9 +638,6 @@ public class FormHoaDon extends javax.swing.JPanel {
         ));
         jScrollPane4.setViewportView(tblSPDaMua);
 
-        btnClear1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/raven/application/form/other/hoadon/icon/clean.png"))); // NOI18N
-        btnClear1.setToolTipText("Clear");
-
         btnClearSearchLSHD.setIcon(new javax.swing.ImageIcon(getClass().getResource("/raven/application/form/other/hoadon/icon/clean.png"))); // NOI18N
         btnClearSearchLSHD.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -687,11 +676,6 @@ public class FormHoaDon extends javax.swing.JPanel {
                         .addGap(18, 18, 18)
                         .addComponent(jScrollPane4, javax.swing.GroupLayout.DEFAULT_SIZE, 691, Short.MAX_VALUE)))
                 .addContainerGap())
-            .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(jPanel3Layout.createSequentialGroup()
-                    .addGap(0, 0, Short.MAX_VALUE)
-                    .addComponent(btnClear1)
-                    .addGap(0, 0, Short.MAX_VALUE)))
         );
         jPanel3Layout.setVerticalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -716,11 +700,6 @@ public class FormHoaDon extends javax.swing.JPanel {
                         .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 396, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(0, 0, Short.MAX_VALUE)))
                 .addContainerGap())
-            .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(jPanel3Layout.createSequentialGroup()
-                    .addGap(0, 0, Short.MAX_VALUE)
-                    .addComponent(btnClear1)
-                    .addGap(0, 0, Short.MAX_VALUE)))
         );
 
         javax.swing.GroupLayout jPanel5Layout = new javax.swing.GroupLayout(jPanel5);
@@ -783,7 +762,7 @@ public class FormHoaDon extends javax.swing.JPanel {
         }
         if (!txtGiaTu.getText().trim().isEmpty()) {
             try {
-                giaTu = Double.parseDouble(txtGiaTu.getText());
+                giaTu = Double.parseDouble(txtGiaTu.getText().trim());
                 if (giaTu < 0 || giaTu > 1000000000) {
                     Notifications.getInstance().show(Notifications.Type.WARNING, Notifications.Location.TOP_RIGHT, "Giá từ phải lớn hơn 0 và nhỏ hơn 1,000,000,000");
                     txtGiaTu.requestFocus();
@@ -800,7 +779,7 @@ public class FormHoaDon extends javax.swing.JPanel {
 
         if (!txtGiaDen.getText().trim().isEmpty()) {
             try {
-                giaDen = Double.parseDouble(txtGiaDen.getText());
+                giaDen = Double.parseDouble(txtGiaDen.getText().trim());
                 if (giaDen < 0 || giaDen > 1000000000) {
                     Notifications.getInstance().show(Notifications.Type.WARNING, Notifications.Location.TOP_RIGHT, "Giá đến phải lớn hơn 0 và nhỏ hơn 1,000,000,000");
                     txtGiaDen.requestFocus();
@@ -822,10 +801,18 @@ public class FormHoaDon extends javax.swing.JPanel {
             check += 1;
             return;
         }
+        String search = txtSearch.getText();
+        int leng = search.length();
+        if (leng > 100) {
+            txtSearch.requestFocus();
+            Notifications.getInstance().show(Notifications.Type.WARNING, Notifications.Location.TOP_RIGHT, "Tìm kiếm hóa đơn không quá 100 kí tự");
+            check += 1;
+            return;
+        }
 
         if (check == 0) {
             modelHD.setRowCount(0);
-            HoaDonResponseWrapper responseWrapper = donRepository.searchHoaDon(txtSearch.getText(), trangThai, giaTu, giaDen, page, 3);
+            HoaDonResponseWrapper responseWrapper = donRepository.searchHoaDon(txtSearch.getText().trim(), trangThai, giaTu, giaDen, page, 3);
             List<HoaDonResponse> listNewSearch = responseWrapper.getHoaDonResponses();
             totalRecords = responseWrapper.getTotalRecords();
             totalPages = (int) Math.ceil((double) totalRecords / 3);
@@ -965,10 +952,10 @@ public class FormHoaDon extends javax.swing.JPanel {
             Workbook workbook = new XSSFWorkbook();
 
             Sheet sheet1 = workbook.createSheet("HoaDon");
-            exportTableToSheet(tblHoaDon, sheet1);
+            exportHoaDonToSheet(donRepository.getHoaDon(""), sheet1);
 
             Sheet sheet2 = workbook.createSheet("HoaDonChiTiet");
-            exportTableToSheet(tblHoaDonChiTiet, sheet2);
+            exportHoaDonChiTietToSheet(donRepository.getHoaDonCT(""), sheet2);
 
             FileOutputStream outputStream = new FileOutputStream("HoaDon.xlsx");
             workbook.write(outputStream);
@@ -991,7 +978,7 @@ public class FormHoaDon extends javax.swing.JPanel {
     private void tblLSHDMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblLSHDMouseClicked
         int row = tblLSHD.getSelectedRow();
         showDataCT(row);
-        HoaDonResponse hdr = donRepository.searchLSHD(txtSearchLSHD.getText()).get(row);
+        HoaDonResponse hdr = donRepository.searchLSHD("").get(row);
         fillTableSanPham(donRepository.getSPDaMua(hdr.getMaHD()));
     }//GEN-LAST:event_tblLSHDMouseClicked
 
@@ -1015,8 +1002,20 @@ public class FormHoaDon extends javax.swing.JPanel {
     }//GEN-LAST:event_btnClearSearchLSHDActionPerformed
 
     private void tbnSearchLSHDActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tbnSearchLSHDActionPerformed
-        modelLSHD.setRowCount(0);
-        fillTableLSHD(donRepository.searchLSHD(txtSearchLSHD.getText()));
+        int check = 0;
+        String search1 = txtSearchLSHD.getText();
+        int leng1 = search1.length();
+        if (leng1 > 100) {
+            txtSearchLSHD.requestFocus();
+            Notifications.getInstance().show(Notifications.Type.WARNING, Notifications.Location.TOP_RIGHT, "Tìm kiếm lịch sử hóa đơn không quá 100 kí tự");
+            check += 1;
+            return;
+        }
+        if (check == 0) {
+            modelLSHD.setRowCount(0);
+            fillTableLSHD(donRepository.searchLSHD(txtSearchLSHD.getText()));
+        }
+
     }//GEN-LAST:event_tbnSearchLSHDActionPerformed
 
     private void btnQRLSHDMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnQRLSHDMouseClicked
@@ -1024,51 +1023,100 @@ public class FormHoaDon extends javax.swing.JPanel {
     }//GEN-LAST:event_btnQRLSHDMouseClicked
 
     public void showDataCT(int index) {
-        HoaDonResponse response = donRepository.searchLSHD(txtSearchLSHD.getText()).get(index);
+        HoaDonResponse response = donRepository.searchLSHD("").get(index);
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy");
         LocalDate ngayTao = response.getNgayTao();
         String ngayTaoString = ngayTao.format(formatter);
         lbMaHD.setText(response.getMaHD());
         lbGhiChu.setText("Không");
-        lbGiaGiam.setText(String.valueOf(format.format(0)));
-        lbHTTT.setText("Tiền mặt");
+        lbGiaGiam.setText(String.valueOf(format.format(response.getGiaGiam())));
+        lbHTTT.setText(response.getpThucThanhToan());
         lbSDTKH.setText(String.valueOf(response.getsDT()));
         lbTTHD.setText(String.valueOf(response.getTrangThai() == 1 ? "Đã thanh toán" : "Chệu"));
         lbTenKH.setText(response.getTenKH());
         lbTenNhanVien.setText(response.getTenNV());
         lbThoiGianTao.setText(ngayTaoString);
-        lbTienKhachCK.setText(String.valueOf(format.format(0)));
-        lbTienKhachDua.setText(String.valueOf(format.format(response.getTongTien())));
-        lbTienThua.setText(String.valueOf(format.format(0)));
+        lbTienKhachCK.setText(String.valueOf(format.format(response.getTienKhachCK())));
+        lbTienKhachDua.setText(String.valueOf(format.format(response.getTienKhachDua())));
+        lbTienThua.setText(String.valueOf(format.format(response.getTienThua())));
         lbTongTien.setText(String.valueOf(format.format(response.getTongTienHDCT())));
 
     }
 
-    private void exportTableToSheet(JTable table, Sheet sheet) {
-        int rowCount = table.getRowCount();
-        int columnCount = table.getColumnCount();
+    private void exportHoaDonToSheet(List<HoaDonResponse> hoaDonList, Sheet sheet) {
+        int rowCount = 0;
+        // Tạo hàng tiêu đề
+        Row headerRow = sheet.createRow(rowCount++);
+        headerRow.createCell(0).setCellValue("STT");
+        headerRow.createCell(1).setCellValue("Mã HĐ");
+        headerRow.createCell(2).setCellValue("Mã Nhân Viên");
+        headerRow.createCell(3).setCellValue("Tên Nhân Viên");
+        headerRow.createCell(4).setCellValue("Tên Khách Hàng");
+        headerRow.createCell(5).setCellValue("Số Điện Thoại");
+        headerRow.createCell(6).setCellValue("Tổng Tiền");
+        headerRow.createCell(7).setCellValue("Ngày Tạo");
+        headerRow.createCell(8).setCellValue("Trạng Thái");
 
-        // Create the header row
-        Row headerRow = sheet.createRow(0);
-        for (int i = 0; i < columnCount; i++) {
-            Cell cell = headerRow.createCell(i);
-            cell.setCellValue(table.getColumnName(i));
-        }
-        // Create the data rows
-        for (int i = 0; i < rowCount; i++) {
-            Row row = sheet.createRow(i + 1);
-            for (int j = 0; j < columnCount; j++) {
-                Cell cell = row.createCell(j);
-                cell.setCellValue(table.getValueAt(i, j).toString());
-            }
+        // Tạo các hàng dữ liệu
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy");
+        int i = 1;
+        for (HoaDonResponse hoaDon : hoaDonList) {
+            LocalDate ngayTao = hoaDon.getNgayTao();
+            String ngayTaoString = ngayTao.format(formatter);
+            Row row = sheet.createRow(rowCount++);
+            row.createCell(0).setCellValue(i++);
+            row.createCell(1).setCellValue(hoaDon.getMaHD());
+            row.createCell(2).setCellValue(hoaDon.getMaNV());
+            row.createCell(3).setCellValue(hoaDon.getTenNV());
+            row.createCell(4).setCellValue(hoaDon.getTenKH());
+            row.createCell(5).setCellValue(String.valueOf(hoaDon.getsDT()));
+            row.createCell(6).setCellValue(format.format(hoaDon.getTongTien()));
+            row.createCell(7).setCellValue(ngayTaoString);
+            row.createCell(8).setCellValue(hoaDon.getTrangThai() == 1 ? "Đã Thanh Toán" : "Hóa Đơn Chờ");
+
         }
     }
 
+    private void exportHoaDonChiTietToSheet(List<HoaDonChiTietResponse> hoaDonChiTietList, Sheet sheet) {
+        int rowCount = 0;
+
+        // Tạo hàng tiêu đề
+        Row headerRow = sheet.createRow(rowCount++);
+        headerRow.createCell(0).setCellValue("STT");
+        headerRow.createCell(1).setCellValue("Mã HĐ");
+        headerRow.createCell(2).setCellValue("Mã Sản Phẩm");
+        headerRow.createCell(3).setCellValue("Tên Sản Phẩm");
+        headerRow.createCell(4).setCellValue("Màu");
+        headerRow.createCell(5).setCellValue("Kiểu Áo");
+        headerRow.createCell(6).setCellValue("Thương Hiệu");
+        headerRow.createCell(7).setCellValue("Xuất Xứ");
+        headerRow.createCell(8).setCellValue("Kích Thước");
+        headerRow.createCell(9).setCellValue("Chất Liệu");
+        headerRow.createCell(10).setCellValue("Số Lượng");
+        headerRow.createCell(11).setCellValue("Đơn Giá");
+
+        // Tạo các hàng dữ liệu
+        int i = 1;
+        for (HoaDonChiTietResponse hoaDonChiTiet : hoaDonChiTietList) {
+            Row row = sheet.createRow(rowCount++);
+            row.createCell(0).setCellValue(i++);
+            row.createCell(1).setCellValue(hoaDonChiTiet.getMaHD());
+            row.createCell(2).setCellValue(hoaDonChiTiet.getMaSP());
+            row.createCell(3).setCellValue(hoaDonChiTiet.getTenSP());
+            row.createCell(4).setCellValue(hoaDonChiTiet.getMau());
+            row.createCell(5).setCellValue(hoaDonChiTiet.getKieuAo());
+            row.createCell(6).setCellValue(hoaDonChiTiet.getThuongHieu().toString());
+            row.createCell(7).setCellValue(hoaDonChiTiet.getXuatXu());
+            row.createCell(8).setCellValue(hoaDonChiTiet.getKichThuoc());
+            row.createCell(9).setCellValue(hoaDonChiTiet.getChatLieu());
+            row.createCell(10).setCellValue(hoaDonChiTiet.getSoLuong());
+            row.createCell(11).setCellValue(format.format(hoaDonChiTiet.getTongTienHDCT()));
+        }
+    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnBack;
     private javax.swing.JButton btnClear;
-    private javax.swing.JButton btnClear1;
     private javax.swing.JButton btnClearSearchLSHD;
     private javax.swing.JButton btnExportExcel;
     private javax.swing.JButton btnNext;

@@ -45,7 +45,7 @@ public class RepositoryMau {
 
     public int addMau(Mau m) {
         sql = """
-             insert into mau (ma_mau,loai_mau) values(?,?);
+             insert into mau (ma_mau,loai_mau,trang_thai) values(?,?,1);
               """;
         try {
             con = DBConnect.getConnection();
@@ -59,8 +59,8 @@ public class RepositoryMau {
         return 0;
     }
 
-    public int removeByIdMau(int id) {
-        sql = "update mau set trang_thai = 0 where id = ?";
+    public int removeByIdMau(String id) {
+        sql = "update mau set trang_thai = 0 where ma_mau = ?";
         try {
             con = DBConnect.getConnection();
             ps = con.prepareStatement(sql);
@@ -72,8 +72,8 @@ public class RepositoryMau {
         return 0;
     }
     
-     public int updateXuatXuByID(int id, Mau m){
-        sql = "update mau set loai_mau = ? where id = ?";
+     public int updateXuatXuByID(String id, Mau m){
+        sql = "update mau set loai_mau = ? where ma_mau = ?";
         try {
             con = DBConnect.getConnection();
             ps = con.prepareStatement(sql);

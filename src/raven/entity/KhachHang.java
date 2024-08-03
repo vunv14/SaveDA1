@@ -91,6 +91,11 @@ public class KhachHang {
         this.gioiTinh = gioiTinh;
         this.sdt = sdt;
     }
+
+    @Override
+    public String toString() {
+        return "KhachHang{" + "id=" + id + ", maKhachHang=" + maKhachHang + ", tenKh=" + tenKh + ", gioiTinh=" + gioiTinh + ", sdt=" + sdt + ", trangThai=" + trangThai + '}';
+    }
     
     
 }

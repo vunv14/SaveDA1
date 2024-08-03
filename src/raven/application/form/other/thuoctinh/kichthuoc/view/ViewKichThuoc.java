@@ -354,8 +354,9 @@ public class ViewKichThuoc extends javax.swing.JPanel {
     public void getAll(List<KichThuoc> list) {
         model.setRowCount(0);
         int stt = 1;
-        for (KichThuoc kichThuoc : list) {
-            model.addRow(kichThuoc.toDaTaRow());
+        for (KichThuoc kt : list) {
+            model.addRow(new Object[]{stt++,kt.getMaKichThuoc(),kt.getSize(),kt.getRongAo(), kt.getDaiAo(),
+            kt.getRongVai(),kt.getDaiTay()});
         }
     }
 

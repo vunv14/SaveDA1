@@ -16,17 +16,24 @@ import javax.swing.JLayeredPane;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 import raven.application.Application;
+import raven.application.form.other.BanHang.BanHang_View;
+import raven.application.form.other.DoiMatKhau.DoiMatKhau;
 import raven.application.form.other.FormDashboard;
 import raven.application.form.other.FormInbox;
 import raven.application.form.other.FormRead;
-import raven.application.form.other.banhang.BanHang_View;
-import raven.application.form.other.DoiMatKhau.FormDoiMatKhau;
 import raven.application.form.other.DotGiamGia.FormDotGiamGia;
-import raven.application.form.other.NhanVien_View;
+import raven.application.form.other.VaiTro.NhanVien_View;
 import raven.application.form.other.hoadon.FormHoaDon;
-import raven.application.form.other.khachHang.ViewKhachHang;
+import raven.application.form.other.khachhang.ViewKhachHang;
 import raven.application.form.other.phieuGiamGia.View;
 import raven.application.form.other.sanpham.view.Viewsanpham;
+import raven.application.form.other.thongke.ThongKeForm;
+import raven.application.form.other.thuoctinh.chatlieu.ViewChatLieu;
+import raven.application.form.other.thuoctinh.kichthuoc.view.ViewKichThuoc;
+import raven.application.form.other.thuoctinh.kieuao.ViewKieuAo;
+import raven.application.form.other.thuoctinh.mau.ViewMau;
+import raven.application.form.other.thuoctinh.thuonghieu.ViewThuongHieu;
+import raven.application.form.other.thuoctinh.xuatxu.ViewXuatXu;
 import raven.entity.VaiTro;
 
 import raven.menu.Menu;
@@ -111,32 +118,54 @@ public class MainForm extends JLayeredPane {
                     Notifications.getInstance().show(Notifications.Type.SUCCESS, Notifications.Location.TOP_CENTER, "Đăng nhập với tư cách quản lí");
                     check1 = false;
                 }
-                if (index == 0) {
+                if (index == 111) {
                     Application.showForm(new FormDashboard());
-                } else if (index == 1) {
+                } else if (index == 0) {
                     Application.showForm(new Viewsanpham());
-                }else if(index == 2){
+                }else if(index == 1){
+                   if(subIndex == 1){
+                       Application.showForm(new ViewXuatXu());
+                   }else if( subIndex == 2){
+                       Application.showForm(new ViewKichThuoc());
+                   }else if( subIndex == 3){
+                       Application.showForm(new ViewThuongHieu());
+                   }else if( subIndex == 4){
+                       Application.showForm(new ViewChatLieu());
+                   }else if( subIndex == 5){
+                       Application.showForm(new ViewKieuAo());
+
+                   }else if( subIndex == 6){
+                       Application.showForm(new ViewMau());
+                   }
+                }
+                else if(index == 2){
                     Application.showForm(new NhanVien_View());
                 }
-                else if(index == 4){
+                else if(index == 3){
                     Application.showForm(new BanHang_View());
                 }
-                else if(index == 6){
+                else if(index == 4){
+                    Application.showForm(new FormHoaDon());
+                }
+                else if(index == 5){
                         Application.showForm(new ViewKhachHang());
                 }
-                else if(index == 7){
+                else if(index == 6){
                       Application.showForm(new View());
                 }
-                else if(index == 8){
+                else if(index == 7){
                         Application.showForm(new FormDotGiamGia());
+                } else if(index == 8){
+                        Application.showForm(new ThongKeForm());
                 }
+                
                 
                 
                 else if(index == 5){
                     Application.showForm(new FormHoaDon());
-                }else if (index == 10) {
-                    Application.showForm(new FormDoiMatKhau());
-                } else if(index == 11){
+                }else if (index == 9) {
+                   new DoiMatKhau().setVisible(true);
+                } else if(index == 10){
                   Application.logout();
                 }
             } else {

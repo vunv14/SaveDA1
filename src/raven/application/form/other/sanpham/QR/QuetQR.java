@@ -29,7 +29,7 @@ import javax.imageio.ImageIO;
 import raven.application.form.other.sanpham.model.ModelSanPhamCT;
 import raven.application.form.other.sanpham.repository.RepositorySanPhamCT;
 import raven.application.form.other.sanpham.view.Viewsanpham;
-import raven.entity.SanPhamChiTiet;
+import raven.entity.SanPhamChiTietSP;
 
 /**
  *

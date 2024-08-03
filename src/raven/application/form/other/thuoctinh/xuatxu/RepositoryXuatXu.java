@@ -11,6 +11,7 @@ package raven.application.form.other.thuoctinh.xuatxu;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 import raven.DBConnect.DBConnect;
@@ -45,33 +46,40 @@ public class RepositoryXuatXu {
     }
 
     public int addXuatXu(XuatXu xx) {
-        sql = """
-              INSERT INTO [dbo].[xuat_xu]
-                         ([ma_xuat_xu]
-                         ,[dia_chi],
-              trang_thai
-                       
-                   VALUES
-                          ( ?,?,?
-              
-              			)
-              """;
+    String sql = """
+        INSERT INTO [dbo].[xuat_xu]
+                   ([ma_xuat_xu]
+                   ,[dia_chi]
+                   ,[trang_thai])
+             VALUES
+                   (?,?,1)
+    """;
+    
+    Connection con = null;
+    PreparedStatement ps = null;
+
+    try {
+        con = DBConnect.getConnection();
+        ps = con.prepareStatement(sql);
+        ps.setObject(1, xx.getMaXuatXu());
+        ps.setObject(2, xx.getDiaChi());
+        return ps.executeUpdate();
+    } catch (SQLException e) {
+        e.printStackTrace();
+    } finally {
         try {
-            con = DBConnect.getConnection();
-            ps = con.prepareStatement(sql);
-            ps.setObject(1, xx.getMaXuatXu());
-            ps.setObject(2, xx.getDiaChia());
-            ps.setObject(3, xx.getTrangThai());
-            return ps.executeUpdate();
-        } catch (Exception e) {
+            if (ps != null) ps.close();
+            if (con != null) con.close();
+        } catch (SQLException e) {
             e.printStackTrace();
         }
-
-        return 0;
     }
+    return 0;
+}
 
-    public int removeByIdXuatXu(int id) {
-        sql = "update xuat_xu set trang_thai = 0 where id = ?";
+
+    public int removeByIdXuatXu(String id) {
+        sql = "update xuat_xu set trang_thai = 0 where ma_xuat_xu = ?";
         try {
             con = DBConnect.getConnection();
             ps = con.prepareStatement(sql);
@@ -83,12 +91,12 @@ public class RepositoryXuatXu {
         return 0;
     }
 
-    public int updateXuatXuByID(int id, XuatXu xx) {
-        sql = "update xuat_xu set dia_chi = ? where id = ?";
+    public int updateXuatXuByID(String id, XuatXu xx) {
+        sql = "update xuat_xu set dia_chi = ? where ma_xuat_xu = ?";
         try {
             con = DBConnect.getConnection();
             ps = con.prepareStatement(sql);
-            ps.setObject(1, xx.getDiaChia());
+            ps.setObject(1, xx.getDiaChi());
             ps.setObject(2, id);
             return ps.executeUpdate();
         } catch (Exception e) {

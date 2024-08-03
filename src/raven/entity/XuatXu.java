@@ -12,7 +12,7 @@ public class XuatXu {
 
     private String maXuatXu;
 
-    private String diaChia;
+    private String diaChi;
 
     private Boolean trangThai;
 
@@ -20,10 +20,10 @@ public class XuatXu {
     }
     
 
-    public XuatXu(Integer id, String maXuatXu, String diaChia, Boolean trangThai) {
+    public XuatXu(Integer id, String maXuatXu, String diaChi, Boolean trangThai) {
         this.id = id;
         this.maXuatXu = maXuatXu;
-        this.diaChia = diaChia;
+        this.diaChi = diaChi;
         this.trangThai = trangThai;
     }
 
@@ -43,12 +43,12 @@ public class XuatXu {
         this.maXuatXu = maXuatXu;
     }
 
-    public String getDiaChia() {
-        return diaChia;
+    public String getDiaChi() {
+        return diaChi;
     }
 
-    public void setDiaChia(String diaChia) {
-        this.diaChia = diaChia;
+    public void setDiaChi(String diaChi) {
+        this.diaChi = diaChi;
     }
 
     public Boolean getTrangThai() {
@@ -59,14 +59,14 @@ public class XuatXu {
         this.trangThai = trangThai;
     }
 
-    public XuatXu(String maXuatXu, String diaChia) {
+    public XuatXu(String maXuatXu, String diaChi) {
         this.maXuatXu = maXuatXu;
-        this.diaChia = diaChia;
+        this.diaChi = diaChi;
     }
 
-    public XuatXu(String maXuatXu, String diaChia, Boolean trangThai) {
+    public XuatXu(String maXuatXu, String diaChi, Boolean trangThai) {
         this.maXuatXu = maXuatXu;
-        this.diaChia = diaChia;
+        this.diaChi = diaChi;
         this.trangThai = trangThai;
     }
    

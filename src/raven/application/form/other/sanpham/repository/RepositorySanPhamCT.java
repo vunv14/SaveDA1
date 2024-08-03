@@ -21,8 +21,16 @@ import java.util.List;
 import raven.DBConnect.DBConnect;
 import raven.application.form.other.sanpham.model.ModelSanPhamCT;
 import raven.application.form.other.sanpham.model.reponeSanPhamCT;
+import raven.entity.Anh;
+import raven.entity.ChatLieu;
+import raven.entity.KichThuoc;
+import raven.entity.KieuAo;
+import raven.entity.Mau;
 import raven.entity.SanPham;
 import raven.entity.SanPhamChiTiet;
+import raven.entity.SanPhamChiTietSP;
+import raven.entity.ThuongHieu;
+import raven.entity.XuatXu;
 
 public class RepositorySanPhamCT {
 
@@ -129,7 +137,7 @@ public class RepositorySanPhamCT {
         return 0;
     }
 
-    public int updateSanPhamCT(String ma, SanPhamChiTiet spct) {
+    public int updateSanPhamCT(String ma, SanPhamChiTietSP spct) {
         sql = """
             UPDATE [dbo].[san_pham_chi_tiet]
                  SET [id_kich_thuoc] = ?
@@ -179,7 +187,7 @@ public class RepositorySanPhamCT {
         return 0;
     }
 
-    public int addSanPhamCT(SanPhamChiTiet spct) {
+    public int addSanPhamCT(SanPhamChiTietSP spct) {
         sql = """
         INSERT INTO [dbo].[san_pham_chi_tiet]
                    ([id_kich_thuoc]
@@ -499,6 +507,93 @@ public class RepositorySanPhamCT {
         e.printStackTrace();
     }
     return list;
+}
+  
+  
+  
+  
+  
+
+    
+public List<SanPhamChiTiet> getAllByMa(String ma) {
+    String sql = """
+          SELECT x.ma, 
+                 x.id, 
+                 k.size, 
+                 t.ten_thuong_hieu, 
+                 v.dia_chi, 
+                 a.ten_anh, 
+                 m.loai_mau, 
+                 c.ten_loai_vai, 
+                 ka.ten, 
+                 x.so_luong, 
+                 s.ten_san_pham, 
+                 x.gia, 
+                 x.trang_thai
+          FROM san_pham_chi_tiet x 
+          LEFT JOIN kich_thuoc k ON x.id_kich_thuoc = k.id
+          LEFT JOIN thuong_hieu t ON x.id_thuong_hieu = t.id
+          LEFT JOIN xuat_xu v ON x.id_xuat_xu = v.id
+          LEFT JOIN san_pham s ON x.id_sp = s.id
+          LEFT JOIN anh a ON x.id_anh = a.id
+          LEFT JOIN mau m ON x.id_mau = m.id
+          LEFT JOIN chat_lieu c ON x.id_chat_lieu = c.id
+          LEFT JOIN kieu_ao ka ON x.id_kieu_ao = ka.id 
+          WHERE x.ma LIKE ?
+          """;
+    List<SanPhamChiTiet> arr = new ArrayList<>();
+    try (Connection con = DBConnect.getConnection();
+         PreparedStatement ps = con.prepareStatement(sql)) {
+        ps.setString(1, "%" + ma + "%");
+        try (ResultSet rs = ps.executeQuery()) {
+            while (rs.next()) {                   
+                SanPhamChiTiet sp = new SanPhamChiTiet();
+                sp.setMa(rs.getString("ma"));  // Gán giá trị mã sản phẩm
+                sp.setId(rs.getInt("id"));
+                sp.setTrangThai(rs.getBoolean("trang_thai"));
+
+                KichThuoc k = new KichThuoc();
+                k.setSize(rs.getString("size"));
+                sp.setKt(k);
+
+                ThuongHieu t = new ThuongHieu();
+                t.setTenThuongHieu(rs.getString("ten_thuong_hieu"));
+                sp.setTh(t);
+
+                XuatXu x = new XuatXu();
+                x.setDiaChi(rs.getString("dia_chi"));
+                sp.setXx(x);
+
+                Anh a = new Anh();
+                a.setTenAnh(rs.getString("ten_anh"));
+                sp.setA(a);
+
+                Mau m = new Mau();
+                m.setLoaiMau(rs.getString("loai_mau"));
+                sp.setM(m);
+
+                ChatLieu c = new ChatLieu();
+                c.setTenLoaiVai(rs.getString("ten_loai_vai"));
+                sp.setCl(c);
+
+                sp.setSoLuong(rs.getInt("so_luong"));
+
+                SanPham s = new SanPham();
+                s.setTenSanPham(rs.getString("ten_san_pham"));
+                sp.setSp(s);
+
+                KieuAo y = new KieuAo();
+                y.setTen(rs.getString("ten"));
+                sp.setKa(y);
+
+                sp.setGia(rs.getDouble("gia"));
+                arr.add(sp);
+            }
+        }
+    } catch (Exception e) {
+        e.printStackTrace();
+    }
+    return arr;
 }
 
 

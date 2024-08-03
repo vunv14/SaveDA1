@@ -26,10 +26,10 @@ public class Menu extends JPanel {
 
     private final String menuItems[][] = {
         {"~Sales(Bán Hàng)~"},
-        {"Mặt Hàng"},
+        
         {"Sản Phẩm"},
+           {"Thuộc Tính","Xuất Xứ","Kích Thước","Thương Hiệu","Chất Liệu","Kiểu Áo","Màu","Ảnh"},
         {"Nhân Viên"},
-        {"Thuộc Tính","Xuất Xứ","Kích Thước","Thương Hiệu","Chất Liệu","Màu","Ảnh"},
         {"Bán Hàng"},
         {"Hóa Đơn"},
         {"Khách Hàng"},

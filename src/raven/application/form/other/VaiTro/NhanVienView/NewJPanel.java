@@ -88,7 +88,7 @@ public class NewJPanel extends javax.swing.JPanel {
                "NV"+ x.getId(),
                 x.getHoTen(),
                 x.getSdt(),
-                x.getDiaChia(),
+                x.getDiaChi(),
                 x.getCccd(),
                 x.getGioiTinh() ? "Nữ" : "Nam",
                 x.getNgaySinh(),

@@ -45,14 +45,53 @@ public class RepositoryThuongHieu {
      
        public int addThuongHieu(ThuongHieu th) {
         sql = """
-             insert into mau (ma_mau,loai_mau,trang_thai) values(?,?,?);
+           INSERT INTO [dbo].[thuong_hieu]
+                        ([ma_thuong_hieu]
+                        ,[ten_thuong_hieu]
+                        ,[trang_thai])
+                  VALUES
+                        (?,?,1)
               """;
         try {
             con = DBConnect.getConnection();
             ps = con.prepareStatement(sql);
             ps.setObject(1, th.getMaThuongHieu());
             ps.setObject(2, th.getTenThuongHieu());
-                    ps.setObject(3, th.getTrangThai());
+            return ps.executeUpdate();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return 0;
+    }
+       
+       
+       
+           public int removeByIdThuongHieu(String id) {
+        sql = "update thuong_hieu set trang_thai = 0 where ma_thuong_hieu = ?";
+        try {
+            con = DBConnect.getConnection();
+            ps = con.prepareStatement(sql);
+            ps.setObject(1, id);
+            return ps.executeUpdate();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return 0;
+    }
+    
+     public int updateXuatXuByID(String id, ThuongHieu m){
+        sql = """
+              UPDATE [dbo].[thuong_hieu]
+                 SET 
+                    [ten_thuong_hieu] = ?
+                  
+               WHERE ma_thuong_hieu = ?
+              """;
+        try {
+            con = DBConnect.getConnection();
+            ps = con.prepareStatement(sql);
+            ps.setObject(1, m.getTenThuongHieu());
+            ps.setObject(2, id);
             return ps.executeUpdate();
         } catch (Exception e) {
             e.printStackTrace();

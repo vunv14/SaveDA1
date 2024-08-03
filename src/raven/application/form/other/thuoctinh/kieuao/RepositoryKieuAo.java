@@ -45,22 +45,21 @@ public class RepositoryKieuAo {
     }
     
     public int addKieuAo(KieuAo ka){
-        sql = "INSERT INTO kieu_ao (ma, ten, trang_thai) VALUES (?,?,?)";
+        sql = "INSERT INTO kieu_ao (ma, ten, trang_thai) VALUES (?,?,1)";
         try {
             con =DBConnect.getConnection();
             ps = con.prepareStatement(sql);
             ps.setObject(1,ka.getMa());
             ps.setObject(2, ka.getTen());
-            ps.setObject(3, ka.getTrangThai());
+          
             return ps.executeUpdate();
         } catch (Exception e) {
             e.printStackTrace();
         }
         return 0;
     }
-    
-    public int removeKieuAo(int id){
-        sql = "update kieu_ao set trang_thai = 0 where id =  ?";
+    public int removeKieuAo(String id){
+        sql = "	update kieu_ao set trang_thai = 0 where ma =  ?";
         try {
             con = DBConnect.getConnection();
             ps = con.prepareStatement(sql);
@@ -73,8 +72,8 @@ public class RepositoryKieuAo {
         return 0;
     }
     
-    public int update(int id,KieuAo ka){
-        sql = "update kieu_ao set ten = ? where id =  ?";
+    public int update(String id,KieuAo ka){
+        sql = "update kieu_ao set ten = ? where ma =  ?";
         try {
             con = DBConnect.getConnection();
             ps = con.prepareStatement(sql);

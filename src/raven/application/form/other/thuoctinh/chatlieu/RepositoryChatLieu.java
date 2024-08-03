@@ -26,7 +26,7 @@ public class RepositoryChatLieu {
         private String sql = null;
         
       public List<ChatLieu> getAllChatLieu(){
-        sql = "select id,ma_chat_lieu,ten_loai_vai,trang_thai  from chat_lieu ";
+        sql = "select id,ma_chat_lieu,ten_loai_vai,trang_thai  from chat_lieu where trang_thai = 1 ";
         List<ChatLieu> list = new ArrayList<>();
         
         try {
@@ -45,13 +45,12 @@ public class RepositoryChatLieu {
     
     
      public int addChatLieu(ChatLieu cl){
-        sql = "INSERT INTO chat_lieu(ma_chat_lieu,ten_loai_vai, trang_thai) VALUES (?,?,?);";
+        sql = "INSERT INTO chat_lieu(ma_chat_lieu,ten_loai_vai, trang_thai) VALUES (?,?,1);";
         try {
             con =DBConnect.getConnection();
             ps = con.prepareStatement(sql);
             ps.setObject(1,cl.getMaChatLieu());
             ps.setObject(2, cl.getTenLoaiVai());
-            ps.setObject(3, cl.getTrangThai());
             return ps.executeUpdate();
         } catch (Exception e) {
             e.printStackTrace();
@@ -59,8 +58,8 @@ public class RepositoryChatLieu {
         return 0;
     }
     
-    public int removeImage(int id){
-        sql = "update chat_lieu  set trang_thai = 0 where id =  ?";
+    public int removeImage(String id){
+        sql = "update chat_lieu  set trang_thai = 0 where ma_chat_lieu =  ?";
         try {
             con = DBConnect.getConnection();
             ps = con.prepareStatement(sql);
@@ -73,8 +72,8 @@ public class RepositoryChatLieu {
         return 0;
     }
     
-    public int updateImage(int id,ChatLieu cl){
-        sql = "update anh set ten = ? where id =  ?";
+    public int updateImage(String id,ChatLieu cl){
+        sql = "update chat_lieu set ten_loai_vai = ? where ma_chat_lieu =  ?";
         try {
             con = DBConnect.getConnection();
             ps = con.prepareStatement(sql);

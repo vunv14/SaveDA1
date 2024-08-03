@@ -162,6 +162,13 @@ public class HoaDonChiTiet {
     public void setTrangThai(Boolean trangThai) {
         this.trangThai = trangThai;
     }
+
+    @Override
+    public String toString() {
+        return "HoaDonChiTiet{" + "id=" + id + ", spct=" + spct + ", hd=" + hd + ", soLuong=" + soLuong + ", gia=" + gia + ", createAt=" + createAt + ", updateAt=" + updateAt + ", createBy=" + createBy + ", updateBy=" + updateBy + ", trangThai=" + trangThai + '}';
+    }
+    
+    
     
 
   

@@ -23,6 +23,24 @@ public class PhieuGiamGiaHoaDon {
     private int soLuong;
 
     private int trang_thai;
+    
+    
+    
+    
+    
+//    
+//        private Integer id;
+//    private String maPhieuGiamGia;
+//    private String tenPhieuGiamGia;
+//    private Boolean kieuGiamGia;
+//    private Double giaTriToiThieu;
+//    private Double giaTriGiam;
+//    private java.sql.Date ngayBatDau;
+//    private java.sql.Date ngayKetThuc;
+//    private Integer soLuong;
+//   
+//    private Integer trangThai;
+    
 
     public Integer getId() {
         return id;

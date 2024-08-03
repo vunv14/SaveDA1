@@ -9,13 +9,16 @@ package raven.entity;
 //@Data
 public class HinhThucThanhToan {
 
+   
     private Integer id;
 
-    private Boolean hinhThucThanhToan;
+     private String hinhThucThanhToan;
 
     private Boolean trangThai;
 
-    public HinhThucThanhToan(Integer id, Boolean hinhThucThanhToan, Boolean trangThai) {
+    
+    
+    public HinhThucThanhToan(Integer id, String hinhThucThanhToan, Boolean trangThai) {
         this.id = id;
         this.hinhThucThanhToan = hinhThucThanhToan;
         this.trangThai = trangThai;
@@ -23,7 +26,6 @@ public class HinhThucThanhToan {
 
     public HinhThucThanhToan() {
     }
-    
 
     public Integer getId() {
         return id;
@@ -33,11 +35,11 @@ public class HinhThucThanhToan {
         this.id = id;
     }
 
-    public Boolean getHinhThucThanhToan() {
+    public String getHinhThucThanhToan() {
         return hinhThucThanhToan;
     }
 
-    public void setHinhThucThanhToan(Boolean hinhThucThanhToan) {
+    public void setHinhThucThanhToan(String hinhThucThanhToan) {
         this.hinhThucThanhToan = hinhThucThanhToan;
     }
 
@@ -49,6 +51,6 @@ public class HinhThucThanhToan {
         this.trangThai = trangThai;
     }
 
-    
+  
     
 }

@@ -6,33 +6,35 @@ package raven.entity;
 
 
 import java.sql.Date;
+import raven.application.form.other.BanHang.KhachHangThemNhanh;
 public class HoaDon {
 
+   
     private Integer id;
 
     private KhachHang kh;
     
-//     public Double tt(){
-//        return 
-//    }
-
     private VaiTro nv;
    
     private PhieuGiamGiaHoaDon phieuGiamGiaHoaDon;
   
     private String maHd;
     
-     private Date createAt;
+    private Double giamGia;
+
+    private Double tienKhachDua;
+    
+    private Double  tienChuyenKhoan;
+   
+    private Double tienThua;
+    
+     private Double tongTien;
+    
+    private Date createAt;
 
     private Date updateAt;
-
-    private Double tongTien;
-
+    
     private Boolean trangThai;
-    
-    
-  
-
 
     public HoaDon() {
     }
@@ -49,15 +51,10 @@ public class HoaDon {
         this.nv = nv;
         this.trangThai = trangThai;
     }
-
-    
-    
-    
-    
-    
-    
     
 
+    
+    
     public HoaDon(Integer id, KhachHang kh, VaiTro nv, PhieuGiamGiaHoaDon phieuGiamGiaHoaDon, String maHd, Date createAt, Date updateAt, Double tongTien, Boolean trangThai) {
         this.id = id;
         this.kh = kh;
@@ -110,6 +107,46 @@ public class HoaDon {
         this.maHd = maHd;
     }
 
+    public Double getGiamGia() {
+        return giamGia;
+    }
+
+    public void setGiamGia(Double giamGia) {
+        this.giamGia = giamGia;
+    }
+
+    public Double getTienKhachDua() {
+        return tienKhachDua;
+    }
+
+    public void setTienKhachDua(Double tienKhachDua) {
+        this.tienKhachDua = tienKhachDua;
+    }
+
+    public Double getTienChuyenKhoan() {
+        return tienChuyenKhoan;
+    }
+
+    public void setTienChuyenKhoan(Double tienChuyenKhoan) {
+        this.tienChuyenKhoan = tienChuyenKhoan;
+    }
+
+    public Double getTienThua() {
+        return tienThua;
+    }
+
+    public void setTienThua(Double tienThua) {
+        this.tienThua = tienThua;
+    }
+
+    public Double getTongTien() {
+        return tongTien;
+    }
+
+    public void setTongTien(Double tongTien) {
+        this.tongTien = tongTien;
+    }
+
     public Date getCreateAt() {
         return createAt;
     }
@@ -126,14 +163,6 @@ public class HoaDon {
         this.updateAt = updateAt;
     }
 
-    public Double getTongTien() {
-        return tongTien;
-    }
-
-    public void setTongTien(Double tongTien) {
-        this.tongTien = tongTien;
-    }
-
     public Boolean getTrangThai() {
         return trangThai;
     }
@@ -141,6 +170,13 @@ public class HoaDon {
     public void setTrangThai(Boolean trangThai) {
         this.trangThai = trangThai;
     }
+
+    @Override
+    public String toString() {
+        return "HoaDon{" + "id=" + id + ", kh=" + kh + ", nv=" + nv + ", phieuGiamGiaHoaDon=" + phieuGiamGiaHoaDon + ", maHd=" + maHd + ", giamGia=" + giamGia + ", tienKhachDua=" + tienKhachDua + ", tienChuyenKhoan=" + tienChuyenKhoan + ", tienThua=" + tienThua + ", tongTien=" + tongTien + ", createAt=" + createAt + ", updateAt=" + updateAt + ", trangThai=" + trangThai + '}';
+    }
+
+
 
     
     
